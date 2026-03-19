@@ -564,7 +564,7 @@ Run: `$(brew --prefix)/opt/fzf/install` and follow the prompts to enable shell i
 - [Starship config reference](https://starship.rs/config/)
 - [Zellij docs](https://zellij.dev/documentation/)
 - [eza docs](https://github.com/eza-community/eza)
-- [lazygit keybindings](https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings)
+- [lazygit keybindings](https://github.com/jesseduffield/lazygit/tree/master/docs/keybindings)
 - [uv docs](https://docs.astral.sh/uv/)
 - [fzf docs](https://github.com/junegunn/fzf)
 - [jq manual](https://jqlang.github.io/jq/manual/)
