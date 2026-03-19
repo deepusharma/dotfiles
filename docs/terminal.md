@@ -1,167 +1,192 @@
-# Terminal
+# 🖥️ Terminal
 
-[← Back to Quick Reference](../QUICK-REF.md)
+[← Quick Reference](../QUICK-REF.md)
 
----
+## 👻 Ghostty
 
-## Ghostty
+<table><tr><td width="50%">
 
-| Shortcut | What it does |
+| Shortcut (Mac) | What it does |
 |---|---|
-| `Cmd+N` (Mac) / `Ctrl+Shift+N` (Win) | New window |
-| `Cmd+T` (Mac) | New tab |
-| `Cmd++` / `Cmd+-` | Increase / decrease font size |
+| `Cmd+N` | New window |
+| `Cmd+T` | New tab |
+| `Cmd++` / `Cmd+-` | Font size |
 | `Cmd+0` | Reset font size |
 | `Cmd+K` | Clear screen |
 
+</td><td width="50%">
+
+| Shortcut (Windows) | What it does |
+|---|---|
+| `Ctrl+Shift+N` | New window |
+| `Ctrl+Shift+T` | New tab |
+| `Ctrl+Shift+=` / `-` | Font size |
+| `Ctrl+Shift+0` | Reset font size |
+| `Ctrl+L` | Clear screen |
+
+</td></tr></table>
+
 ---
 
-## Zellij
+## 🪟 Zellij
+
+<table><tr><td width="33%">
 
 ### Panes
 
-| Shortcut | What it does |
+| Key | What it does |
 |---|---|
-| `Ctrl+p` | Enter pane mode |
-| `Ctrl+p` then `n` | New pane |
-| `Ctrl+p` then `x` | Close pane |
-| `Ctrl+p` then `f` | Fullscreen toggle |
-| `Ctrl+p` then `↑↓←→` | Move focus |
-| `Ctrl+p` then `r` | Resize mode |
-| `Alt+↑↓←→` | Move between panes (shortcut) |
+| `Ctrl+p` | Pane mode |
+| `n` | New pane |
+| `x` | Close pane |
+| `f` | Fullscreen |
+| `↑↓←→` | Move focus |
+| `Alt+↑↓←→` | Move (shortcut) |
+
+</td><td width="33%">
 
 ### Tabs
 
-| Shortcut | What it does |
+| Key | What it does |
 |---|---|
-| `Ctrl+t` | Enter tab mode |
-| `Ctrl+t` then `n` | New tab |
-| `Ctrl+t` then `r` | Rename tab |
-| `Ctrl+t` then `x` | Close tab |
-| `Ctrl+t` then `←→` | Navigate tabs |
+| `Ctrl+t` | Tab mode |
+| `n` | New tab |
+| `r` | Rename tab |
+| `x` | Close tab |
+| `←→` | Navigate tabs |
 
-### Session + scroll
+</td><td width="33%">
 
-| Shortcut | What it does |
+### Session + misc
+
+| Key | What it does |
 |---|---|
 | `Ctrl+o` | Session mode |
-| `Ctrl+s` | Enter scroll mode |
-| `Ctrl+s` then `e` | Edit scrollback in editor |
-| `Ctrl+g` | Unlock / lock mouse |
-| `Ctrl+q` | Quit Zellij |
+| `Ctrl+s` | Scroll mode |
+| `Ctrl+g` | Unlock mouse |
+| `Ctrl+q` | Quit |
+
+</td></tr></table>
 
 ---
 
-## fzf — fuzzy finder
+## 🔍 fzf + Search
 
-| Shortcut / Command | What it does |
+<table><tr><td width="50%">
+
+### fzf — fuzzy finder
+
+| Key / Command | What it does |
 |---|---|
-| `Ctrl+R` | Fuzzy search command history |
-| `Ctrl+T` | Fuzzy search files |
-| `Alt+C` | Fuzzy cd into subdirectory |
-| `ls \| fzf` | Fuzzy filter any list |
-| `git branch \| fzf` | Pick a branch interactively |
-| `rg "term" \| fzf` | Fuzzy search grep results |
+| `Ctrl+R` | Fuzzy history |
+| `Ctrl+T` | Fuzzy files |
+| `Alt+C` | Fuzzy cd |
+| `ls \| fzf` | Filter any list |
+| `git branch \| fzf` | Pick branch |
 
----
+</td><td width="50%">
 
-## eza — file listing
+### ripgrep — fast search
 
 | Command | What it does |
 |---|---|
-| `ls` | List with icons (aliased) |
-| `ll` | Long listing with git status |
-| `lt` | Tree view 2 levels |
-| `lta` | Tree view 3 levels |
-| `la` | Long listing including hidden |
-| `ll --sort=modified` | Sort by modified time |
-| `ll --sort=size` | Sort by size |
+| `rg "term"` | Search directory |
+| `rg "term" --type py` | Python files only |
+| `rg -i "term"` | Case insensitive |
+| `rg "term" -l` | Files only |
+| `rg "term" \| fzf` | Interactive search |
+
+</td></tr></table>
 
 ---
 
-## bat — file viewer
+## 📁 Files
+
+<table><tr><td width="33%">
+
+### eza — listing
 
 | Command | What it does |
 |---|---|
-| `cat <file>` | View with syntax highlighting (aliased) |
-| `bat -n <file>` | Show line numbers only |
-| `bat --diff <file>` | Show git diff inline |
-| `bat -l json <file>` | Force JSON highlighting |
-| `bat -p <file>` | Plain output, no decorations |
+| `ls` | List with icons |
+| `ll` | Long + git status |
+| `lt` | Tree 2 levels |
+| `lta` | Tree 3 levels |
+| `la` | Include hidden |
+| `ll --sort=modified` | By date |
+| `ll --sort=size` | By size |
 
----
+</td><td width="33%">
 
-## zoxide — smart cd
-
-| Command | What it does |
-|---|---|
-| `z dirname` | Jump to best matching directory |
-| `z proj` | Jump to most visited "proj" directory |
-| `z -` | Go back to previous directory |
-| `zi` | Interactive fuzzy directory picker |
-| `zoxide query --list` | Show all tracked directories |
-
----
-
-## ripgrep — fast search
+### bat — viewer
 
 | Command | What it does |
 |---|---|
-| `rg "term"` | Search current directory |
-| `rg "term" --type py` | Search only Python files |
-| `rg -i "term"` | Case-insensitive search |
-| `rg "term" -l` | List matching files only |
-| `rg "term" -n` | Show line numbers |
-| `rg "term" --hidden` | Include hidden files |
+| `cat <file>` | Syntax view |
+| `bat -n <file>` | Line numbers |
+| `bat --diff <file>` | Git diff |
+| `bat -l json <file>` | Force JSON |
+| `bat -p <file>` | Plain output |
 
----
+</td><td width="33%">
 
-## fd — file finder
-
-| Command | What it does |
-|---|---|
-| `fd .py` | Find Python files |
-| `fd config` | Find files named "config" |
-| `fd -e toml` | Find by extension |
-| `fd -H .env` | Find hidden files |
-| `fd . --type d` | Find directories only |
-
----
-
-## delta — git diff viewer
-
-Runs automatically with `git diff`, `git log -p`, `git show`. No commands needed.
+### fd — finder
 
 | Command | What it does |
 |---|---|
-| `git diff` | Diff with syntax highlighting |
-| `git log -p` | Log with highlighted diffs |
-| `git show HEAD` | Show last commit with diff |
+| `fd .py` | Find by ext |
+| `fd config` | Find by name |
+| `fd -e toml` | By extension |
+| `fd -H .env` | Hidden files |
+| `fd . --type d` | Dirs only |
+
+</td></tr></table>
 
 ---
 
-## Starship prompt — what it shows
+## 🧭 Navigation + Info
 
-| Indicator | Meaning |
+<table><tr><td width="50%">
+
+### zoxide — smart cd
+
+| Command | What it does |
+|---|---|
+| `z dirname` | Jump to dir |
+| `z proj` | Most visited match |
+| `z -` | Previous dir |
+| `zi` | Interactive picker |
+
+### delta — git diffs
+
+Runs automatically with `git diff`, `git log -p`, `git show`. No config needed.
+
+</td><td width="50%">
+
+### Starship prompt indicators
+
+| Shows | Means |
 |---|---|
 | `dirname` | Current directory |
 | `main` | Git branch |
-| `+1` | 1 staged change |
-| `~2` | 2 unstaged changes |
-| `?1` | 1 untracked file |
-| `⇡1` | 1 commit ahead of remote |
-| `⇣1` | 1 commit behind remote |
-| `py 3.12` | Active Python version |
-| `v20` | Active Node version |
-| `12s` | Last command took 12 seconds |
+| `+1` | Staged changes |
+| `~2` | Unstaged changes |
+| `?1` | Untracked files |
+| `⇡1` | Ahead of remote |
+| `⇣1` | Behind remote |
+| `py 3.12` | Python version |
+| `v20` | Node version |
+| `12s` | Slow command |
+
+</td></tr></table>
 
 ---
 
-## tldr — simplified man pages
+## 📖 tldr
 
 | Command | What it does |
 |---|---|
-| `tldr <tool>` | Show common examples for a tool |
-| `tldr git` | Common git commands |
-| `tldr docker` | Common docker commands |
-| `tldr --update` | Update local cache |
+| `tldr <tool>` | Quick examples |
+| `tldr git` | Git examples |
+| `tldr docker` | Docker examples |
+| `tldr --update` | Update cache |

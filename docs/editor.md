@@ -1,10 +1,10 @@
-# Editor — Antigravity
+# ✏️ Editor — Antigravity
 
-[← Back to Quick Reference](../QUICK-REF.md)
+[← Quick Reference](../QUICK-REF.md)
 
----
+## ⌨️ Core Shortcuts
 
-## Core shortcuts
+<table><tr><td width="33%">
 
 ### Navigation
 
@@ -13,34 +13,32 @@
 | `Ctrl+P` | Quick open file |
 | `Ctrl+Shift+P` | Command palette |
 | `Ctrl+Shift+E` | File explorer |
-| `Ctrl+Shift+F` | Search across files |
+| `Ctrl+Shift+F` | Search all files |
 | `Ctrl+Shift+G` | Source control |
 | `Ctrl+Shift+X` | Extensions |
-| `Ctrl+Shift+D` | Debug panel |
 | `Ctrl+B` | Toggle sidebar |
-| `Ctrl+J` | Toggle bottom panel |
+| `Ctrl+J` | Toggle panel |
 | `Ctrl+\`` | Toggle terminal |
-| `Ctrl+1/2/3` | Focus editor group |
-| `Ctrl+Tab` | Switch open files |
+| `Ctrl+Tab` | Switch files |
+
+</td><td width="33%">
 
 ### Editing
 
 | Shortcut | What it does |
 |---|---|
-| `Ctrl+/` | Toggle line comment |
-| `Ctrl+Shift+/` | Toggle block comment |
-| `Alt+↑↓` | Move line up / down |
-| `Shift+Alt+↑↓` | Copy line up / down |
+| `Ctrl+/` | Toggle comment |
+| `Alt+↑↓` | Move line |
+| `Shift+Alt+↑↓` | Copy line |
 | `Ctrl+Shift+K` | Delete line |
-| `Ctrl+D` | Select next occurrence |
-| `Ctrl+Shift+L` | Select all occurrences |
-| `Ctrl+L` | Select entire line |
-| `Ctrl+Shift+[` | Fold code block |
-| `Ctrl+Shift+]` | Unfold code block |
-| `Tab` | Indent |
-| `Shift+Tab` | Outdent |
-| `Ctrl+Z` | Undo |
-| `Ctrl+Shift+Z` | Redo |
+| `Ctrl+D` | Select next match |
+| `Ctrl+Shift+L` | Select all matches |
+| `Ctrl+L` | Select line |
+| `Tab` / `Shift+Tab` | Indent / outdent |
+| `Ctrl+Z` / `Ctrl+Shift+Z` | Undo / redo |
+| `Ctrl+Shift+[/]` | Fold / unfold |
+
+</td><td width="33%">
 
 ### Code intelligence
 
@@ -48,82 +46,77 @@
 |---|---|
 | `F12` | Go to definition |
 | `Alt+F12` | Peek definition |
-| `Shift+F12` | Find all references |
+| `Shift+F12` | Find references |
 | `F2` | Rename symbol |
-| `Ctrl+Space` | Trigger autocomplete |
-| `Ctrl+Shift+Space` | Trigger parameter hints |
-| `Ctrl+.` | Quick fix / code actions |
-| `Shift+Alt+F` | Format document |
+| `Ctrl+Space` | Autocomplete |
+| `Ctrl+.` | Quick fix |
+| `Shift+Alt+F` | Format file |
 | `Ctrl+K Ctrl+F` | Format selection |
+| `F8` | Next error |
+| `Shift+F8` | Previous error |
 
-### Split editor
-
-| Shortcut | What it does |
-|---|---|
-| `Ctrl+\` | Split editor right |
-| `Ctrl+K Ctrl+\` | Split editor down |
-| `Ctrl+K ←→` | Move editor to group |
+</td></tr><tr><td>
 
 ### Search + replace
 
 | Shortcut | What it does |
 |---|---|
 | `Ctrl+F` | Find in file |
-| `Ctrl+H` | Find and replace in file |
-| `Ctrl+Shift+F` | Find across all files |
-| `Ctrl+Shift+H` | Replace across all files |
-| `F3` | Find next |
-| `Shift+F3` | Find previous |
+| `Ctrl+H` | Replace in file |
+| `Ctrl+Shift+F` | Find all files |
+| `Ctrl+Shift+H` | Replace all files |
+| `F3` / `Shift+F3` | Next / prev match |
+
+</td><td>
+
+### Split + layout
+
+| Shortcut | What it does |
+|---|---|
+| `Ctrl+\` | Split right |
+| `Ctrl+K Ctrl+\` | Split down |
+| `Ctrl+1/2/3` | Focus group |
+| `Ctrl+W` | Close editor |
+
+</td><td>
 
 ### Terminal
 
 | Shortcut | What it does |
 |---|---|
-| `Ctrl+\`` | Open / close terminal |
+| `Ctrl+\`` | Open terminal |
 | `Ctrl+Shift+\`` | New terminal |
 | `Ctrl+Shift+5` | Split terminal |
 | `Alt+←→` | Switch terminal |
 
----
-
-## GitLens
-
-| Shortcut / Command | What it does |
-|---|---|
-| Hover over a line | Show last commit for that line |
-| `Ctrl+Shift+G G` | Open GitLens graph |
-| `Ctrl+Shift+G H` | File history |
-| `Ctrl+Shift+G B` | Toggle blame |
-| Command palette: `GitLens:` | All GitLens commands |
+</td></tr></table>
 
 ---
 
-## Git Graph
+## 🔌 Plugin Shortcuts
+
+<table><tr><td width="50%">
+
+### 🔍 GitLens
 
 | Action | What it does |
 |---|---|
-| Click commit | Show commit details |
-| Right-click commit | Checkout, cherry-pick, revert options |
-| Click branch | Filter to branch |
-| `Ctrl+Shift+G` then click Git Graph icon | Open graph |
+| Hover over line | Show last commit |
+| `Ctrl+Shift+G G` | Open graph |
+| `Ctrl+Shift+G H` | File history |
+| `Ctrl+Shift+G B` | Toggle blame |
 
----
+### 📊 Git Graph
 
-## Error Lens
-
-Inline errors and warnings show automatically. No shortcuts needed — errors appear on the same line as the problem.
-
-| Setting | What it does |
+| Action | What it does |
 |---|---|
-| `errorLens.enabled` | Toggle on/off |
-| `errorLens.delay` | Delay before showing (ms) |
+| Click commit | Show details |
+| Right-click commit | Checkout / cherry-pick |
+| Click branch | Filter view |
 
----
+### 🌐 REST Client
 
-## REST Client
-
-Create a `.http` file and write requests directly:
-
+Create `.http` file:
 ```http
 ### Get users
 GET https://api.example.com/users
@@ -133,94 +126,65 @@ Authorization: Bearer {{token}}
 POST https://api.example.com/users
 Content-Type: application/json
 
-{
-  "name": "Deepak",
-  "email": "deepak@example.com"
-}
+{"name": "Deepak"}
 ```
 
 | Shortcut | What it does |
 |---|---|
-| Click `Send Request` above any request | Execute the request |
-| `Ctrl+Alt+R` | Send request (cursor on request) |
-| `Ctrl+Alt+H` | Show request history |
+| Click `Send Request` | Run request |
+| `Ctrl+Alt+R` | Run at cursor |
+| `Ctrl+Alt+H` | Request history |
 
----
+</td><td width="50%">
 
-## Todo Tree
-
-| Command palette | What it does |
-|---|---|
-| `Todo Tree: Show Tree` | Open todo panel |
-| `Todo Tree: Refresh` | Refresh tree |
-
-Tags it tracks by default: `TODO`, `FIXME`, `HACK`, `BUG`, `XXX`
-
----
-
-## Prettier
+### 🐍 Python
 
 | Shortcut | What it does |
 |---|---|
-| `Shift+Alt+F` | Format current file |
-| `Ctrl+K Ctrl+F` | Format selection |
-
-Auto-formats on save if `editor.formatOnSave` is enabled.
-
----
-
-## Python (Microsoft)
-
-| Shortcut | What it does |
-|---|---|
-| `Ctrl+Shift+P` → `Python: Select Interpreter` | Choose Python / venv |
-| `Ctrl+Shift+P` → `Python: Run Python File` | Run current file |
-| `F5` | Start debugging |
+| `Ctrl+Shift+P` → `Python: Select Interpreter` | Choose venv |
+| `Ctrl+Shift+P` → `Python: Run File` | Run file |
+| `F5` | Start debug |
 | `F9` | Toggle breakpoint |
 | `F10` | Step over |
 | `F11` | Step into |
 | `Shift+F11` | Step out |
 
----
-
-## SQLTools
+### 🗄️ SQLTools
 
 | Shortcut | What it does |
 |---|---|
-| `Ctrl+E Ctrl+E` | Run selected query |
+| `Ctrl+E Ctrl+E` | Run query |
 | `Ctrl+E Ctrl+F` | Format query |
-| `Ctrl+Shift+P` → `SQLTools: Connect` | Connect to database |
-| `Ctrl+Shift+P` → `SQLTools: New Query` | Open new query file |
+| Command palette: `SQLTools: Connect` | Connect DB |
+| Command palette: `SQLTools: New Query` | New query |
 
----
-
-## Markdown All in One
+### ✏️ Markdown All in One
 
 | Shortcut | What it does |
 |---|---|
 | `Ctrl+Shift+V` | Toggle preview |
-| `Ctrl+B` | Bold selected text |
-| `Ctrl+I` | Italic selected text |
-| `Ctrl+Shift+]` | Increase heading level |
-| `Ctrl+Shift+[` | Decrease heading level |
-| `Ctrl+Shift+P` → `Create Table of Contents` | Insert TOC |
-| `Ctrl+Shift+P` → `Update Table of Contents` | Update TOC |
+| `Ctrl+B` | Bold |
+| `Ctrl+I` | Italic |
+| `Ctrl+Shift+]` | Increase heading |
+| `Ctrl+Shift+[` | Decrease heading |
+| Command: `Create Table of Contents` | Insert TOC |
 
----
+### 🎨 Excalidraw
 
-## Excalidraw
-
-| Shortcut | What it does |
+| Key | What it does |
 |---|---|
-| `V` | Selection tool |
+| `V` | Select |
 | `R` | Rectangle |
 | `E` | Ellipse |
 | `A` | Arrow |
 | `T` | Text |
-| `L` | Line |
-| `Ctrl+Z` | Undo |
+| `Ctrl+G` | Group |
 | `Ctrl+A` | Select all |
-| `Ctrl+G` | Group selection |
-| `Ctrl+Shift+G` | Ungroup |
-| `Delete` | Delete selected |
-| `Ctrl+C` / `Ctrl+V` | Copy / paste |
+
+### ✅ Todo Tree
+
+Tags tracked: `TODO` `FIXME` `HACK` `BUG` `XXX`
+
+Command palette: `Todo Tree: Show Tree`
+
+</td></tr></table>

@@ -1,53 +1,56 @@
-# Python
+# 🐍 Python
 
-[← Back to Quick Reference](../QUICK-REF.md)
+[← Quick Reference](../QUICK-REF.md)
 
----
+## 📦 uv — environment + packages
 
-## uv — environment + package manager
+<table><tr><td width="33%">
 
 ### Python versions
 
 | Command | What it does |
 |---|---|
-| `uv python install 3.12` | Install Python 3.12 |
-| `uv python install 3.11` | Install Python 3.11 |
-| `uv python list` | List available versions |
-| `uv python pin 3.12` | Pin version for current project |
+| `uv python install 3.12` | Install 3.12 |
+| `uv python install 3.11` | Install 3.11 |
+| `uv python list` | List versions |
+| `uv python pin 3.12` | Pin for project |
 
 ### Virtual environments
 
 | Command | What it does |
 |---|---|
-| `uv venv` | Create `.venv` in current directory |
-| `uv venv --python 3.12` | Create venv with specific Python |
-| `source .venv/bin/activate` | Activate venv (Mac/Linux) |
-| `.venv\Scripts\activate` | Activate venv (Windows) |
-| `deactivate` | Deactivate venv |
+| `uv venv` | Create `.venv` |
+| `uv venv --python 3.12` | With version |
+| `source .venv/bin/activate` | Activate (Mac) |
+| `.venv\Scripts\activate` | Activate (Win) |
+| `deactivate` | Deactivate |
+
+</td><td width="33%">
 
 ### Packages
 
 | Command | What it does |
 |---|---|
-| `uv pip install <pkg>` | Install a package |
-| `uv pip install -r requirements.txt` | Install from requirements file |
-| `uv pip install -e .` | Install in editable mode |
-| `uv pip uninstall <pkg>` | Uninstall a package |
-| `uv pip list` | List installed packages |
-| `uv pip freeze` | Output pinned requirements |
-| `uv pip compile requirements.in` | Pin dependencies |
+| `uv pip install pkg` | Install |
+| `uv pip install -r requirements.txt` | From file |
+| `uv pip install -e .` | Editable mode |
+| `uv pip uninstall pkg` | Remove |
+| `uv pip list` | List installed |
+| `uv pip freeze` | Pin versions |
+| `uv pip compile requirements.in` | Compile deps |
 
-### Running scripts
+</td><td width="33%">
+
+### Running
 
 | Command | What it does |
 |---|---|
-| `uv run script.py` | Run script in project venv |
-| `uv run pytest` | Run pytest in project venv |
-| `uv run -- python -m module` | Run a module |
+| `uv run script.py` | Run in venv |
+| `uv run pytest` | Run pytest |
+| `uv run uvicorn main:app` | Run server |
+| `uv run -- python -m module` | Run module |
 
----
-
-## Typical project setup
+### New project setup
 
 ```bash
 mkdir myproject && cd myproject
@@ -59,72 +62,79 @@ direnv allow
 git init
 ```
 
+</td></tr></table>
+
 ---
 
-## direnv — per-project environment
+## 🔧 direnv + ipython
+
+<table><tr><td width="50%">
+
+### direnv — auto env vars
 
 | Command | What it does |
 |---|---|
-| `direnv allow` | Approve `.envrc` in current directory |
-| `direnv deny` | Revoke approval |
-| `direnv reload` | Reload after editing `.envrc` |
-| `direnv status` | Show current status |
+| `direnv allow` | Approve `.envrc` |
+| `direnv deny` | Revoke |
+| `direnv reload` | Reload after edit |
+| `direnv status` | Show status |
 
-### Typical `.envrc` file
-
+**Typical `.envrc`:**
 ```bash
-# Activate venv automatically
 source .venv/bin/activate
-
-# Project-specific env vars
 export AWS_PROFILE=myproject
 export ENVIRONMENT=development
 export API_URL=http://localhost:8000
 export OPENAI_API_KEY=sk-...
 ```
 
----
+</td><td width="50%">
 
-## ipython — enhanced REPL
+### ipython — enhanced REPL
 
 | Command | What it does |
 |---|---|
 | `ipython` | Start REPL |
-| `%run script.py` | Run a Python file |
-| `%timeit func()` | Time a function |
-| `%paste` | Paste and run clipboard code |
-| `%history` | Show command history |
-| `?object` | Show documentation |
-| `??object` | Show source code |
-| `%load_ext autoreload` | Auto-reload modules |
-| `%autoreload 2` | Enable autoreload |
+| `%run script.py` | Run file |
+| `%timeit func()` | Time function |
+| `%paste` | Paste + run |
+| `%history` | Command history |
+| `?object` | Show docs |
+| `??object` | Show source |
+| `%load_ext autoreload` | Auto-reload |
+| `%autoreload 2` | Enable |
 | `Ctrl+D` | Exit |
+
+</td></tr></table>
 
 ---
 
-## pytest — testing
+## 🧪 pytest
+
+<table><tr><td width="50%">
 
 | Command | What it does |
 |---|---|
 | `uv run pytest` | Run all tests |
-| `uv run pytest -v` | Verbose output |
-| `uv run pytest tests/test_file.py` | Run specific file |
-| `uv run pytest -k "test_name"` | Run tests matching name |
-| `uv run pytest -x` | Stop on first failure |
-| `uv run pytest --pdb` | Drop into debugger on failure |
+| `uv run pytest -v` | Verbose |
+| `uv run pytest tests/test_file.py` | Run file |
+| `uv run pytest -k "test_name"` | By name |
+| `uv run pytest -x` | Stop on fail |
+| `uv run pytest --pdb` | Debug on fail |
 
----
+</td><td width="50%">
 
-## Common agentic app packages
+### Common agentic packages
 
 | Package | What it does |
 |---|---|
 | `crewai` | Multi-agent framework |
-| `langgraph` | Graph-based agent workflows |
-| `langchain` | LLM application framework |
-| `anthropic` | Claude API client |
-| `openai` | OpenAI API client |
+| `langgraph` | Graph-based agents |
+| `langchain` | LLM framework |
+| `anthropic` | Claude API |
+| `openai` | OpenAI API |
 | `fastapi` | API framework |
-| `uvicorn` | ASGI server for FastAPI |
-| `python-dotenv` | Load `.env` files |
+| `uvicorn` | ASGI server |
 | `pydantic` | Data validation |
+
+</td></tr></table>

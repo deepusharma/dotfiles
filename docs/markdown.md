@@ -1,54 +1,48 @@
-# Markdown
+# 📝 Markdown
 
-[← Back to Quick Reference](../QUICK-REF.md)
+[← Quick Reference](../QUICK-REF.md)
 
----
+## ✍️ Syntax
 
-## Syntax
+<table><tr><td width="33%">
 
-### Text formatting
+### Text + headings
 
 | Syntax | Output |
 |---|---|
+| `# H1` | Heading 1 |
+| `## H2` | Heading 2 |
+| `### H3` | Heading 3 |
 | `**bold**` | **bold** |
 | `*italic*` | *italic* |
-| `~~strikethrough~~` | ~~strikethrough~~ |
-| `` `inline code` `` | `inline code` |
+| `~~strike~~` | ~~strike~~ |
+| `` `code` `` | `code` |
 | `**_bold italic_**` | ***bold italic*** |
-
-### Headings
-
-```markdown
-# H1
-## H2
-### H3
-#### H4
-```
-
-### Lists
-
-```markdown
-- Unordered item
-- Another item
-  - Nested item
-
-1. Ordered item
-2. Second item
-   1. Nested ordered
-
-- [x] Completed task
-- [ ] Pending task
-```
 
 ### Links + images
 
 | Syntax | What it does |
 |---|---|
 | `[text](url)` | Link |
-| `[text](url "title")` | Link with tooltip |
+| `[text](url "tip")` | Link + tooltip |
 | `![alt](url)` | Image |
-| `![alt](url "title")` | Image with tooltip |
-| `[text][ref]` then `[ref]: url` | Reference link |
+| `[text][ref]` | Reference link |
+| `[ref]: url` | Define reference |
+
+</td><td width="33%">
+
+### Lists
+
+```markdown
+- Unordered
+  - Nested
+
+1. Ordered
+   1. Nested
+
+- [x] Done
+- [ ] Todo
+```
 
 ### Code
 
@@ -57,38 +51,31 @@
 
 ```python
 def hello():
-    print("Hello")
+    print("hi")
 ```
 ````
 
 ### Tables
 
 ```markdown
-| Column 1 | Column 2 | Column 3 |
-|---|---|---|
-| Cell | Cell | Cell |
-| Cell | Cell | Cell |
-```
+| Col 1 | Col 2 |
+|---|---|
+| cell | cell |
 
-Alignment:
-```markdown
 | Left | Center | Right |
 |:---|:---:|---:|
-| text | text | text |
 ```
 
-### Blockquotes
+</td><td width="33%">
+
+### Blockquotes + dividers
 
 ```markdown
-> Single quote
+> Quote
 
 > Nested
->> Deeper nested
-```
+>> Deeper
 
-### Horizontal rule
-
-```markdown
 ---
 ```
 
@@ -96,15 +83,29 @@ Alignment:
 
 | Syntax | What it does |
 |---|---|
-| Two spaces at end of line | Line break |
-| Blank line between text | New paragraph |
-| `<br>` | Explicit line break |
+| Two spaces at end | Line break |
+| Blank line | New paragraph |
+| `<br>` | Explicit break |
+
+### Shortcuts (Antigravity)
+
+| Shortcut | What it does |
+|---|---|
+| `Ctrl+Shift+V` | Preview |
+| `Ctrl+B` | Bold |
+| `Ctrl+I` | Italic |
+| `Ctrl+Shift+]` | Heading up |
+| `Ctrl+Shift+[` | Heading down |
+
+</td></tr></table>
 
 ---
 
-## GitHub Flavored Markdown (GFM)
+## 🐙 GitHub Flavored Markdown
 
-### Alerts (GitHub only)
+<table><tr><td width="50%">
+
+### Alerts
 
 ```markdown
 > [!NOTE]
@@ -114,7 +115,7 @@ Alignment:
 > Helpful tip
 
 > [!IMPORTANT]
-> Critical information
+> Critical info
 
 > [!WARNING]
 > Risky content
@@ -123,7 +124,7 @@ Alignment:
 > Negative consequences
 ```
 
-### Collapsible sections
+### Collapsible
 
 ```markdown
 <details>
@@ -133,6 +134,8 @@ Hidden content here.
 
 </details>
 ```
+
+</td><td width="50%">
 
 ### Mermaid diagrams
 
@@ -146,30 +149,17 @@ graph TD
 ### Footnotes
 
 ```markdown
-Text with footnote[^1]
+Text[^1]
 
-[^1]: Footnote content here.
+[^1]: Footnote here.
 ```
 
----
+### Tips
 
-## Antigravity shortcuts for markdown
+- Use `---` to separate sections
+- GitHub renders any `.md` file automatically
+- Use Outline panel in Antigravity for navigation
+- Reference-style links for repeated URLs
+- Keep lines under 120 chars for editor readability
 
-| Shortcut | What it does |
-|---|---|
-| `Ctrl+Shift+V` | Open preview |
-| `Ctrl+B` | Bold selected |
-| `Ctrl+I` | Italic selected |
-| `Ctrl+Shift+]` | Increase heading level |
-| `Ctrl+Shift+[` | Decrease heading level |
-| `Ctrl+Shift+P` → `Create Table of Contents` | Insert TOC |
-
----
-
-## Tips
-
-- Use `---` to separate major sections
-- Keep line length under 120 chars for readability in editors
-- Use reference-style links for URLs used multiple times
-- GitHub renders `CHEATSHEET.md`, `README.md`, and any `.md` file automatically
-- Outline panel in Antigravity (`Ctrl+Shift+E` → scroll to Outline) shows all headings for navigation
+</td></tr></table>

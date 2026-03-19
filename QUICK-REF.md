@@ -1,101 +1,107 @@
-# Quick Reference
+# ⚡ Quick Reference
 
-Top commands for every tool in the stack. Click any section header for the full reference.
+> Top commands for every tool. Click any header for the full reference.
 
----
+<table><tr><td width="50%">
 
-## [Git + GitHub CLI](docs/git.md)
+### 🔀 [Git + GitHub CLI](docs/git.md)
 
 | Command | What it does |
 |---|---|
-| `lg` | Open lazygit (visual git UI) |
-| `git status` | Show working tree status |
-| `git add .` | Stage all changes |
-| `git commit -m "msg"` | Commit with message |
-| `git push` | Push to remote |
-| `git pull` | Pull from remote |
-| `git checkout -b branch` | Create and switch to new branch |
-| `gh repo create` | Create a new GitHub repo |
-| `gh pr create` | Open a pull request |
-| `gh browse` | Open repo in browser |
+| `lg` | Open lazygit |
+| `gs` | git status |
+| `git add .` | Stage all |
+| `git commit -m "msg"` | Commit |
+| `gp` | git push |
+| `gpl` | git pull |
+| `gcb branch` | New branch |
+| `gh pr create` | Open PR |
+| `gh browse` | Open in browser |
+| `gh run list` | CI status |
 
----
+</td><td width="50%">
 
-## [Terminal](docs/terminal.md)
+### 🖥️ [Terminal](docs/terminal.md)
 
-| Command / Key | What it does |
+| Key / Command | What it does |
 |---|---|
 | `Ctrl+p` | Zellij pane mode |
 | `Ctrl+t` | Zellij tab mode |
 | `Alt+←→↑↓` | Move between panes |
-| `space` | lazygit — stage file |
-| `c` | lazygit — commit |
-| `Ctrl+R` | fzf — fuzzy history search |
-| `Ctrl+T` | fzf — fuzzy file search |
-| `z dirname` | zoxide — jump to directory |
-| `lt` | eza — tree view |
-| `lg` | Open lazygit |
+| `Ctrl+R` | Fuzzy history search |
+| `Ctrl+T` | Fuzzy file search |
+| `z dirname` | Smart jump |
+| `lt` | Tree view |
+| `ll` | Long listing |
+| `rg "term"` | Fast search |
+| `tldr tool` | Quick help |
 
----
+</td></tr><tr><td>
 
-## [Python](docs/python.md)
+### 🐍 [Python](docs/python.md)
 
 | Command | What it does |
 |---|---|
-| `uv venv` | Create virtual environment |
-| `source .venv/bin/activate` | Activate venv |
+| `uv venv` | Create venv |
+| `source .venv/bin/activate` | Activate |
 | `uv pip install pkg` | Install package |
-| `uv python install 3.12` | Install Python version |
-| `direnv allow` | Approve `.envrc` for auto-loading |
-| `ipython` | Start enhanced Python REPL |
+| `uv python install 3.12` | Install Python |
+| `uv run script.py` | Run in venv |
+| `direnv allow` | Auto-load env |
+| `ipython` | Enhanced REPL |
+| `uv run pytest` | Run tests |
 
----
+</td><td>
 
-## [Node](docs/node.md)
+### 📦 [Node](docs/node.md)
 
 | Command | What it does |
 |---|---|
-| `nvm install --lts` | Install latest LTS Node |
-| `nvm use 20` | Switch to Node 20 |
-| `nvm ls` | List installed versions |
-| `npm install` | Install dependencies |
-| `npm run dev` | Run dev script |
-| `npm run build` | Build for production |
+| `nvm install --lts` | Install Node LTS |
+| `nvm use 20` | Switch version |
+| `npm install` | Install deps |
+| `npm run dev` | Dev server |
+| `npm run build` | Build |
+| `npx create-next-app` | New Next.js app |
+| `vercel` | Deploy preview |
+| `vercel --prod` | Deploy production |
 
----
+</td></tr><tr><td>
 
-## [Editor — Antigravity](docs/editor.md)
+### ✏️ [Editor — Antigravity](docs/editor.md)
 
 | Shortcut | What it does |
 |---|---|
+| `Ctrl+P` | Quick open file |
 | `Ctrl+Shift+P` | Command palette |
-| `Ctrl+P` | Quick file open |
-| `Ctrl+Shift+E` | File explorer |
-| `Ctrl+Shift+G` | Source control |
-| `Ctrl+Shift+X` | Extensions |
-| `Ctrl+\`` | Toggle terminal |
-| `Ctrl+B` | Toggle sidebar |
-| `Ctrl+Shift+V` | Markdown preview |
+| `Ctrl+Shift+F` | Search all files |
 | `Ctrl+/` | Toggle comment |
+| `Alt+↑↓` | Move line |
 | `F12` | Go to definition |
+| `F2` | Rename symbol |
+| `Ctrl+.` | Quick fix |
+| `Shift+Alt+F` | Format file |
+| `Ctrl+Shift+V` | MD preview |
 
----
+</td><td>
 
-## [Markdown](docs/markdown.md)
+### 📝 [Markdown](docs/markdown.md)
 
 | Syntax | What it does |
 |---|---|
-| `# H1` `## H2` `### H3` | Headings |
-| `**bold**` | Bold text |
-| `*italic*` | Italic text |
+| `# H1` `## H2` | Headings |
+| `**bold**` | Bold |
+| `*italic*` | Italic |
 | `` `code` `` | Inline code |
-| `- item` | Bullet list |
-| `1. item` | Numbered list |
+| `- item` | Bullet |
 | `[text](url)` | Link |
 | `![alt](url)` | Image |
-| `> text` | Blockquote |
+| `> text` | Quote |
+| `---` | Divider |
 | ` ```lang ` | Code block |
+
+</td></tr></table>
 
 ---
 
-*Full references: [Git](docs/git.md) · [Terminal](docs/terminal.md) · [Python](docs/python.md) · [Node](docs/node.md) · [Editor](docs/editor.md) · [Markdown](docs/markdown.md)*
+*[Git](docs/git.md) · [Terminal](docs/terminal.md) · [Python](docs/python.md) · [Node](docs/node.md) · [Editor](docs/editor.md) · [Markdown](docs/markdown.md)*
