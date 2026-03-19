@@ -16,6 +16,11 @@ Setting up a new machine takes hours. Configs drift between machines. You forget
 
 ## The stack
 
+![The stack](images/01-stack.png)
+
+<details>
+<summary>View diagram source</summary>
+
 ```mermaid
 graph TD
     A[You] --> B[Alacritty]
@@ -53,12 +58,27 @@ graph TD
     C --> CloudTools
 ```
 
+</details>
+
+---
+
+## Why these tools
+
+Not every tool is equal priority. This shows what's core to the setup, what's strongly recommended, and what you can add later.
+
+![Why these tools](images/04-tailored-stack.png)
+
 ---
 
 ## How it works across two machines
 
+![How it works across two machines](images/06-dotfiles-sync.png)
+
+<details>
+<summary>View diagram source</summary>
+
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph mac [MacOS]
         M1[~/.zshrc] --> ML[symlink]
         M2[~/.config/starship.toml] --> ML
@@ -78,14 +98,21 @@ flowchart TD
     WR <-->|git push / pull| GH
 ```
 
+</details>
+
 Config files live in this repo. `install.sh` creates symlinks from where tools expect them to where the repo actually stores them. Change a config on one machine, push, pull on the other. Done.
 
 ---
 
 ## Platform compatibility
 
+![Platform compatibility](images/05-compatibility.png)
+
+<details>
+<summary>View diagram source</summary>
+
 ```mermaid
-graph TD
+graph LR
     subgraph ToolsGroup[Tools]
         T1[Alacritty]
         T2[Zsh and OMZ]
@@ -120,6 +147,8 @@ graph TD
     T7 --> WinGroup
 ```
 
+</details>
+
 Everything runs on both platforms. On Windows, WSL2 is the required foundation — it gives you a real Linux environment. Once WSL2 is running, the install script is identical.
 
 ---
@@ -135,7 +164,6 @@ Required for icons in eza and Starship.
 **macOS:** handled by `install.sh` via Homebrew Cask.
 
 **Windows:**
-
 1. Download JetBrainsMono Nerd Font from https://www.nerdfonts.com/font-downloads
 2. Extract the zip
 3. Select all `.ttf` files, right-click, choose "Install for all users"
@@ -178,7 +206,6 @@ cd ~/dotfiles && ./install.sh
 ```
 
 The script:
-
 - Installs Homebrew if missing
 - Installs all packages from `Brewfile`
 - Installs Oh My Zsh and plugins
@@ -303,7 +330,6 @@ The default layout (`configs/zellij/layouts/dev.kdl`) opens three panes:
 Replaces the default shell prompt. Shows what you need: current directory, git branch, git status, Python env, cloud context. Renders in milliseconds.
 
 Config is in `configs/starship/starship.toml`. Key things it shows:
-
 - Git branch and dirty/clean status
 - Python virtualenv when active
 - AWS/GCP/Azure context when credentials are set
@@ -314,7 +340,6 @@ Config is in `configs/starship/starship.toml`. Key things it shows:
 A full git UI in the terminal. Open it with `lg` (aliased in `.zshrc`).
 
 Common keys:
-
 - `space` — stage a file
 - `c` — commit
 - `P` — push
@@ -347,7 +372,6 @@ uv run script.py           # run a script
 ### fzf
 
 Fuzzy finder. After install, three keybindings are available everywhere:
-
 - `Ctrl+R` — fuzzy search command history
 - `Ctrl+T` — fuzzy search files in current directory
 - `Alt+C` — fuzzy cd into a subdirectory
@@ -374,7 +398,7 @@ http POST api.example.com/items name="test" value:=42
 brew update && brew upgrade
 ```
 
-Run this weekly or whenever you start a new project.
+Run this weekly or whenever you start a new project. On Mac, run this in any terminal. On Windows, run it inside WSL2 — it won't work in PowerShell or Git Bash.
 
 ### Check for config drift between machines
 
