@@ -18,39 +18,39 @@ Setting up a new machine takes hours. Configs drift between machines. You forget
 
 ```mermaid
 graph TD
-    A[You] --> B[Alacritty\nTerminal emulator]
-    B --> C[Zsh + Oh My Zsh\nShell]
-    C --> D[Zellij\nMultiplexer - panes, tabs, sessions]
-    C --> E[Starship\nPrompt]
+    A[You] --> B[Alacritty]
+    B --> C[Zsh + Oh My Zsh]
+    C --> D[Zellij]
+    C --> E[Starship]
 
     subgraph CLI Tools
-        F[eza\nFolder trees]
-        G[zoxide\nSmart cd]
-        H[fzf\nFuzzy search]
-        I[bat\nSyntax cat]
-        J[ripgrep\nFast grep]
+        F[eza]
+        G[zoxide]
+        H[fzf]
+        I[bat]
+        J[ripgrep]
     end
 
     subgraph Git
-        K[lazygit\nVisual git TUI]
-        L[gh CLI\nGitHub from terminal]
+        K[lazygit]
+        L[gh CLI]
     end
 
     subgraph Python
-        M[uv\nEnv + packages]
-        N[ipython\nREPL]
+        M[uv]
+        N[ipython]
     end
 
-    subgraph Cloud + APIs
-        O[jq\nJSON processing]
-        P[httpie\nAPI testing]
-        Q[aws / gcloud / az\nCloud CLIs]
+    subgraph Cloud and APIs
+        O[jq]
+        P[httpie]
+        Q[aws / gcloud / az]
     end
 
     C --> CLI Tools
     C --> Git
     C --> Python
-    C --> Cloud + APIs
+    C --> Cloud and APIs
 ```
 
 ---
@@ -88,36 +88,36 @@ Config files live in this repo. `install.sh` creates symlinks from where tools e
 graph LR
     subgraph Tools
         T1[Alacritty]
-        T2[Zsh + OMZ]
+        T2[Zsh and OMZ]
         T3[Zellij]
         T4[Starship]
-        T5[eza / fzf / bat\nzoxide / ripgrep]
-        T6[lazygit / gh\nuv / jq / httpie]
+        T5[eza / fzf / bat / zoxide / ripgrep]
+        T6[lazygit / gh / uv / jq / httpie]
         T7[Dotfiles repo]
     end
 
-    subgraph mac [macOS]
-        MA[Homebrew\nnative]
+    subgraph macOS
+        MA[Homebrew native]
     end
 
-    subgraph win [Windows]
-        WA[WSL2 required\nthen identical]
+    subgraph Windows
+        WA[WSL2 then identical]
     end
 
-    T1 --> mac
-    T1 --> win
-    T2 --> mac
-    T2 --> win
-    T3 --> mac
-    T3 --> win
-    T4 --> mac
-    T4 --> win
-    T5 --> mac
-    T5 --> win
-    T6 --> mac
-    T6 --> win
-    T7 --> mac
-    T7 --> win
+    T1 --> macOS
+    T1 --> Windows
+    T2 --> macOS
+    T2 --> Windows
+    T3 --> macOS
+    T3 --> Windows
+    T4 --> macOS
+    T4 --> Windows
+    T5 --> macOS
+    T5 --> Windows
+    T6 --> macOS
+    T6 --> Windows
+    T7 --> macOS
+    T7 --> Windows
 ```
 
 Everything runs on both platforms. On Windows, WSL2 is the required foundation — it gives you a real Linux environment. Once WSL2 is running, the install script is identical.
@@ -182,6 +182,53 @@ The script:
 - Installs Oh My Zsh and plugins
 - Symlinks all config files into place
 - Backs up anything it would overwrite
+
+**After the script completes, run through these steps once:**
+
+**1. Restart your terminal (or reload the shell)**
+
+```bash
+exec zsh
+```
+
+**2. Set the font in Alacritty**
+
+Open `~/.config/alacritty/alacritty.toml` and confirm `font.normal.family` is set to `JetBrainsMono Nerd Font`. On Windows, do the same in `%APPDATA%\alacritty\alacritty.toml`.
+
+**3. Authenticate the GitHub CLI**
+
+```bash
+gh auth login
+```
+
+Opens a browser, walks you through signing in, stores a token. One-time per machine.
+
+**4. Set your git identity**
+
+If this is a fresh machine, git won't know who you are yet:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+**5. Install a Python version**
+
+`uv` is installed but has no Python yet:
+
+```bash
+uv python install 3.12
+```
+
+**6. Authenticate cloud CLIs (as needed)**
+
+```bash
+aws configure                  # AWS
+gcloud auth login              # GCP
+az login                       # Azure
+```
+
+You only need to do whichever ones are relevant to your work.
 
 ---
 
