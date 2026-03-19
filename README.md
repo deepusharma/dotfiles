@@ -23,7 +23,7 @@ graph TD
     C --> D[Zellij]
     C --> E[Starship]
 
-    subgraph CLI Tools
+    subgraph CLITools[CLI Tools]
         F[eza]
         G[zoxide]
         H[fzf]
@@ -31,26 +31,26 @@ graph TD
         J[ripgrep]
     end
 
-    subgraph Git
+    subgraph GitTools[Git]
         K[lazygit]
         L[gh CLI]
     end
 
-    subgraph Python
+    subgraph PythonTools[Python]
         M[uv]
         N[ipython]
     end
 
-    subgraph Cloud and APIs
+    subgraph CloudTools[Cloud and APIs]
         O[jq]
         P[httpie]
         Q[aws / gcloud / az]
     end
 
-    C --> CLI Tools
-    C --> Git
-    C --> Python
-    C --> Cloud and APIs
+    C --> CLITools
+    C --> GitTools
+    C --> PythonTools
+    C --> CloudTools
 ```
 
 ---
@@ -58,7 +58,7 @@ graph TD
 ## How it works across two machines
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph mac [MacOS]
         M1[~/.zshrc] --> ML[symlink]
         M2[~/.config/starship.toml] --> ML
@@ -85,8 +85,8 @@ Config files live in this repo. `install.sh` creates symlinks from where tools e
 ## Platform compatibility
 
 ```mermaid
-graph LR
-    subgraph Tools
+graph TD
+    subgraph ToolsGroup[Tools]
         T1[Alacritty]
         T2[Zsh and OMZ]
         T3[Zellij]
@@ -96,28 +96,28 @@ graph LR
         T7[Dotfiles repo]
     end
 
-    subgraph macOS
+    subgraph MacGroup[macOS]
         MA[Homebrew native]
     end
 
-    subgraph Windows
+    subgraph WinGroup[Windows]
         WA[WSL2 then identical]
     end
 
-    T1 --> macOS
-    T1 --> Windows
-    T2 --> macOS
-    T2 --> Windows
-    T3 --> macOS
-    T3 --> Windows
-    T4 --> macOS
-    T4 --> Windows
-    T5 --> macOS
-    T5 --> Windows
-    T6 --> macOS
-    T6 --> Windows
-    T7 --> macOS
-    T7 --> Windows
+    T1 --> MacGroup
+    T1 --> WinGroup
+    T2 --> MacGroup
+    T2 --> WinGroup
+    T3 --> MacGroup
+    T3 --> WinGroup
+    T4 --> MacGroup
+    T4 --> WinGroup
+    T5 --> MacGroup
+    T5 --> WinGroup
+    T6 --> MacGroup
+    T6 --> WinGroup
+    T7 --> MacGroup
+    T7 --> WinGroup
 ```
 
 Everything runs on both platforms. On Windows, WSL2 is the required foundation — it gives you a real Linux environment. Once WSL2 is running, the install script is identical.
@@ -135,6 +135,7 @@ Required for icons in eza and Starship.
 **macOS:** handled by `install.sh` via Homebrew Cask.
 
 **Windows:**
+
 1. Download JetBrainsMono Nerd Font from https://www.nerdfonts.com/font-downloads
 2. Extract the zip
 3. Select all `.ttf` files, right-click, choose "Install for all users"
@@ -177,6 +178,7 @@ cd ~/dotfiles && ./install.sh
 ```
 
 The script:
+
 - Installs Homebrew if missing
 - Installs all packages from `Brewfile`
 - Installs Oh My Zsh and plugins
@@ -301,6 +303,7 @@ The default layout (`configs/zellij/layouts/dev.kdl`) opens three panes:
 Replaces the default shell prompt. Shows what you need: current directory, git branch, git status, Python env, cloud context. Renders in milliseconds.
 
 Config is in `configs/starship/starship.toml`. Key things it shows:
+
 - Git branch and dirty/clean status
 - Python virtualenv when active
 - AWS/GCP/Azure context when credentials are set
@@ -311,6 +314,7 @@ Config is in `configs/starship/starship.toml`. Key things it shows:
 A full git UI in the terminal. Open it with `lg` (aliased in `.zshrc`).
 
 Common keys:
+
 - `space` — stage a file
 - `c` — commit
 - `P` — push
@@ -343,6 +347,7 @@ uv run script.py           # run a script
 ### fzf
 
 Fuzzy finder. After install, three keybindings are available everywhere:
+
 - `Ctrl+R` — fuzzy search command history
 - `Ctrl+T` — fuzzy search files in current directory
 - `Alt+C` — fuzzy cd into a subdirectory
