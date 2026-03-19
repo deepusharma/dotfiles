@@ -1,0 +1,57 @@
+# =============================================================================
+# Ghostty config
+# Docs: https://ghostty.org/docs/config
+# =============================================================================
+
+# ── Shell ─────────────────────────────────────────────────────────────────────
+# macOS — uses default zsh
+# shell = /bin/zsh
+
+# Windows — uncomment this and comment out above:
+# shell = wsl.exe -d Ubuntu --cd ~
+
+# ── Font ──────────────────────────────────────────────────────────────────────
+font-family = JetBrainsMonoNL Nerd Font Mono
+font-size = 14
+
+# ── Window ────────────────────────────────────────────────────────────────────
+window-padding-x = 12
+window-padding-y = 10
+background-opacity = 0.95
+background-blur-radius = 20
+macos-titlebar-style = hidden
+window-save-state = always
+
+# ── Cursor ────────────────────────────────────────────────────────────────────
+cursor-style = block
+cursor-style-blink = true
+
+# ── Scrolling ─────────────────────────────────────────────────────────────────
+scrollback-limit = 10000
+
+# ── Colors (Dracula theme) ────────────────────────────────────────────────────
+background = 282a36
+foreground = f8f8f2
+
+cursor-color = f8f8f2
+cursor-text = 282a36
+
+selection-background = 44475a
+selection-foreground = f8f8f2
+
+palette = 0=#21222c
+palette = 1=#ff5555
+palette = 2=#50fa7b
+palette = 3=#f1fa8c
+palette = 4=#bd93f9
+palette = 5=#ff79c6
+palette = 6=#8be9fd
+palette = 7=#f8f8f2
+palette = 8=#6272a4
+palette = 9=#ff6e6e
+palette = 10=#69ff94
+palette = 11=#ffffa5
+palette = 12=#d6acff
+palette = 13=#ff92df
+palette = 14=#a4ffff
+palette = 15=#ffffff

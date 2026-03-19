@@ -23,7 +23,7 @@ Setting up a new machine takes hours. Configs drift between machines. You forget
 
 ```mermaid
 graph TD
-    A[You] --> B[Alacritty]
+    A[You] --> B[Ghostty]
     B --> C[Zsh + Oh My Zsh]
     C --> D[Zellij]
     C --> E[Starship]
@@ -83,7 +83,7 @@ flowchart LR
         M1[~/.zshrc] --> ML[symlink]
         M2[~/.config/starship.toml] --> ML
         M3[~/.config/zellij/] --> ML
-        M4[~/.config/alacritty/] --> ML
+        M4[~/.config/ghostty/] --> ML
         ML --> MR[(~/dotfiles repo)]
     end
 
@@ -114,7 +114,7 @@ Config files live in this repo. `install.sh` creates symlinks from where tools e
 ```mermaid
 graph LR
     subgraph ToolsGroup[Tools]
-        T1[Alacritty]
+        T1[Ghostty]
         T2[Zsh and OMZ]
         T3[Zellij]
         T4[Starship]
@@ -169,11 +169,11 @@ Required for icons in eza and Starship.
 3. Select all `.ttf` files, right-click, choose "Install for all users"
 4. Set the font in Windows Terminal: Settings > your WSL2 profile > Appearance > Font face
 
-### 2. Install Alacritty on Windows
+### 2. Install Ghostty on Windows
 
 **macOS:** handled by `install.sh`.
 
-**Windows:** download the `.msi` from https://github.com/alacritty/alacritty/releases and run it. After install, edit `%APPDATA%\alacritty\alacritty.toml` — a sample is in `configs/alacritty/alacritty.toml` in this repo.
+**Windows:** download the `.msi` from https://github.com/ghostty/ghostty/releases and run it. After install, edit `%APPDATA%\ghostty\ghostty.toml` — a sample is in `configs/ghostty/ghostty.toml` in this repo.
 
 **That's it.** Everything from here is scripted.
 
@@ -220,9 +220,9 @@ The script:
 exec zsh
 ```
 
-**2. Set the font in Alacritty**
+**2. Set the font in Ghostty**
 
-Open `~/.config/alacritty/alacritty.toml` and confirm `font.normal.family` is set to `JetBrainsMono Nerd Font`. On Windows, do the same in `%APPDATA%\alacritty\alacritty.toml`.
+Open `~/.config/ghostty/ghostty.toml` and confirm `font.normal.family` is set to `JetBrainsMono Nerd Font`. On Windows, do the same in `%APPDATA%\ghostty\ghostty.toml`.
 
 **3. Authenticate the GitHub CLI**
 
@@ -301,8 +301,8 @@ dotfiles/
 ├── install.sh            # run this on a new machine
 ├── Brewfile              # all packages — used by install.sh
 ├── configs/
-│   ├── alacritty/
-│   │   └── alacritty.toml
+│   ├── ghostty/
+│   │   └── ghostty.toml
 │   ├── starship/
 │   │   └── starship.toml
 │   ├── zellij/
@@ -319,9 +319,9 @@ dotfiles/
 
 ## Key tools — quick reference
 
-### Alacritty
+### Ghostty
 
-GPU-accelerated terminal emulator. Configured via a single TOML file. No tabs, no splits — that's Zellij's job.
+Fast, native terminal emulator. Configured via a single TOML file. No tabs, no splits — that's Zellij's job.
 
 ### Zellij
 
@@ -537,7 +537,7 @@ git push
 ## Troubleshooting
 
 **Icons not showing**
-Check the font is set correctly in Alacritty config (`font.normal.family`). Must be a Nerd Font variant — plain JetBrainsMono will not show icons.
+Check the font is set correctly in Ghostty config (`font.normal.family`). Must be a Nerd Font variant — plain JetBrainsMono will not show icons.
 
 **Zellij not starting automatically**
 Check `.zshrc` has the auto-start block and that you've sourced it: `source ~/.zshrc`
@@ -555,7 +555,7 @@ Run: `$(brew --prefix)/opt/fzf/install` and follow the prompts to enable shell i
 
 ## Further reading
 
-- [Alacritty docs](https://alacritty.org)
+- [Ghostty docs](https://ghostty.org)
 - [Starship config reference](https://starship.rs/config/)
 - [Zellij docs](https://zellij.dev/documentation/)
 - [eza docs](https://github.com/eza-community/eza)
@@ -566,6 +566,7 @@ Run: `$(brew --prefix)/opt/fzf/install` and follow the prompts to enable shell i
 - [tldr pages](https://tldr.sh)
 - [delta docs](https://dandavison.github.io/delta/)
 - [direnv docs](https://direnv.net)
+- [Cheatsheet](CHEATSHEET.md) — quick reference for every tool in this setup
 
 ---
 
