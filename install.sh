@@ -114,6 +114,17 @@ else
   ok "nvm already installed"
 fi
 
+# Load nvm and install LTS Node if not already installed
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if ! nvm ls --no-colors | grep -q "lts"; then
+  log "Installing Node.js LTS..."
+  nvm install --lts
+  ok "Node.js LTS installed"
+else
+  ok "Node.js LTS already installed"
+fi
+
 # ── Symlink configs ───────────────────────────────────────────────────────────
 log "Symlinking config files..."
 

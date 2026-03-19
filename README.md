@@ -251,12 +251,18 @@ uv python install 3.12
 
 **6. Install Node.js via nvm**
 
-nvm is installed by the script. Install the latest LTS version:
+nvm and Node LTS are installed automatically by the script. To verify:
 
 ```bash
-nvm install --lts
-nvm use --lts
-node --version    # verify
+node --version
+npm --version
+```
+
+To install a specific version manually:
+
+```bash
+nvm install 20
+nvm use 20
 ```
 
 **7. Authenticate cloud CLIs (as needed)**
