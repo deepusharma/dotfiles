@@ -164,6 +164,7 @@ Required for icons in eza and Starship.
 **macOS:** handled by `install.sh` via Homebrew Cask.
 
 **Windows:**
+
 1. Download JetBrainsMono Nerd Font from https://www.nerdfonts.com/font-downloads
 2. Extract the zip
 3. Select all `.ttf` files, right-click, choose "Install for all users"
@@ -206,6 +207,7 @@ cd ~/dotfiles && ./install.sh
 ```
 
 The script:
+
 - Installs Homebrew if missing
 - Installs all packages from `Brewfile`
 - Installs Oh My Zsh and plugins
@@ -346,6 +348,7 @@ The default layout (`configs/zellij/layouts/dev.kdl`) opens three panes:
 Replaces the default shell prompt. Shows what you need: current directory, git branch, git status, Python env, cloud context. Renders in milliseconds.
 
 Config is in `configs/starship/starship.toml`. Key things it shows:
+
 - Git branch and dirty/clean status
 - Python virtualenv when active
 - AWS/GCP/Azure context when credentials are set
@@ -356,6 +359,7 @@ Config is in `configs/starship/starship.toml`. Key things it shows:
 A full git UI in the terminal. Open it with `lg` (aliased in `.zshrc`).
 
 Common keys:
+
 - `space` — stage a file
 - `c` — commit
 - `P` — push
@@ -399,6 +403,7 @@ nvm ls                     # list installed versions
 ### fzf
 
 Fuzzy finder. After install, three keybindings are available everywhere:
+
 - `Ctrl+R` — fuzzy search command history
 - `Ctrl+T` — fuzzy search files in current directory
 - `Alt+C` — fuzzy cd into a subdirectory
@@ -566,7 +571,7 @@ Run: `$(brew --prefix)/opt/fzf/install` and follow the prompts to enable shell i
 - [tldr pages](https://tldr.sh)
 - [delta docs](https://dandavison.github.io/delta/)
 - [direnv docs](https://direnv.net)
-- [Cheatsheet](CHEATSHEET.md) — quick reference for every tool in this setup
+- [Quick Reference](QUICK-REF.md) — quick reference for every tool in this setup
 
 ---
 
