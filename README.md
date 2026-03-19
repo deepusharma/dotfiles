@@ -388,6 +388,38 @@ http GET api.example.com/data | jq '.results[] | {id, name}'
 http POST api.example.com/items name="test" value:=42
 ```
 
+### tldr
+
+Simplified, example-focused alternative to man pages. When you pick up a new CLI tool, `tldr` shows you the 5 most common use cases immediately.
+
+```bash
+tldr git        # common git commands
+tldr docker     # common docker commands
+tldr fzf        # fzf usage examples
+```
+
+### delta
+
+Makes `git diff` output much more readable — syntax highlighting, line numbers, and side-by-side view. Works automatically inside lazygit too. Set as the default git pager in `.zshrc`.
+
+```bash
+git diff        # now uses delta automatically
+git log -p      # log with delta-highlighted diffs
+```
+
+### direnv
+
+Automatically loads and unloads environment variables when you `cd` into a project folder. Useful for managing different AWS profiles, API keys, or Python versions per project without polluting your global shell.
+
+```bash
+# Create a .envrc in any project folder
+echo 'export AWS_PROFILE=myproject' > .envrc
+direnv allow    # approve it once
+
+# Now AWS_PROFILE is set automatically when you enter the folder
+# and unset when you leave
+```
+
 ---
 
 ## Keeping it current
@@ -504,6 +536,9 @@ Run: `$(brew --prefix)/opt/fzf/install` and follow the prompts to enable shell i
 - [uv docs](https://docs.astral.sh/uv/)
 - [fzf docs](https://github.com/junegunn/fzf)
 - [jq manual](https://jqlang.github.io/jq/manual/)
+- [tldr pages](https://tldr.sh)
+- [delta docs](https://dandavison.github.io/delta/)
+- [direnv docs](https://direnv.net)
 
 ---
 

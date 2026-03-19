@@ -75,6 +75,12 @@ alias reload='source ~/.zshrc'
 alias path='echo $PATH | tr ":" "\n"'
 alias ports='lsof -i -P -n | grep LISTEN'
 
+# delta — better git diffs (set as default git pager)
+export GIT_PAGER='delta'
+
+# direnv — auto-load .envrc files per project
+eval "$(direnv hook zsh)"
+
 # Better history
 export HISTSIZE=50000
 export HISTFILESIZE=50000

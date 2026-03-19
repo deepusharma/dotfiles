@@ -29,6 +29,11 @@ brew "httpie"
 brew "uv"
 brew "ipython"
 
+# Extras
+brew "tldr"
+brew "delta"
+brew "direnv"
+
 # macOS only
 cask "alacritty"
 cask "font-jetbrains-mono-nerd-font"
