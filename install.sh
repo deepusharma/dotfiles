@@ -134,7 +134,7 @@ symlink "$DOTFILES/configs/zellij/config.kdl"             "$HOME/.config/zellij/
 symlink "$DOTFILES/configs/zellij/layouts/dev.kdl"        "$HOME/.config/zellij/layouts/dev.kdl"
 
 if [[ "$OS" == "mac" ]]; then
-  symlink "$DOTFILES/configs/alacritty/alacritty.toml"    "$HOME/.config/alacritty/alacritty.toml"
+  symlink "$DOTFILES/configs/ghostty/config"          "$HOME/.config/ghostty/config"
 fi
 
 # ── Done ──────────────────────────────────────────────────────────────────────
@@ -148,7 +148,7 @@ echo "  3. Open a git repo and run 'lg' to try lazygit"
 if [[ "$OS" == "linux" ]]; then
   echo ""
   echo "  Windows manual steps still required:"
-  echo "  - Install Alacritty .msi from github.com/alacritty/alacritty/releases"
+  echo "  - Install Alacritty .msi from github.com/ghostty/ghostty/releases"
   echo "  - Install JetBrainsMono Nerd Font (see README)"
 fi
 echo ""
