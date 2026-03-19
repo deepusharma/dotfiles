@@ -1,0 +1,28 @@
+// =============================================================================
+// config.kdl — Zellij configuration
+// Docs: https://zellij.dev/documentation/
+// =============================================================================
+
+// Default layout to load on startup
+default_layout "dev"
+
+// Theme
+theme "dracula"
+
+// Show keybinding hints at bottom of screen
+// Set to false once you've memorised the shortcuts
+ui {
+    pane_frames {
+        hide_session_name false
+        rounded_corners true
+    }
+}
+
+// Mouse support
+mouse_mode true
+
+// Copy on select
+copy_on_select true
+
+// Scroll buffer size
+scroll_buffer_size 10000

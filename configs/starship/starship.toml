@@ -1,0 +1,103 @@
+# =============================================================================
+# starship.toml — Starship prompt configuration
+# Docs: https://starship.rs/config/
+# =============================================================================
+
+# Timeout for prompt commands (ms)
+command_timeout = 1000
+
+# Newline before prompt
+add_newline = true
+
+# Prompt format — what shows and in what order
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$aws\
+$gcloud\
+$azure\
+$cmd_duration\
+$line_break\
+$character"""
+
+# ── Directory ─────────────────────────────────────────────────────────────────
+[directory]
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = true
+read_only = " 󰌾"
+
+# ── Git branch ────────────────────────────────────────────────────────────────
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$branch]($style) "
+
+# ── Git status ────────────────────────────────────────────────────────────────
+[git_status]
+style = "bold red"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+staged = "[+${count}](bold green)"
+modified = "[~${count}](bold yellow)"
+untracked = "[?${count}](bold red)"
+deleted = "[-${count}](bold red)"
+format = "[$all_status$ahead_behind]($style) "
+
+# ── Python ────────────────────────────────────────────────────────────────────
+[python]
+symbol = " "
+style = "bold yellow"
+format = '[$symbol$virtualenv]($style) '
+detect_files = ["*.py", "pyproject.toml", "requirements.txt", ".python-version"]
+
+# ── Node.js ───────────────────────────────────────────────────────────────────
+[nodejs]
+symbol = " "
+style = "bold green"
+detect_files = ["package.json", ".nvmrc", ".node-version"]
+
+# ── Rust ──────────────────────────────────────────────────────────────────────
+[rust]
+symbol = " "
+style = "bold orange"
+detect_files = ["Cargo.toml"]
+
+# ── AWS ───────────────────────────────────────────────────────────────────────
+[aws]
+symbol = " "
+style = "bold yellow"
+format = '[$symbol($profile)(\($region\))]($style) '
+# Only show when AWS_PROFILE is set (avoids always-on noise)
+disabled = false
+
+# ── GCP ───────────────────────────────────────────────────────────────────────
+[gcloud]
+symbol = " "
+style = "bold blue"
+format = '[$symbol$account(@$domain)(\($project\))]($style) '
+disabled = false
+
+# ── Azure ─────────────────────────────────────────────────────────────────────
+[azure]
+symbol = "󰠅 "
+style = "bold blue"
+format = '[$symbol($subscription)]($style) '
+disabled = false
+
+# ── Command duration ──────────────────────────────────────────────────────────
+# Shows how long the last command took — useful for slow builds/scripts
+[cmd_duration]
+min_time = 3000   # only show if command took > 3 seconds
+style = "bold yellow"
+format = "[ $duration]($style) "
+
+# ── Prompt character ──────────────────────────────────────────────────────────
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"

@@ -1,0 +1,49 @@
+// =============================================================================
+// dev.kdl — Default development layout for Zellij
+//
+// Layout:
+//   ┌──────────────────────┬──────────────────┐
+//   │                      │                  │
+//   │   main shell         │   lazygit        │
+//   │   (primary)          │                  │
+//   │                      ├──────────────────┤
+//   │                      │                  │
+//   │                      │   server / logs  │
+//   │                      │                  │
+//   └──────────────────────┴──────────────────┘
+//
+// Keybindings (default Zellij):
+//   Ctrl+p → pane mode (navigate, resize, close)
+//   Ctrl+t → tab mode (new tab, rename, close)
+//   Ctrl+n → new pane
+//   Alt+←→↑↓ → move between panes
+// =============================================================================
+
+layout {
+    pane split_direction="vertical" {
+        // Left pane — main shell (60% width)
+        pane size="60%" focus=true {
+            pane command="zsh"
+        }
+
+        // Right column — split horizontally
+        pane split_direction="horizontal" {
+            // Top right — lazygit
+            pane size="50%" {
+                pane command="zsh" {
+                    args "-c" "lazygit; zsh"
+                }
+            }
+
+            // Bottom right — server/logs shell
+            pane {
+                pane command="zsh"
+            }
+        }
+    }
+
+    // Status bar at the bottom
+    pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+}
