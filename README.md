@@ -566,6 +566,7 @@ Run: `$(brew --prefix)/opt/fzf/install` and follow the prompts to enable shell i
 - [tldr pages](https://tldr.sh)
 - [delta docs](https://dandavison.github.io/delta/)
 - [direnv docs](https://direnv.net)
+- [Cheatsheet](CHEATSHEET.md) — quick reference for every tool in this setup
 
 ---
 

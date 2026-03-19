@@ -7,6 +7,22 @@
 default_layout "dev"
 
 // Theme
+themes {
+    dracula {
+        fg 248 248 242
+        bg 40 42 54
+        black 33 34 44
+        red 255 85 85
+        green 80 250 123
+        yellow 241 250 140
+        blue 189 147 249
+        magenta 255 121 198
+        cyan 139 233 253
+        white 248 248 242
+        orange 255 184 108
+    }
+}
+
 theme "dracula"
 
 // Show keybinding hints at bottom of screen
