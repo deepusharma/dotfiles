@@ -21,8 +21,10 @@ $aws\
 $gcloud\
 $azure\
 $cmd_duration\
-$line_break\
 $character"""
+
+# $line_break\
+
 
 # ── Directory ─────────────────────────────────────────────────────────────────
 [directory]
@@ -99,5 +101,9 @@ format = "[ $duration]($style) "
 
 # ── Prompt character ──────────────────────────────────────────────────────────
 [character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
+#success_symbol = "[❯](bold green)"
+#error_symbol = "[❯](bold red)"
+#success_symbol = "[→](bold green)"
+#error_symbol = "[→](bold red)"
+success_symbol = "[▶](bold green)"
+error_symbol = "[▶](bold red)"

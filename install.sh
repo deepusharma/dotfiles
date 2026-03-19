@@ -104,6 +104,16 @@ if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]]; then
   ok "zsh-autosuggestions installed"
 fi
 
+# ── nvm (Node Version Manager) ────────────────────────────────────────────────
+log "Checking nvm..."
+if [[ ! -d "$HOME/.nvm" ]]; then
+  log "Installing nvm..."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+  ok "nvm installed"
+else
+  ok "nvm already installed"
+fi
+
 # ── Symlink configs ───────────────────────────────────────────────────────────
 log "Symlinking config files..."
 

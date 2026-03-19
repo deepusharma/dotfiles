@@ -88,6 +88,11 @@ export HISTCONTROL=ignoredups:erasedups
 setopt SHARE_HISTORY
 setopt HIST_FIND_NO_DUPS
 
+# ── nvm (Node Version Manager) ────────────────────────────────────────────────
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # ── Zellij auto-start ─────────────────────────────────────────────────────────
 # Opens Zellij automatically when you open a new terminal.
 # Comment this out if you prefer to launch Zellij manually.

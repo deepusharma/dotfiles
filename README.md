@@ -249,7 +249,17 @@ git config --global user.email "you@example.com"
 uv python install 3.12
 ```
 
-**6. Authenticate cloud CLIs (as needed)**
+**6. Install Node.js via nvm**
+
+nvm is installed by the script. Install the latest LTS version:
+
+```bash
+nvm install --lts
+nvm use --lts
+node --version    # verify
+```
+
+**7. Authenticate cloud CLIs (as needed)**
 
 ```bash
 aws configure                  # AWS
@@ -367,6 +377,17 @@ uv venv                    # create a virtual environment
 uv pip install requests    # install a package
 uv python install 3.12     # install a Python version
 uv run script.py           # run a script
+```
+
+### nvm
+
+Manages Node.js versions. Installed automatically by `install.sh`.
+
+```bash
+nvm install --lts          # install latest LTS Node
+nvm use --lts              # use it
+nvm install 20             # install a specific version
+nvm ls                     # list installed versions
 ```
 
 ### fzf
