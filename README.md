@@ -321,9 +321,9 @@ dotfiles/
 
 ## Key tools — quick reference
 
-### Ghostty
+### Ghostty (Mac) / Alacritty (Windows)
 
-Fast, native terminal emulator. Configured via a single TOML file. No tabs, no splits — that's Zellij's job.
+Mac uses Ghostty — fast, native, passes macOS Gatekeeper, installed via Homebrew Cask. Windows uses Alacritty — Ghostty does not have a native Windows installer yet. Both use the Dracula theme, the same font, and connect into Zsh/WSL2. Config files are in `configs/ghostty/config` and `configs/alacritty/alacritty.toml` respectively.
 
 ### Zellij
 

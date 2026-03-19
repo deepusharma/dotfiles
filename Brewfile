@@ -35,5 +35,6 @@ brew "delta"
 brew "direnv"
 
 # macOS only
+# Windows: use Alacritty — see configs/alacritty/alacritty.toml
 cask "ghostty"
 cask "font-jetbrains-mono-nerd-font"

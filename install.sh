@@ -148,7 +148,8 @@ echo "  3. Open a git repo and run 'lg' to try lazygit"
 if [[ "$OS" == "linux" ]]; then
   echo ""
   echo "  Windows manual steps still required:"
-  echo "  - Install Alacritty .msi from github.com/ghostty/ghostty/releases"
+  echo "  - Install Alacritty .msi from github.com/alacritty/alacritty/releases"
+  echo "  - Copy configs/alacritty/alacritty.toml to %APPDATA%\alacritty\alacritty.toml"
   echo "  - Install JetBrainsMono Nerd Font (see README)"
 fi
 echo ""
