@@ -132,6 +132,7 @@ symlink "$DOTFILES/configs/zsh/.zshrc"                    "$HOME/.zshrc"
 symlink "$DOTFILES/configs/starship/starship.toml"        "$HOME/.config/starship.toml"
 symlink "$DOTFILES/configs/zellij/config.kdl"             "$HOME/.config/zellij/config.kdl"
 symlink "$DOTFILES/configs/zellij/layouts/dev.kdl"        "$HOME/.config/zellij/layouts/dev.kdl"
+
 if [[ "$OS" == "mac" ]]; then
   symlink "$DOTFILES/configs/ghostty/config"          "$HOME/.config/ghostty/config"
 fi
