@@ -132,10 +132,21 @@ symlink "$DOTFILES/configs/zsh/.zshrc"                    "$HOME/.zshrc"
 symlink "$DOTFILES/configs/starship/starship.toml"        "$HOME/.config/starship.toml"
 symlink "$DOTFILES/configs/zellij/config.kdl"             "$HOME/.config/zellij/config.kdl"
 symlink "$DOTFILES/configs/zellij/layouts/dev.kdl"        "$HOME/.config/zellij/layouts/dev.kdl"
-
 if [[ "$OS" == "mac" ]]; then
   symlink "$DOTFILES/configs/ghostty/config"          "$HOME/.config/ghostty/config"
 fi
+
+# ── VS Code ───────────────────────────────────────────────────────────────────
+log "Symlinking VS Code settings..."
+if [[ "$OS" == "mac" ]]; then
+  symlink "$DOTFILES/configs/vscode/settings.json" \
+    "$HOME/Library/Application Support/Code/User/settings.json"
+elif [[ "$OS" == "linux" ]]; then
+  WIN_USER=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
+  symlink "$DOTFILES/configs/vscode/settings.json" \
+    "/mnt/c/Users/$WIN_USER/AppData/Roaming/Code/User/settings.json"
+fi  
+
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""

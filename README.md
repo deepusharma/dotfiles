@@ -84,6 +84,7 @@ flowchart LR
         M2[~/.config/starship.toml] --> ML
         M3[~/.config/zellij/] --> ML
         M4[~/.config/ghostty/] --> ML
+        M5[~/.../Code/User/settings.json] --> ML
         ML --> MR[(~/dotfiles repo)]
     end
 
@@ -91,6 +92,7 @@ flowchart LR
         W1[~/.zshrc] --> WL[symlink]
         W2[~/.config/starship.toml] --> WL
         W3[~/.config/zellij/] --> WL
+        W4[~/.../Code/User/settings.json] --> WL
         WL --> WR[(~/dotfiles repo)]
     end
 
@@ -307,6 +309,8 @@ dotfiles/
 │   │   └── ghostty.toml
 │   ├── starship/
 │   │   └── starship.toml
+│   ├── vscode/
+│   │   └── settings.json
 │   ├── zellij/
 │   │   ├── config.kdl
 │   │   └── layouts/
