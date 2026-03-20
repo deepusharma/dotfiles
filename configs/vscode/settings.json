@@ -1,7 +1,92 @@
 {
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "python.pythonPath": "C:\\Users\\deepa\\anaconda3\\python.exe",
-    "python.terminal.activateEnvironment": true,
-    "geminicodeassist.project": "ancient-rune-gthmw"
+  // -------------------------------------------------
+  // Editor — Core
+  // -------------------------------------------------
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.eol": "\n",
+
+  // -------------------------------------------------
+  // Git
+  // -------------------------------------------------
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
+  // -------------------------------------------------
+  // GitLens
+  // -------------------------------------------------
+  "gitlens.ai.model": "gitkraken",
+  "gitlens.ai.gitkraken.model": "gemini:gemini-2.5-flash",
+
+  // -------------------------------------------------
+  // Claude Code
+  // -------------------------------------------------
+  "claudeCode.preferredLocation": "panel",
+
+  // -------------------------------------------------
+  // Markdown
+  // -------------------------------------------------
+  "markdown-preview-enhanced.enablePreviewZenMode": false,
+  "markdown-preview-enhanced.previewTheme": "github-dark.css",
+  "[markdown]": {
+    "diffEditor.ignoreTrimWhitespace": false
+  },
+
+  // -------------------------------------------------
+  // Python
+  // -------------------------------------------------
+  "python.languageServer": "Default",
+
+  // -------------------------------------------------
+  // TODO Tree
+  // -------------------------------------------------
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "HACK",
+    "BUG",
+    "NOTE",
+    "OPTIMIZE",
+    "REVIEW"
+  ],
+  "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.tree.groupedByTag": true,
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "foreground": "#000",
+      "background": "#FFD700",
+      "iconColour": "#FFD700"
+    },
+    "FIXME": {
+      "icon": "alert",
+      "foreground": "#fff",
+      "background": "#e45454",
+      "iconColour": "#e45454"
+    },
+    "NOTE": {
+      "icon": "info",
+      "foreground": "#fff",
+      "background": "#4CAF50",
+      "iconColour": "#4CAF50"
+    },
+    "REVIEW": {
+      "icon": "eye",
+      "foreground": "#fff",
+      "background": "#7B68EE",
+      "iconColour": "#7B68EE"
+    },
+    "OPTIMIZE": {
+      "icon": "zap",
+      "foreground": "#fff",
+      "background": "#FF8C00",
+      "iconColour": "#FF8C00"
+    }
+  },
+
+  // -------------------------------------------------
+  // Antigravity
+  // -------------------------------------------------
+  "antigravity.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
+  "antigravity.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery"
 }
