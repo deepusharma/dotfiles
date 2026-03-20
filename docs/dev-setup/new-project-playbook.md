@@ -166,9 +166,10 @@ Thumbs.db
 Document all required environment variables:
 
 ```
-# AI
+# AI APIs
 GROQ_API_KEY=your_key_here
 ANTHROPIC_API_KEY=your_key_here
+OPENAI_API_KEY=your_key_here
 
 # Database
 DATABASE_URL=postgresql://user:password@host/dbname
@@ -177,7 +178,84 @@ MONGODB_URI=mongodb+srv://user:password@cluster/dbname
 
 ---
 
-## 8. Personal config files (not in repo)
+## 8. Set up databases (online, free tier)
+
+### Neon — PostgreSQL
+
+1. Sign up at https://neon.tech with GitHub
+2. Create project — name it `dev-sandbox`
+3. Copy connection string: `postgresql://user:password@ep-xxx.aws.neon.tech/neondb`
+4. Connect in Antigravity: `Ctrl+Shift+P` → `SQLTools: Add New Connection` → PostgreSQL
+   - Enable SSL — required for Neon
+5. Create schema in `db/schema.sql`, run via SQLTools
+
+### MongoDB Atlas
+
+1. Sign up at https://mongodb.com/atlas
+2. Create free cluster (M0) — AWS Mumbai for India
+3. Connect → Drivers → copy connection string:
+   `mongodb+srv://user:password@cluster.mongodb.net/`
+4. Network Access → Add IP → Allow Access from Anywhere (dev only)
+5. Connect in Antigravity via MongoDB for VS Code extension
+
+### SQLite (no setup needed)
+
+Just a file — good for simple CLI tools and prototypes:
+
+```python
+import sqlite3
+conn = sqlite3.connect("myproject.db")
+```
+
+---
+
+## 9. Set up AI APIs
+
+### Groq (free tier — recommended for development)
+
+1. Sign up at https://console.groq.com
+2. API Keys → Create new key
+3. Add to `.env`:
+
+   ```env
+   GROQ_API_KEY=your_key_here
+   ```
+
+4. Install client:
+   ```bash
+   uv pip install groq
+   ```
+5. Available models: `llama3-8b-8192`, `llama3-70b-8192`, `mixtral-8x7b-32768`
+
+### Anthropic Claude
+
+1. Sign up at https://console.anthropic.com
+2. API Keys → Create key
+3. Add to `.env`:
+   ```
+   ANTHROPIC_API_KEY=your_key_here
+   ```
+4. Install client:
+   ```bash
+   uv pip install anthropic
+   ```
+
+### OpenAI
+
+1. Sign up at https://platform.openai.com
+2. API Keys → Create key
+3. Add to `.env`:
+   ```
+   OPENAI_API_KEY=your_key_here
+   ```
+4. Install client:
+   ```bash
+   uv pip install openai
+   ```
+
+---
+
+## 10. Personal config files (not in repo)
 
 Some tools need a config in home directory:
 
@@ -194,7 +272,7 @@ myproject = "/mnt/d/GitProjects/public/myproject"
 
 ---
 
-## 9. Feature branch workflow
+## 11. Feature branch workflow
 
 ```bash
 # Start new feature
@@ -216,7 +294,7 @@ git branch -d feature/my-feature
 
 ---
 
-## 10. Commit message conventions
+## 12. Commit message conventions
 
 Use conventional commits format:
 
@@ -232,7 +310,7 @@ Use conventional commits format:
 
 Examples:
 
-```
+```yaml
 feat: add get_commits function
 fix: handle missing config file
 docs: add module docstrings
@@ -242,7 +320,7 @@ refactor: replace print with logger
 
 ---
 
-## 11. First commit checklist
+## 13. First commit checklist
 
 Before first push, verify:
 
