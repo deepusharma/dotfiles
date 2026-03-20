@@ -99,3 +99,4 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -z "$ZELLIJ" ]]; then
   zellij
 fi
+export UV_LINK_MODE=copy
