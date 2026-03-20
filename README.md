@@ -311,6 +311,7 @@ dotfiles/
 │   │   └── ghostty.toml
 │   ├── git/
 │   │   └── .gitconfig
+│   │   └── .gitconfig.local.example
 │   ├── starship/
 │   │   └── starship.toml
 │   ├── vscode/

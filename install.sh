@@ -132,7 +132,13 @@ symlink "$DOTFILES/configs/zsh/.zshrc"                    "$HOME/.zshrc"
 symlink "$DOTFILES/configs/starship/starship.toml"        "$HOME/.config/starship.toml"
 symlink "$DOTFILES/configs/zellij/config.kdl"             "$HOME/.config/zellij/config.kdl"
 symlink "$DOTFILES/configs/zellij/layouts/dev.kdl"        "$HOME/.config/zellij/layouts/dev.kdl"
+# ── Git config ────────────────────────────────────────────────────────────────
 symlink "$DOTFILES/configs/git/.gitconfig"                "$HOME/.gitconfig"
+if [[ ! -f "$HOME/.gitconfig.local" ]]; then
+  warn "~/.gitconfig.local not found — copy configs/git/.gitconfig.local.example and fill in your details"
+fi
+
+
 
 if [[ "$OS" == "mac" ]]; then
   symlink "$DOTFILES/configs/ghostty/config"          "$HOME/.config/ghostty/config"

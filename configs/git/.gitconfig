@@ -1,13 +1,6 @@
 [safe]
     directory = *
-[user]
-    name = Deepak Sharma
-    email = deepu.sharma@gmail.com
 [push]
     autoSetupRemote = true
-[credential "https://github.com"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+[include]
+    path = ~/.gitconfig.local
