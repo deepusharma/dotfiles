@@ -225,7 +225,7 @@ conn = sqlite3.connect("myproject.db")
    ```bash
    uv pip install groq
    ```
-5. Available models: `llama3-8b-8192`, `llama3-70b-8192`, `mixtral-8x7b-32768`
+5. Available models: `llama-3.3-70b-versatile`, `mixtral-8x7b-32768`
 
 ### Anthropic Claude
 
@@ -272,7 +272,26 @@ myproject = "/mnt/d/GitProjects/public/myproject"
 
 ---
 
-## 11. Feature branch workflow
+## 11. VS Code settings
+
+No action needed — settings are managed via dotfiles and symlinked automatically
+by `install.sh`.
+
+To verify the symlink is in place:
+
+```bash
+# WSL/Windows
+ls -la "/mnt/c/Users/$USER/AppData/Roaming/Code/User/settings.json"
+
+# Mac
+ls -la "$HOME/Library/Application Support/Code/User/settings.json"
+```
+
+To update settings, edit `configs/vscode/settings.json` in dotfiles repo and push.
+
+---
+
+## 12. Feature branch workflow
 
 ```bash
 # Start new feature
@@ -294,7 +313,7 @@ git branch -d feature/my-feature
 
 ---
 
-## 12. Commit message conventions
+## 13. Commit message conventions
 
 Use conventional commits format:
 
@@ -320,7 +339,7 @@ refactor: replace print with logger
 
 ---
 
-## 13. First commit checklist
+## 14. First commit checklist
 
 Before first push, verify:
 
