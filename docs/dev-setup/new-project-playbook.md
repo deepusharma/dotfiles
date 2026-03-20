@@ -309,6 +309,11 @@ gh pr create
 git checkout main
 git pull
 git branch -d feature/my-feature
+
+# Push and create PR
+# Note: use -u on first push of a new branch — sets up tracking
+git push -u origin feature/my-feature   
+gh pr create
 ```
 
 ---
