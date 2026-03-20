@@ -85,6 +85,7 @@ flowchart LR
         M3[~/.config/zellij/] --> ML
         M4[~/.config/ghostty/] --> ML
         M5[~/.../Code/User/settings.json] --> ML
+        M6[~/.gitconfig] --> ML
         ML --> MR[(~/dotfiles repo)]
     end
 
@@ -93,6 +94,7 @@ flowchart LR
         W2[~/.config/starship.toml] --> WL
         W3[~/.config/zellij/] --> WL
         W4[~/.../Code/User/settings.json] --> WL
+        W5[~/.gitconfig] --> WL
         WL --> WR[(~/dotfiles repo)]
     end
 
@@ -172,11 +174,11 @@ Required for icons in eza and Starship.
 3. Select all `.ttf` files, right-click, choose "Install for all users"
 4. Set the font in Windows Terminal: Settings > your WSL2 profile > Appearance > Font face
 
-### 2. Install Ghostty on Windows
+### 2. Install Alacritty on Windows
 
-**macOS:** handled by `install.sh`.
-
-**Windows:** download the `.msi` from https://github.com/ghostty/ghostty/releases and run it. After install, edit `%APPDATA%\ghostty\ghostty.toml` — a sample is in `configs/ghostty/ghostty.toml` in this repo.
+**macOS:** uses Ghostty — handled by `install.sh`.
+**Windows:** download the `.msi` from https://github.com/alacritty/alacritty/releases and run it.
+After install, copy `configs/alacritty/alacritty.toml` to `%APPDATA%\alacritty\alacritty.toml`.
 
 **That's it.** Everything from here is scripted.
 
@@ -307,12 +309,14 @@ dotfiles/
 ├── configs/
 │   ├── ghostty/
 │   │   └── ghostty.toml
+│   ├── git/
+│   │   └── .gitconfig
 │   ├── starship/
 │   │   └── starship.toml
 │   ├── vscode/
 │   │   └── settings.json
-│   ├── zellij/
-│   │   ├── config.kdl
+├── zellij/
+│   ├── config.kdl
 │   │   └── layouts/
 │   │       └── dev.kdl
 │   └── zsh/

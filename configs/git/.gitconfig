@@ -1,0 +1,7 @@
+[safe]
+    directory = *
+[user]
+    name = Deepak Sharma
+    email = deepu.sharma@gmail.com
+[push]
+    autoSetupRemote = true
