@@ -71,10 +71,11 @@ dependencies = []
 select = ["T20"]
 ```
 
-Install in editable mode:
+Install the project and dev dependencies:
 
 ```bash
 uv pip install -e .
+uv pip install -e ".[dev]"
 ```
 
 ---
@@ -83,7 +84,7 @@ uv pip install -e .
 
 ### Python CLI tool
 
-```
+```none
 myproject/
 ├── src/
 │   ├── __init__.py
@@ -302,18 +303,18 @@ git add .
 git commit -m "feat: add my feature"
 
 # Push and create PR
+# Note: use -u on first push of a new branch — sets up tracking
 git push -u origin feature/my-feature
 gh pr create
+
+# Merge the PR
+gh pr merge --squash
 
 # After merge, clean up
 git checkout main
 git pull
 git branch -d feature/my-feature
 
-# Push and create PR
-# Note: use -u on first push of a new branch — sets up tracking
-git push -u origin feature/my-feature   
-gh pr create
 ```
 
 ---
