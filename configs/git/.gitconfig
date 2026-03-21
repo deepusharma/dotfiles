@@ -7,3 +7,5 @@
 [user]
 	name = Deepak Sharma
 	email = deepu.sharma@gmail.com
+[core]
+    symlinks = true
