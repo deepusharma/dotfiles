@@ -4,3 +4,6 @@
     autoSetupRemote = true
 [include]
     path = ~/.gitconfig.local
+[user]
+	name = Deepak Sharma
+	email = deepu.sharma@gmail.com

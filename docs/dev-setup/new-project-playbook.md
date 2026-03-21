@@ -113,7 +113,7 @@ touch db/schema.sql db/seed.sql
 
 ### FastAPI service
 
-```
+```none
 myproject/
 ├── app/
 │   ├── __init__.py
@@ -135,7 +135,7 @@ myproject/
 
 ## 6. Create .gitignore
 
-```
+```none
 # Python
 .env
 .venv/
