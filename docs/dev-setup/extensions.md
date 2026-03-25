@@ -3,9 +3,11 @@
 Last updated: 2026-03-19
 
 ## Status legend
+
 - ✅ Keep — essential for your stack
 - ⚠️ Review — may not be needed
 - ❌ Remove — not in your stack
+
 
 ---
 

@@ -204,18 +204,23 @@ Panes, tabs, and persistent sessions. Keybindings are shown at the bottom of the
 
 Shows context automatically. Nothing to run — it just works.
 
-| What you see | What it means                             |
-| ------------ | ----------------------------------------- |
-| `dotfiles`   | Current directory name                    |
-| `main`       | Git branch                                |
-| `+1`         | 1 staged change                           |
-| `~2`         | 2 unstaged changes                        |
-| `?1`         | 1 untracked file                          |
-| `⇡1`         | 1 commit ahead of remote                  |
-| `⇣1`         | 1 commit behind remote                    |
-| `py 3.12`    | Python version (when in a Python project) |
-| `v20`        | Node version (when in a Node project)     |
-| `12s`        | Last command took 12 seconds              |
+Prompt format: `<directory> [branch] ❴status❵ ▶`
+
+| What you see | What it means |
+| ------------ | ------------- |
+| `<dotfiles>` | Current directory — cyan, wrapped in `< >` |
+| `[main]` | Git branch — magenta, wrapped in `[ ]` |
+| `❴ ... ❵` | Git status block — always shown |
+| `+1` | 1 staged file — yellow |
+| `~2` | 2 modified files not staged — orange |
+| `?1` | 1 untracked file — cyan |
+| `-1` | 1 deleted file — orange |
+| `!1` | 1 conflict — yellow |
+| `⇡1 ⇣0` | Commits ahead/behind remote — **always shown**, even when zero |
+| `( 3.12)` | Python virtualenv active — orange |
+| `( v20)` | Node.js version — green |
+| `(12s)` | Last command took 12 seconds |
+| `▶` | Green on success, yellow on error |
 
 ---
 

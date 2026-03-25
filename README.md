@@ -303,27 +303,35 @@ brew bundle check --file=Brewfile
 
 ```
 dotfiles/
+├── AGENTS.md             # AI agent instructions
+├── CLAUDE.md             # Claude agent instructions
 ├── README.md
-├── install.sh            # run this on a new machine
+├── CHEATSHEET.md         # full command reference
+├── QUICK-REF.md          # condensed quick-reference card
 ├── Brewfile              # all packages — used by install.sh
+├── install.sh            # run this on a new machine
 ├── configs/
+│   ├── alacritty/
+│   │   └── alacritty.toml
 │   ├── ghostty/
-│   │   └── ghostty.toml
+│   │   └── config
 │   ├── git/
-│   │   └── .gitconfig
+│   │   ├── .gitconfig
 │   │   └── .gitconfig.local.example
 │   ├── starship/
 │   │   └── starship.toml
 │   ├── vscode/
 │   │   └── settings.json
-├── zellij/
-│   ├── config.kdl
+│   ├── zellij/
+│   │   ├── config.kdl
 │   │   └── layouts/
 │   │       └── dev.kdl
 │   └── zsh/
 │       └── .zshrc
+├── docs/
+│   └── dev-setup/        # setup guides
 └── scripts/
-    └── check-updates.sh  # see: Keeping it current
+    └── check-updates.sh  # optional weekly update checker
 ```
 
 ---
@@ -385,6 +393,38 @@ ls   # eza with icons
 ll   # long listing with git status
 lt   # tree view (2 levels)
 la   # long listing including hidden files
+```
+
+### bat
+
+Syntax-highlighted file viewer. Replaces `cat` — aliased in `.zshrc`.
+
+```bash
+cat file.py          # view with syntax highlighting (aliased to bat)
+bat -n file.py       # view with line numbers only
+bat --diff file.py   # show git diff inline
+```
+
+### fd
+
+Faster, friendlier alternative to `find`. Respects `.gitignore`.
+
+```bash
+fd .py               # find all Python files
+fd config            # find files/dirs named "config"
+fd -e toml           # find by extension
+fd -H .env           # include hidden files
+```
+
+### ripgrep
+
+Searches file contents recursively. Much faster than `grep`, respects `.gitignore`.
+
+```bash
+rg "search term"         # search current directory recursively
+rg "def train" --type py # search only Python files
+rg -i "error"            # case-insensitive search
+rg "TODO" -l             # list files containing TODO
 ```
 
 ### uv

@@ -1,8 +1,13 @@
 {
+  "MD013": false,
+  "MD060": false,
   "MD033": {
     "allowed_elements": [
       "details",
-      "summary"
+      "summary",
+      "table",
+      "tr",
+      "td"
     ]
   }
 }
