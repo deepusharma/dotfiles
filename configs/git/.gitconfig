@@ -9,3 +9,5 @@
 	email = deepu.sharma@gmail.com
 [core]
     symlinks = true
+[pull]
+	rebase = false
