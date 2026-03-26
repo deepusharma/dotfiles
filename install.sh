@@ -155,6 +155,10 @@ elif [[ "$OS" == "linux" ]]; then
     "/mnt/c/Users/$WIN_USER/AppData/Roaming/Code/User/settings.json"
 fi  
 
+# ── Antigravity skills ────────────────────────────────────────────────────────
+log "Symlinking Antigravity skills..."
+mkdir -p "$HOME/.antigravity"
+symlink "$DOTFILES/configs/antigravity/skills" "$HOME/.antigravity/skills"
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""
