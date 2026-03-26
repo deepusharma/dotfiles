@@ -301,7 +301,7 @@ brew bundle check --file=Brewfile
 
 ## Repo structure
 
-```
+```none
 dotfiles/
 ├── AGENTS.md             # AI agent instructions
 ├── CLAUDE.md             # Claude agent instructions
@@ -313,6 +313,18 @@ dotfiles/
 ├── configs/
 │   ├── alacritty/
 │   │   └── alacritty.toml
+│   ├── antigravity/
+│   │   └── skills/
+│   │       ├── backend-dev/
+│   │       │   └── SKILL.md
+│   │       ├── frontend-dev/
+│   │       │   └── SKILL.md
+│   │       ├── reviewer/
+│   │       │   └── SKILL.md
+│   │       ├── tester-backend/
+│   │       │   └── SKILL.md
+│   │       └── tester-frontend/
+│   │           └── SKILL.md
 │   ├── ghostty/
 │   │   └── config
 │   ├── git/
@@ -500,6 +512,52 @@ direnv allow    # approve it once
 # Now AWS_PROFILE is set automatically when you enter the folder
 # and unset when you leave
 ```
+
+---
+
+## Antigravity Skills
+
+Global AI agent skills for the Antigravity IDE, symlinked to `~/.antigravity/skills/` automatically by `install.sh`.
+
+These are reusable across all projects — no project-specific setup needed to use them.
+
+| Skill             | Use for                                  |
+| ----------------- | ---------------------------------------- |
+| `backend-dev`     | Python, FastAPI, CLI tools               |
+| `frontend-dev`    | Next.js, TypeScript, Tailwind, shadcn/ui |
+| `reviewer`        | Code review checklist                    |
+| `tester-backend`  | pytest patterns and mocking              |
+| `tester-frontend` | Vitest, React Testing Library            |
+
+### Two-level skill system
+
+Skills work at two levels:
+
+**Global skills** (`~/.antigravity/skills/`) — this repo. Generic best practices, reusable across all projects.
+
+**Project skills** (`.antigravity/skills/` in project root) — thin overrides that extend global skills with project-specific context (folder structure, API contracts, sprint status).
+
+### Adding project-specific context
+
+In any project, create `.antigravity/skills/backend-dev/SKILL.md`:
+
+```markdown
+# Backend Developer — myproject
+
+## Extends
+
+Global backend-dev skill — see ~/.antigravity/skills/backend-dev/SKILL.md
+
+## Project-specific additions
+
+- Project-specific patterns
+- Project folder structure
+- Before starting — read AGENTS.md
+```
+
+### Updating skills
+
+Edit files in `configs/antigravity/skills/`, commit and push. All machines update automatically on next `git pull` — no need to re-run `install.sh`.
 
 ---
 
