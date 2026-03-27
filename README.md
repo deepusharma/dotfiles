@@ -86,6 +86,7 @@ flowchart LR
         M4[~/.config/ghostty/] --> ML
         M5[~/.../Code/User/settings.json] --> ML
         M6[~/.gitconfig] --> ML
+        M7[~/.antigravity/skills/] --> ML
         ML --> MR[(~/dotfiles repo)]
     end
 
@@ -95,6 +96,7 @@ flowchart LR
         W3[~/.config/zellij/] --> WL
         W4[~/.../Code/User/settings.json] --> WL
         W5[~/.gitconfig] --> WL
+        W6[~/.antigravity/skills/] --> WL
         WL --> WR[(~/dotfiles repo)]
     end
 
@@ -169,7 +171,7 @@ Required for icons in eza and Starship.
 
 **Windows:**
 
-1. Download JetBrainsMono Nerd Font from https://www.nerdfonts.com/font-downloads
+1. Download JetBrainsMono Nerd Font from <https://www.nerdfonts.com/font-downloads>
 2. Extract the zip
 3. Select all `.ttf` files, right-click, choose "Install for all users"
 4. Set the font in Windows Terminal: Settings > your WSL2 profile > Appearance > Font face
@@ -177,7 +179,7 @@ Required for icons in eza and Starship.
 ### 2. Install Alacritty on Windows
 
 **macOS:** uses Ghostty — handled by `install.sh`.
-**Windows:** download the `.msi` from https://github.com/alacritty/alacritty/releases and run it.
+**Windows:** download the `.msi` from <https://github.com/alacritty/alacritty/releases> and run it.
 After install, copy `configs/alacritty/alacritty.toml` to `%APPDATA%\alacritty\alacritty.toml`.
 
 **That's it.** Everything from here is scripted.
@@ -360,7 +362,7 @@ Terminal multiplexer. Gives you panes, tabs, and sessions that survive closing t
 
 The default layout (`configs/zellij/layouts/dev.kdl`) opens three panes:
 
-```
+```none
 ┌─────────────────────┬────────────────────┐
 │                     │                    │
 │   main shell        │   lazygit          │
