@@ -100,3 +100,4 @@ if [[ -z "$ZELLIJ" ]]; then
   zellij
 fi
 export UV_LINK_MODE=copy
+export CLAUDE_CODE_SKIP_BROWSER_AUTH=1
