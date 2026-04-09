@@ -42,3 +42,14 @@ copy_on_select true
 
 // Scroll buffer size
 scroll_buffer_size 10000
+
+keybinds {
+
+    normal {
+
+        bind "Alt q" { Quit; }
+
+    }
+
+}
+

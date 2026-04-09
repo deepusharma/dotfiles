@@ -18,6 +18,24 @@ from zero to fully configured in one command.
 
 ---
 
+## Common commands
+
+```bash
+# Lint all Markdown files (run before committing)
+markdownlint '**/*.md'
+
+# Verify Brewfile is in sync with installed packages
+brew bundle check --file=Brewfile
+
+# Full maintenance check (outdated packages, Brewfile drift, uncommitted changes)
+./scripts/check-updates.sh
+```
+
+There is no build step, test suite, or compilation. Changes to `configs/` take
+effect immediately on next shell reload (`exec zsh`) or tool restart.
+
+---
+
 ## Repo structure
 
 ```text
