@@ -45,7 +45,7 @@ alias cat='bat'
 export BAT_THEME="Dracula"
 
 # ── Navigation ────────────────────────────────────────────────────────────────
-alias cd='z'       # zoxide handles this
+alias cdz='z'       # zoxide handles this
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -101,3 +101,7 @@ if [[ -z "$ZELLIJ" ]]; then
 fi
 export UV_LINK_MODE=copy
 export CLAUDE_CODE_SKIP_BROWSER_AUTH=1
+source ~/.secrets 2>/dev/null
+export PATH="$HOME/.local/bin:$PATH"
+alias codex="/home/deepak/.nvm/versions/node/v24.14.1/bin/codex"
+export CODEX_HOME="/mnt/c/Users/deepak.sharma2/AppData/Roaming/OpenAI"

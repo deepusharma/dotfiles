@@ -9,6 +9,7 @@
 	email = deepu.sharma@gmail.com
 [core]
     symlinks = true
+	excludesfile = /home/deepak/.gitignore_global
 [pull]
 	rebase = false
 
