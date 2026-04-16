@@ -681,6 +681,7 @@ Run: `$(brew --prefix)/opt/fzf/install` and follow the prompts to enable shell i
 - [delta docs](https://dandavison.github.io/delta/)
 - [direnv docs](https://direnv.net)
 - [Quick Reference](QUICK-REF.md) — quick reference for every tool in this setup (and some more)
+- ...
 
 ---
 
