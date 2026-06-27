@@ -1,3 +1,7 @@
+
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+
 # =============================================================================
 # .zshrc — Zsh configuration
 # Part of: github.com/YOURUSERNAME/dotfiles
@@ -96,7 +100,7 @@ export NVM_DIR="$HOME/.nvm"
 # ── Zellij auto-start ─────────────────────────────────────────────────────────
 # Opens Zellij automatically when you open a new terminal.
 # Comment this out if you prefer to launch Zellij manually.
-if [[ -z "$ZELLIJ" ]]; then
+if [[ -z "$ZELLIJ" && -n "$GHOSTTY_RESOURCES_DIR" ]]; then
   zellij
 fi
 export UV_LINK_MODE=copy
@@ -105,3 +109,11 @@ source ~/.secrets 2>/dev/null
 export PATH="$HOME/.local/bin:$PATH"
 alias codex="/home/deepak/.nvm/versions/node/v24.14.1/bin/codex"
 export CODEX_HOME="/mnt/c/Users/deepak.sharma2/AppData/Roaming/OpenAI"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# Added by Antigravity
+export PATH="/Users/shrutirastogi/.antigravity/antigravity/bin:$PATH"
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
