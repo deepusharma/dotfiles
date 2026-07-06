@@ -103,12 +103,18 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -z "$ZELLIJ" && -n "$GHOSTTY_RESOURCES_DIR" ]]; then
   zellij
 fi
+
+# ── AI agents welcome banner ──────────────────────────────────────────────────
+# Shows tested AI coding agents + status on every new interactive shell.
+alias list-agents='~/Documents/GitProjects/public/dotfiles/scripts/agents-welcome.sh'
+if [[ $- == *i* ]]; then
+  list-agents
+fi
+
 export UV_LINK_MODE=copy
 export CLAUDE_CODE_SKIP_BROWSER_AUTH=1
 source ~/.secrets 2>/dev/null
 export PATH="$HOME/.local/bin:$PATH"
-alias codex="/home/deepak/.nvm/versions/node/v24.14.1/bin/codex"
-export CODEX_HOME="/mnt/c/Users/deepak.sharma2/AppData/Roaming/OpenAI"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
@@ -117,3 +123,4 @@ export PATH="/Users/shrutirastogi/.antigravity/antigravity/bin:$PATH"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+export OPENAI_API_KEY=plrouter

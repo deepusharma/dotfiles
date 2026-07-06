@@ -390,5 +390,12 @@
   "liveServer.settings.fullReload": true,
   "liveServer.settings.wait": 10000,
   "editor.inlineSuggest.edits.showCollapsed": true,
-  "chat.useClaudeHooks": true
+  "chat.useClaudeHooks": true,
+  "task.allowAutomaticTasks": "on",
+  "geminicodeassist.project": "gen-lang-client-0572315771",
+  "python.analysis.typeCheckingMode": "basic",
+  "geminicodeassist.displayInlineContextHint": false,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }
