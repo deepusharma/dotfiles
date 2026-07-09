@@ -201,7 +201,6 @@
       "overrideName": true,
       "path": "zsh",
       "env": {
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk",
         "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/17"
       }
     },
@@ -209,7 +208,6 @@
       "overrideName": true,
       "path": "zsh",
       "env": {
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk",
         "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/21"
       }
     },
@@ -217,7 +215,6 @@
       "overrideName": true,
       "path": "zsh",
       "env": {
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk",
         "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/25"
       }
     },
@@ -225,7 +222,6 @@
       "overrideName": true,
       "path": "zsh",
       "env": {
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk",
         "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/latest"
       }
     }
