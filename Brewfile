@@ -28,6 +28,10 @@ brew "httpie"
 # Python
 brew "uv"
 brew "ipython"
+brew "ruff"
+
+# Secrets
+brew "rbw"    # unofficial Bitwarden CLI
 
 # Extras
 brew "tldr"
@@ -38,3 +42,4 @@ brew "direnv"
 # Windows: use Alacritty — see configs/alacritty/alacritty.toml
 cask "ghostty"
 cask "font-jetbrains-mono-nerd-font"
+cask "bitwarden"

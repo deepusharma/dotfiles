@@ -1,0 +1,24 @@
+# AI / dev CLI tools manifest — checked by ./scripts/dotfiles.sh audit
+# Plain line = required (audit flags if missing)
+# '?' prefix = optional (reported informationally, never flagged)
+# Brew-managed CLIs (gh, rbw, uv, ruff, …) are covered by the Brewfile instead.
+
+# --- AI coding agents / harnesses ---
+claude
+codex
+opencode
+kimchi
+copilot
+pi
+vibe
+
+# --- IDE shims (needed for extension audits) ---
+code
+kiro
+?cursor
+?antigravity
+?zed
+?windsurf
+
+# --- other agents ---
+?gemini
