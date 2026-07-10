@@ -1,6 +1,9 @@
 # Terminal Tools Cheatsheet
 
-A quick reference for every tool in this setup — what it does, when to use it, and the commands you'll actually reach for daily.
+**Role: the single full command reference for every CLI tool in this setup** —
+what it does, when to use it, and the commands you'll actually reach for daily.
+For a one-glance card see [QUICK-REF.md](QUICK-REF.md); for setup see
+[README.md](README.md). New tool commands get documented here, nowhere else.
 
 ---
 

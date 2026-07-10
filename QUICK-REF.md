@@ -1,6 +1,8 @@
 # ⚡ Quick Reference
 
-> Top commands for every tool. Click any header for the full reference.
+> **Role: one-glance card only.** Top commands per tool — headers link to the
+> full per-topic references in `docs/`. The complete command reference is
+> [CHEATSHEET.md](CHEATSHEET.md); keep this file short.
 
 <table><tr><td width="50%">
 

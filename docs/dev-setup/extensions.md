@@ -1,126 +1,118 @@
-# Antigravity Extensions
+# IDE Extensions — VS Code + Antigravity
 
-Last updated: 2026-03-19
+Last updated: 2026-07-10 (audited against `code --list-extensions`)
+
+Both IDEs share `configs/vscode/settings.json`; extension sets differ per IDE.
+This doc tracks the **VS Code** install; the machine-checkable manifest is
+`configs/vscode/extensions.txt` — audit any time with:
+
+```bash
+./scripts/dotfiles.sh audit
+```
 
 ## Status legend
 
-- ✅ Keep — essential for your stack
-- ⚠️ Review — may not be needed
-- ❌ Remove — not in your stack
-
+- ✅ Keep — in active use / part of the stack
+- 🔷 Optional — installed but not stack-critical; safe to remove to slim VS Code
+- ❗ Missing — expected but not installed
 
 ---
 
-## AI
+## AI assistants + agents
 
-| Extension | Publisher | Status | Notes |
+| Extension | ID | Status | Notes |
 |---|---|---|---|
-| Claude Code for VS Code | Anthropic | ✅ | Claude Code CLI integration |
-
----
+| Claude Code | `anthropic.claude-code` | ✅ | Primary CLI agent integration |
+| Cline | `saoudrizwan.claude-dev` | ✅ | Autonomous agent |
+| opencode | `sst-dev.opencode` | ✅ | CLI agent integration |
+| Gemini Code Assist | `google.geminicodeassist` | ✅ | Configured in settings.json |
+| ChatGPT / Codex | `openai.chatgpt` | ✅ | OpenAI agent |
+| Continue | `continue.continue` | 🔷 | Overlaps with the other assistants |
+| Windows AI Studio | `ms-windows-ai-studio.windows-ai-studio` | 🔷 | Windows-oriented |
+| Chat Customizations | `ms-vscode.vscode-chat-customizations-evaluations` | 🔷 | Experimental |
 
 ## Python
 
-| Extension | Publisher | Status | Notes |
+| Extension | ID | Status | Notes |
 |---|---|---|---|
-| Python | Microsoft | ✅ | Core Python support |
-| Python Debugger | Microsoft | ✅ | Debugging support |
-| Python Environments | ms-python | ✅ | Manages uv venvs |
-| Python Test Explorer | Little Fox Team | ✅ | Test runner UI |
-| Pyrefly | Meta | ✅ | Type checker — keep over Pylance |
-| Ruff | Astral | ✅ | Linter + formatter, replaces flake8 |
-
----
+| Python | `ms-python.python` | ✅ | Core support |
+| Python Debugger | `ms-python.debugpy` | ✅ | Debugging |
+| Pylance | `ms-python.vscode-pylance` | ✅ | Type checking (`basic` in settings) |
+| Python Environments | `ms-python.vscode-python-envs` | ✅ | Manages uv venvs |
+| Jupyter (+ 4 companions) | `ms-toolsai.jupyter` etc. | ✅ | Notebook work |
+| Ruff | `astral-sh.ruff` | ❗ | Linter/formatter — core for the Python focus. CLI is in the Brewfile; install the extension: `code --install-extension astral-sh.ruff` |
 
 ## Git
 
-| Extension | Publisher | Status | Notes |
+| Extension | ID | Status | Notes |
 |---|---|---|---|
-| GitLens | GitKraken | ✅ | Inline blame, history, graph |
-| Git Graph | mhutchie | ✅ | Visual branch graph |
-| Git History | Don Jayamanne | ✅ | Complements Git Graph — file history and branch comparison |
-| GitHub Actions | GitHub | ✅ | View and trigger workflows inline |
+| GitLens | `eamodio.gitlens` | ✅ | AI features configured in settings.json |
+| GitHub Actions | `github.vscode-github-actions` | ✅ | Workflow view |
+| GitDoc | `vsls-contrib.gitdoc` | 🔷 | Auto-commit — at odds with Conventional Commits style |
 
----
+## Markdown + diagrams
 
-## Markdown
-
-| Extension | Publisher | Status | Notes |
+| Extension | ID | Status | Notes |
 |---|---|---|---|
-| Markdown All in One | Yu Zhang | ✅ | Shortcuts, TOC, preview |
-| Markdown Preview Enhanced | Yiyi Wang | ✅ | Rich preview |
-| Markdown Preview Mermaid Support | Matt Bierner | ✅ | Renders Mermaid diagrams |
-| markdownlint | David Anson | ✅ | Linting — disable MD033 for HTML tables |
-| Mermaid Markdown Syntax Highlighting | Brian Pruitt-Goddard | ✅ | Syntax highlighting for Mermaid |
+| Markdown All in One | `yzhang.markdown-all-in-one` | ✅ | Shortcuts, TOC, preview |
+| Markdown for Humans | `concretio.markdown-for-humans` | ✅ | Preferred editor/PDF-export tool (chromePath in settings.json) |
+| Markdown Preview Mermaid | `bierner.markdown-mermaid` | ✅ | Mermaid in preview |
+| Mermaid Chart | `mermaidchart.vscode-mermaid-chart` | ✅ | Diagram editing |
+| Draw.io | `hediet.vscode-drawio` | ✅ | Configured in settings.json |
+| Excalidraw | `pomdtr.excalidraw-editor` | ✅ | Sketches |
+| Markdown Preview Enhanced | — | 🔷 | **Antigravity-only.** Not installed in VS Code and not needed there — All in One + Markdown for Humans cover it. The `markdown-preview-enhanced.*` entries in settings.json stay for Antigravity's benefit. |
+| markdownlint | `davidanson.vscode-markdownlint` | ❗ | Linting is a repo convention (CLI via npx works); install for in-editor feedback |
 
----
+## Web / Node / formatting
 
-## Database
-
-| Extension | Publisher | Status | Notes |
+| Extension | ID | Status | Notes |
 |---|---|---|---|
-| SQLTools | Matheus Teixeira | ✅ | SQL client in editor |
-| SQLTools PostgreSQL/CockroachDB | Matheus Teixeira | ✅ | Postgres driver |
-| SQLTools MySQL/MariaDB/TiDB | Matheus Teixeira | ✅ | MySQL driver |
-| SQLTools SQLite | Matheus Teixeira | ✅ | SQLite driver |
-| MongoDB for VS Code | MongoDB | ✅ | MongoDB Atlas integration |
+| Prettier | `esbenp.prettier-vscode` | ✅ | Default formatter in settings.json (installed 2026-07-10 — was missing, which silently broke format-on-save) |
+| ES7 React snippets | `dsznajder.es7-react-js-snippets` | ✅ | React focus |
+| Live Server | `ritwickdey.liveserver` | ✅ | Configured in settings.json |
 
----
+## Containers / remote / cloud
 
-## Containers + Cloud
-
-| Extension | Publisher | Status | Notes |
+| Extension | ID | Status | Notes |
 |---|---|---|---|
-| Docker | Microsoft | ✅ | Docker support |
-| Container Tools | Microsoft | ✅ | Container management |
+| Docker | `ms-azuretools.vscode-docker` | ✅ | Container work |
+| Containers | `ms-azuretools.vscode-containers` | ✅ | Companion |
+| Dev Containers | `ms-vscode-remote.remote-containers` | ✅ | Devcontainer support |
+| WSL | `ms-vscode-remote.remote-wsl` | ✅ | Windows machine |
+| Azure Resources / MCP / Copilot for Azure | `ms-azuretools.vscode-azure*` (3) | 🔷 | Keep while Azure work is active |
 
----
+## Java toolchain — optional, not in stack focus
 
-## Node / Web
+The current stack focus is agentic AI / Python / TypeScript / React. Java is
+**not** part of it; these ~16 extensions are kept only for occasional Java
+work and are all safe to uninstall to slim VS Code down. Note: removing the
+Pleiades pack also stops it rewriting `configs/vscode/settings.json`
+(the Java runtime/terminal blocks there are machine-generated by it).
 
-| Extension | Publisher | Status | Notes |
-|---|---|---|---|
-| Prettier | Prettier | ✅ | Code formatter for JS/TS/HTML |
-
----
-
-## Config + Files
-
-| Extension | Publisher | Status | Notes |
-|---|---|---|---|
-| Even Better TOML | tamasfe | ✅ | TOML support for pyproject.toml, starship.toml |
-| DotENV | mikestead | ✅ | .env file syntax highlighting |
-| YAML | Red Hat | ✅ | YAML support for cloud configs, GitHub Actions |
-| shell-format | foxundermoon | ✅ | Formats shell scripts (.sh files) |
-
----
+| Extension | ID | Status |
+|---|---|---|
+| Pleiades JDK pack | `pleiades.java-extension-pack-jdk` | 🔷 |
+| Java language + tooling | `redhat.java`, `vscjava.*` (9), `oracle.oracle-java`, `dotdevru.prettier-java` | 🔷 |
+| Spring | `vmware.vscode-spring-boot`, `vmware.vscode-boot-dev-pack` | 🔷 |
+| XML (Java-adjacent) | `redhat.vscode-xml` | 🔷 |
 
 ## Utilities
 
-| Extension | Publisher | Status | Notes |
+| Extension | ID | Status | Notes |
 |---|---|---|---|
-| Error Lens | Alexander | ✅ | Inline error highlighting |
-| Todo Tree | Gruntfuggly | ✅ | Tag-based TODO tracking |
-| REST Client | Huachao Mao | ✅ | API testing in editor |
-| Excalidraw | pomdtr | ✅ | Diagrams and sketches |
+| Todo Tree | `gruntfuggly.todo-tree` | ✅ | Heavily configured in settings.json |
+| Code Spell Checker | `streetsidesoftware.code-spell-checker` | ✅ | Hint-level in settings |
+| Trailing Spaces | `shardulm94.trailing-spaces` | ✅ | Complements trim-on-save |
+| Rainbow CSV | `mechatroner.rainbow-csv` | ✅ | CSV viewing |
+| Indent Rainbow | `oderwat.indent-rainbow` | ✅ | Visual indentation |
+| Material Icons | `pkief.material-icon-theme` | ✅ | Icons |
+| PDF viewer | `tomoki1207.pdf` | ✅ | In-editor PDFs |
+| Makefile Tools | `ms-vscode.makefile-tools` | 🔷 | Keep if using Makefiles |
+| PowerShell | `ms-vscode.powershell` | 🔷 | Windows-oriented |
 
----
+## Antigravity-only (from the 2026-03 audit, not installed in VS Code)
 
-## Notebooks
-
-| Extension | Publisher | Status | Notes |
-|---|---|---|---|
-| Jupyter | Microsoft | ⚠️ | Keep if doing notebook work, otherwise remove |
-| Jupyter Cell Tags | Microsoft | ⚠️ | Dependency of Jupyter |
-| Jupyter Keymap | Microsoft | ⚠️ | Dependency of Jupyter |
-| Jupyter Notebook Renderers | Microsoft | ⚠️ | Dependency of Jupyter |
-| Jupyter Slide Show | Microsoft | ⚠️ | Dependency of Jupyter |
-
----
-
-## Not needed — consider removing
-
-| Extension | Publisher | Status | Notes |
-|---|---|---|---|
-| Go | Go Team at Google | ❌ | Not in your stack |
-| Playwright Test | Microsoft | ❌ | Not doing browser testing |
+Git Graph, Git History, Python Test Explorer, Pyrefly, SQLTools (+ drivers),
+MongoDB, Even Better TOML, DotENV, YAML (Red Hat), shell-format, Error Lens,
+REST Client, Markdown Preview Enhanced. Install any of these in VS Code only
+when a concrete need appears; otherwise they live in Antigravity alone.

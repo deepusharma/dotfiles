@@ -219,8 +219,12 @@ The script:
 - Installs Homebrew if missing
 - Installs all packages from `Brewfile`
 - Installs Oh My Zsh and plugins
-- Symlinks all config files into place
+- Installs nvm + Node.js LTS and sets up fzf shell integration
+- Symlinks all config files into place (shell, git, prompt, VS Code, Antigravity skills)
+- Creates `~/.secrets` from the template if missing
 - Backs up anything it would overwrite
+
+It is idempotent — safe to re-run any time.
 
 **After the script completes, run through these steps once:**
 
@@ -230,9 +234,9 @@ The script:
 exec zsh
 ```
 
-**2. Set the font in Ghostty**
+**2. Confirm the terminal font**
 
-Open `~/.config/ghostty/ghostty.toml` and confirm `font.normal.family` is set to `JetBrainsMono Nerd Font`. On Windows, do the same in `%APPDATA%\ghostty\ghostty.toml`.
+macOS: open `~/.config/ghostty/config` (symlinked to `configs/ghostty/config`) and confirm `font-family = JetBrainsMonoNL Nerd Font Mono`. Windows uses Alacritty instead — the font is set in `configs/alacritty/alacritty.toml`.
 
 **3. Authenticate the GitHub CLI**
 
@@ -285,6 +289,12 @@ az login                       # Azure
 
 You only need to do whichever ones are relevant to your work.
 
+**8. Add your API keys to `~/.secrets`**
+
+The script created `~/.secrets` (mode 600) from `configs/zsh/.secrets.example`.
+Put your API keys there — the file is sourced by `.zshrc` on every shell and
+is never committed. Long-term key storage lives in Bitwarden (`rbw` CLI).
+
 ---
 
 ## What gets installed
@@ -307,28 +317,19 @@ brew bundle check --file=Brewfile
 
 ```none
 dotfiles/
-├── AGENTS.md             # AI agent instructions
-├── CLAUDE.md             # Claude agent instructions
-├── README.md
-├── CHEATSHEET.md         # full command reference
-├── QUICK-REF.md          # condensed quick-reference card
+├── AGENTS.md             # AI agent instructions (single source)
+├── CLAUDE.md             # pointer — imports AGENTS.md
+├── README.md             # this file: overview + setup
+├── CHEATSHEET.md         # full command reference for every tool
+├── QUICK-REF.md          # one-glance card, links into docs/
 ├── Brewfile              # all packages — used by install.sh
-├── install.sh            # run this on a new machine
+├── install.sh            # run this on a new machine (forwards to scripts/install.sh)
+├── .markdownlint.json
 ├── configs/
 │   ├── alacritty/
 │   │   └── alacritty.toml
 │   ├── antigravity/
-│   │   └── skills/
-│   │       ├── backend-dev/
-│   │       │   └── SKILL.md
-│   │       ├── frontend-dev/
-│   │       │   └── SKILL.md
-│   │       ├── reviewer/
-│   │       │   └── SKILL.md
-│   │       ├── tester-backend/
-│   │       │   └── SKILL.md
-│   │       └── tester-frontend/
-│   │           └── SKILL.md
+│   │   └── skills/       # global AI agent skills (5 skills, one dir each)
 │   ├── ghostty/
 │   │   └── config
 │   ├── git/
@@ -337,185 +338,57 @@ dotfiles/
 │   ├── starship/
 │   │   └── starship.toml
 │   ├── vscode/
-│   │   └── settings.json
+│   │   └── settings.json # shared by VS Code + Antigravity
 │   ├── zellij/
 │   │   ├── config.kdl
 │   │   └── layouts/
 │   │       └── dev.kdl
 │   └── zsh/
-│       └── .zshrc
+│       ├── .zshrc
+│       └── .secrets.example  # template for ~/.secrets
 ├── docs/
-│   └── dev-setup/        # setup guides
-└── scripts/
-    └── check-updates.sh  # optional weekly update checker
+│   ├── editor.md         # per-topic references (linked from QUICK-REF)
+│   ├── git.md
+│   ├── markdown.md
+│   ├── node.md
+│   ├── python.md
+│   ├── terminal.md
+│   └── dev-setup/        # extensions audit, Python/Node setup guides
+├── scripts/
+│   ├── agents-welcome.sh # AI-agents banner for new shells
+│   ├── check-updates.sh  # weekly update checker (cron, not run by install.sh)
+│   ├── dotfiles.sh       # manager: help | install | sync | audit
+│   └── install.sh        # the real bootstrap (root install.sh forwards here)
+└── images/               # diagrams used in this README
 ```
 
 ---
 
-## Key tools — quick reference
+## Key tools — at a glance
 
-### Ghostty (Mac) / Alacritty (Windows)
+Every command for every tool lives in **[CHEATSHEET.md](CHEATSHEET.md)** (the
+single command reference). **[QUICK-REF.md](QUICK-REF.md)** is the one-glance
+card that links into `docs/*.md` for depth. This table is just the map:
 
-Mac uses Ghostty — fast, native, passes macOS Gatekeeper, installed via Homebrew Cask. Windows uses Alacritty — Ghostty does not have a native Windows installer yet. Both use the Dracula theme, the same font, and connect into Zsh/WSL2. Config files are in `configs/ghostty/config` and `configs/alacritty/alacritty.toml` respectively.
-
-### Zellij
-
-Terminal multiplexer. Gives you panes, tabs, and sessions that survive closing the terminal. Press `Ctrl+p` for pane controls, `Ctrl+t` for tabs. Keybindings are shown at the bottom of the screen — no need to memorise them.
-
-The default layout (`configs/zellij/layouts/dev.kdl`) opens three panes:
-
-```none
-┌─────────────────────┬────────────────────┐
-│                     │                    │
-│   main shell        │   lazygit          │
-│                     │                    │
-│                     ├────────────────────┤
-│                     │                    │
-│                     │   server / logs    │
-│                     │                    │
-└─────────────────────┴────────────────────┘
-```
-
-### Starship
-
-Replaces the default shell prompt. Shows what you need: current directory, git branch, git status, Python env, cloud context. Renders in milliseconds.
-
-Config is in `configs/starship/starship.toml`. Key things it shows:
-
-- Git branch and dirty/clean status
-- Python virtualenv when active
-- AWS/GCP/Azure context when credentials are set
-- How long the last command took (if over 3 seconds)
-
-### lazygit
-
-A full git UI in the terminal. Open it with `lg` (aliased in `.zshrc`).
-
-Common keys:
-
-- `space` — stage a file
-- `c` — commit
-- `P` — push
-- `p` — pull
-- `b` — branch management
-- `?` — show all keybindings
-
-### eza
-
-Replaces `ls`. Aliases set up in `.zshrc`:
-
-```bash
-ls   # eza with icons
-ll   # long listing with git status
-lt   # tree view (2 levels)
-la   # long listing including hidden files
-```
-
-### bat
-
-Syntax-highlighted file viewer. Replaces `cat` — aliased in `.zshrc`.
-
-```bash
-cat file.py          # view with syntax highlighting (aliased to bat)
-bat -n file.py       # view with line numbers only
-bat --diff file.py   # show git diff inline
-```
-
-### fd
-
-Faster, friendlier alternative to `find`. Respects `.gitignore`.
-
-```bash
-fd .py               # find all Python files
-fd config            # find files/dirs named "config"
-fd -e toml           # find by extension
-fd -H .env           # include hidden files
-```
-
-### ripgrep
-
-Searches file contents recursively. Much faster than `grep`, respects `.gitignore`.
-
-```bash
-rg "search term"         # search current directory recursively
-rg "def train" --type py # search only Python files
-rg -i "error"            # case-insensitive search
-rg "TODO" -l             # list files containing TODO
-```
-
-### uv
-
-Replaces `pip`, `venv`, and `pyenv` in one tool. Faster than all three.
-
-```bash
-uv venv                    # create a virtual environment
-uv pip install requests    # install a package
-uv python install 3.12     # install a Python version
-uv run script.py           # run a script
-```
-
-### nvm
-
-Manages Node.js versions. Installed automatically by `install.sh`.
-
-```bash
-nvm install --lts          # install latest LTS Node
-nvm use --lts              # use it
-nvm install 20             # install a specific version
-nvm ls                     # list installed versions
-```
-
-### fzf
-
-Fuzzy finder. After install, three keybindings are available everywhere:
-
-- `Ctrl+R` — fuzzy search command history
-- `Ctrl+T` — fuzzy search files in current directory
-- `Alt+C` — fuzzy cd into a subdirectory
-
-### jq + httpie
-
-Use together for API work:
-
-```bash
-# Call an API, filter the JSON response
-http GET api.example.com/data | jq '.results[] | {id, name}'
-
-# POST with JSON body
-http POST api.example.com/items name="test" value:=42
-```
-
-### tldr
-
-Simplified, example-focused alternative to man pages. When you pick up a new CLI tool, `tldr` shows you the 5 most common use cases immediately.
-
-```bash
-tldr git        # common git commands
-tldr docker     # common docker commands
-tldr fzf        # fzf usage examples
-```
-
-### delta
-
-Makes `git diff` output much more readable — syntax highlighting, line numbers, and side-by-side view. Works automatically inside lazygit too. Set as the default git pager in `.zshrc`.
-
-```bash
-git diff        # now uses delta automatically
-git log -p      # log with delta-highlighted diffs
-```
-
-### direnv
-
-Automatically loads and unloads environment variables when you `cd` into a project folder. Useful for managing different AWS profiles, API keys, or Python versions per project without polluting your global shell.
-
-```bash
-# Create a .envrc in any project folder
-echo 'export AWS_PROFILE=myproject' > .envrc
-direnv allow    # approve it once
-
-# Now AWS_PROFILE is set automatically when you enter the folder
-# and unset when you leave
-```
+| Tool | What it does | Config lives in |
+| --- | --- | --- |
+| Ghostty / Alacritty | Terminal (macOS / Windows) | `configs/ghostty/`, `configs/alacritty/` |
+| Zellij | Multiplexer — panes, tabs, sessions (`Ctrl+p` / `Ctrl+t`) | `configs/zellij/` |
+| Starship | Prompt — git, venv, cloud context | `configs/starship/starship.toml` |
+| lazygit (`lg`) | Full git UI in the terminal | — |
+| eza (`ls`, `ll`, `lt`) | Better `ls` — icons, git status, tree view | aliases in `.zshrc` |
+| bat (`cat`) | Syntax-highlighted pager | alias in `.zshrc` |
+| fd | Faster, friendlier `find` | — |
+| ripgrep (`rg`) | Fast recursive content search | — |
+| zoxide (`z` / `cdz`) | Jump to frequent dirs — plain `cd` stays vanilla | `.zshrc` |
+| fzf | Fuzzy finder (`Ctrl+R` history, `Ctrl+T` files, `Alt+C` dirs) | `.zshrc` |
+| uv | `pip` + `venv` + `pyenv` in one fast tool | — |
+| nvm | Node.js version manager | — |
+| jq + httpie | JSON filtering + friendly HTTP for API work | — |
+| delta | Readable git diffs (auto in lazygit too) | git pager via `.zshrc` |
+| direnv | Per-project env vars from `.envrc` | — |
+| rbw + Bitwarden | Password manager + unofficial CLI; runtime keys in `~/.secrets` | `configs/zsh/.secrets.example` |
+| tldr | Example-first man pages | — |
 
 ---
 
@@ -566,6 +439,15 @@ Edit files in `configs/antigravity/skills/`, commit and push. All machines updat
 ---
 
 ## Keeping it current
+
+### One command for everything
+
+```bash
+./scripts/dotfiles.sh          # help
+./scripts/dotfiles.sh install  # full bootstrap (new machine)
+./scripts/dotfiles.sh sync     # git pull + re-apply (idempotent)
+./scripts/dotfiles.sh audit    # drift report: symlinks, packages, extensions, secrets
+```
 
 ### Update all tools
 
@@ -653,7 +535,7 @@ git push
 ## Troubleshooting
 
 **Icons not showing**
-Check the font is set correctly in Ghostty config (`font.normal.family`). Must be a Nerd Font variant — plain JetBrainsMono will not show icons.
+Check the font is set correctly in Ghostty config (`font-family` in `configs/ghostty/config`). Must be a Nerd Font variant — plain JetBrainsMono will not show icons.
 
 **Zellij not starting automatically**
 Check `.zshrc` has the auto-start block and that you've sourced it: `source ~/.zshrc`
