@@ -18,13 +18,15 @@ log()     { echo -e "${BLUE}-->${NC} $1"; }
 ok()      { echo -e "${GREEN}ok${NC}  $1"; }
 warn()    { echo -e "${YELLOW}!${NC}   $1"; }
 
-if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+usage() {
   cat <<'EOF'
 install.sh — bootstrap a new macOS or Windows (WSL2) machine
 
-Usage: ./install.sh          (no arguments — idempotent, safe to re-run)
+Usage:
+  ./install.sh          Show this help (default — does NOT install anything)
+  ./install.sh run      Run the full bootstrap (idempotent, safe to re-run)
 
-What it does:
+What `run` does:
   - Installs Homebrew if missing, then all Brewfile packages
   - Installs Oh My Zsh + plugins, nvm + Node.js LTS, fzf integration
   - Symlinks all configs into place (shell, git, prompt, VS Code, skills)
@@ -33,8 +35,13 @@ What it does:
 
 See also: ./scripts/dotfiles.sh — help | install | sync | audit
 EOF
-  exit 0
-fi
+}
+
+case "${1:-}" in
+  run) ;;  # continue into the bootstrap below
+  ""|-h|--help) usage; exit 0 ;;
+  *) echo "Unknown argument: $1"; echo; usage; exit 1 ;;
+esac
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BACKUP="$HOME/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"

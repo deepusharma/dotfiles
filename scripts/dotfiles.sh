@@ -227,7 +227,7 @@ cmd_audit() {
 }
 
 cmd_install() {
-  exec "$DOTFILES/scripts/install.sh"
+  exec "$DOTFILES/scripts/install.sh" run
 }
 
 cmd_sync() {
@@ -238,7 +238,7 @@ cmd_sync() {
     brew update --quiet || warn "brew update failed (offline?)"
   fi
   log "Re-applying setup (install.sh is idempotent)..."
-  "$DOTFILES/scripts/install.sh"
+  "$DOTFILES/scripts/install.sh" run
 }
 
 cmd_help() {

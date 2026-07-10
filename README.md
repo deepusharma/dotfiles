@@ -197,7 +197,7 @@ After install, copy `configs/alacritty/alacritty.toml` to `%APPDATA%\alacritty\a
 git clone git@github.com:YOURUSERNAME/dotfiles.git ~/dotfiles
 
 # 2. Run the install script
-cd ~/dotfiles && ./install.sh
+cd ~/dotfiles && ./install.sh run
 ```
 
 ### Windows (WSL2)
@@ -211,7 +211,7 @@ wsl --install
 ```bash
 # 2. Inside WSL2, clone and run
 git clone git@github.com:YOURUSERNAME/dotfiles.git ~/dotfiles
-cd ~/dotfiles && ./install.sh
+cd ~/dotfiles && ./install.sh run
 ```
 
 The script:
@@ -323,7 +323,7 @@ dotfiles/
 ├── CHEATSHEET.md         # full command reference for every tool
 ├── QUICK-REF.md          # one-glance card, links into docs/
 ├── Brewfile              # all packages — used by install.sh
-├── install.sh            # run this on a new machine (forwards to scripts/install.sh)
+├── install.sh            # ./install.sh shows help; ./install.sh run bootstraps
 ├── .markdownlint.json
 ├── configs/
 │   ├── alacritty/
