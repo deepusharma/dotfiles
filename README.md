@@ -6,6 +6,8 @@ I built this after getting tired of setting up new machines from scratch and hav
 
 The README doubles as a guide for anyone who wants to adopt the same setup or cherry-pick parts of it.
 
+> See also [`ai-config`](../ai-config) — a sibling repo for AI coding agent instructions and skills (Claude Code, opencode, etc.), kept separate since it covers a different concern than this repo's terminal/editor/tool configuration.
+
 ---
 
 ## What problem this solves
