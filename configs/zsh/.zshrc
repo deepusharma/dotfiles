@@ -106,9 +106,11 @@ fi
 
 # ── AI agents welcome banner ──────────────────────────────────────────────────
 # Shows tested AI coding agents + status on every new interactive shell.
-alias list-agents='~/Documents/GitProjects/public/dotfiles/scripts/agents-welcome.sh'
-if [[ $- == *i* ]]; then
-  list-agents
+# Repo location is resolved from the ~/.zshrc symlink — works from any clone path.
+DOTFILES_DIR="$(dirname "$(dirname "$(dirname "$(readlink -f ~/.zshrc 2>/dev/null)")")")"
+alias list-agents="$DOTFILES_DIR/scripts/agents-welcome.sh"
+if [[ $- == *i* && -x "$DOTFILES_DIR/scripts/agents-welcome.sh" ]]; then
+  "$DOTFILES_DIR/scripts/agents-welcome.sh"
 fi
 
 export UV_LINK_MODE=copy
@@ -119,8 +121,7 @@ export PATH="$HOME/.local/bin:$PATH"
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 # Added by Antigravity
-export PATH="/Users/shrutirastogi/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
-export OPENAI_API_KEY=plrouter
