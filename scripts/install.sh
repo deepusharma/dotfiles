@@ -18,6 +18,24 @@ log()     { echo -e "${BLUE}-->${NC} $1"; }
 ok()      { echo -e "${GREEN}ok${NC}  $1"; }
 warn()    { echo -e "${YELLOW}!${NC}   $1"; }
 
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  cat <<'EOF'
+install.sh — bootstrap a new macOS or Windows (WSL2) machine
+
+Usage: ./install.sh          (no arguments — idempotent, safe to re-run)
+
+What it does:
+  - Installs Homebrew if missing, then all Brewfile packages
+  - Installs Oh My Zsh + plugins, nvm + Node.js LTS, fzf integration
+  - Symlinks all configs into place (shell, git, prompt, VS Code, skills)
+  - Creates ~/.secrets from configs/zsh/.secrets.example if missing
+  - Backs up any real file it would overwrite
+
+See also: ./scripts/dotfiles.sh — help | install | sync | audit
+EOF
+  exit 0
+fi
+
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BACKUP="$HOME/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
 
