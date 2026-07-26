@@ -99,8 +99,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # ── Zellij auto-start ─────────────────────────────────────────────────────────
 # Opens Zellij automatically when you open a new terminal.
+# Allowlists actual terminal emulators (Ghostty, Alacritty, Windows Terminal)
+# rather than blocklisting IDE-embedded terminals — that list keeps growing
+# (VS Code, Cursor, Windsurf, Zed, Antigravity, Kiro, ...) and some forks use
+# distinct $TERM_PROGRAM values (Kiro sets "kiro", not "vscode" — see below),
+# so blocklisting them individually doesn't hold up.
 # Comment this out if you prefer to launch Zellij manually.
-if [[ -z "$ZELLIJ" && -n "$GHOSTTY_RESOURCES_DIR" ]]; then
+if [[ -z "$ZELLIJ" ]] && { [[ -n "$GHOSTTY_RESOURCES_DIR" ]] || [[ "$TERM" == "alacritty" ]] || [[ -n "$WT_SESSION" ]]; }; then
   zellij
 fi
 
