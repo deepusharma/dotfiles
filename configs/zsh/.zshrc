@@ -105,7 +105,7 @@ export NVM_DIR="$HOME/.nvm"
 # distinct $TERM_PROGRAM values (Kiro sets "kiro", not "vscode" — see below),
 # so blocklisting them individually doesn't hold up.
 # Comment this out if you prefer to launch Zellij manually.
-if [[ -z "$ZELLIJ" ]] && { [[ -n "$GHOSTTY_RESOURCES_DIR" ]] || [[ "$TERM" == "alacritty" ]] || [[ -n "$WT_SESSION" ]]; }; then
+if [[ -z "$ZELLIJ" ]] && { [[ -n "$GHOSTTY_RESOURCES_DIR" ]] || [[ "$TERM_PROGRAM" == "alacritty" ]] || [[ -n "$WT_SESSION" ]]; }; then
   zellij
 fi
 

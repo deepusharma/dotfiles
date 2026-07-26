@@ -3,6 +3,14 @@
 # Docs: https://alacritty.org/config-alacritty.html
 # =============================================================================
 
+# ── Environment ───────────────────────────────────────────────────────────────
+# $TERM is set to xterm-256color for compatibility, so it can't identify this
+# terminal. TERM_PROGRAM is unused by Alacritty itself, so we set it here to
+# self-identify — same pattern Ghostty and Kiro use — for .zshrc's Zellij
+# auto-start check.
+[env]
+TERM_PROGRAM = "alacritty"
+
 # ── Shell ─────────────────────────────────────────────────────────────────────
 # macOS — uses default Zsh
 [terminal]
