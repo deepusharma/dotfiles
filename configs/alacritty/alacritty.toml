@@ -8,8 +8,13 @@
 # terminal. TERM_PROGRAM is unused by Alacritty itself, so we set it here to
 # self-identify — same pattern Ghostty and Kiro use — for .zshrc's Zellij
 # auto-start check.
+# On Windows, this variable is set on the wsl.exe process Alacritty launches,
+# but Windows env vars don't automatically cross into the WSL/Linux session —
+# WSLENV explicitly tells WSL's launcher which ones to import. Harmless on
+# macOS/Linux, where there's no such boundary to cross.
 [env]
 TERM_PROGRAM = "alacritty"
+WSLENV = "TERM_PROGRAM"
 
 # ── Shell ─────────────────────────────────────────────────────────────────────
 # macOS — uses default Zsh
