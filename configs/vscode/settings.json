@@ -39,6 +39,11 @@
   // Persist unsaved buffers (including untitled scratch tabs) across quit/restart —
   // this is VS Code's default already, made explicit here
   "files.hotExit": "onExitAndWindowClose",
+
+  // =================================================
+  // Workbench / UI
+  // =================================================
+  "workbench.colorTheme": "Solarized Dark",
   // Green top border on the active tab; subtle word-highlight borders
   "workbench.colorCustomizations": {
     "[Default Dark Modern]": {
