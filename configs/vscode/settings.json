@@ -171,7 +171,7 @@
   "maven.terminal.customEnv": [
     {
       "environmentVariable": "JAVA_HOME",
-      "value": "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/java/25"
+      "value": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/25"
     },
     {
       "environmentVariable": "ZDOTDIR",
