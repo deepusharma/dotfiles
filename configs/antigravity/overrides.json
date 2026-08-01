@@ -1,0 +1,22 @@
+{
+  // =================================================
+  // Antigravity IDE — editor-specific overrides layered on top of
+  // configs/editors/common.json by scripts/sync-editor-settings.sh
+  // =================================================
+  "workbench.colorTheme": "Kimbie Dark",
+
+  // Gemini Code Assist — Antigravity's own GCP project
+  "geminicodeassist.project": "ancient-rune-gthmw",
+
+  // Point Antigravity at the official VS Code marketplace
+  "antigravity.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
+  "antigravity.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
+
+  // Fixed 2026-08-01: was a leftover Windows path (C:\Users\deepa\anaconda3\...)
+  // from cross-machine copy — corrected to the actual Mac anaconda3 install
+  "python.pythonPath": "/Users/shrutirastogi/anaconda3/bin/python",
+  "python.terminal.activateEnvironment": true,
+
+  "window.newWindowProfile": "DS-Common",
+  "security.workspace.trust.untrustedFiles": "open"
+}

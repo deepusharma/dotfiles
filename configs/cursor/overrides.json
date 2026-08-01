@@ -1,0 +1,8 @@
+{
+  // =================================================
+  // Cursor — editor-specific overrides layered on top of
+  // configs/editors/common.json by scripts/sync-editor-settings.sh
+  // =================================================
+  "workbench.colorTheme": "Abyss",
+  "window.autoDetectColorScheme": false
+}

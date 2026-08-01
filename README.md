@@ -86,7 +86,7 @@ flowchart LR
         M2[~/.config/starship.toml] --> ML
         M3[~/.config/zellij/] --> ML
         M4[~/.config/ghostty/] --> ML
-        M5[~/.../Code/User/settings.json] --> ML
+        M5[Code/Antigravity IDE/Cursor/Kiro/Windsurf/Devin settings.json] --> ML
         M6[~/.gitconfig] --> ML
         M7[~/.antigravity/skills/] --> ML
         ML --> MR[(~/dotfiles repo)]
@@ -108,7 +108,9 @@ flowchart LR
 
 </details>
 
-Config files live in this repo. `install.sh` creates symlinks from where tools expect them to where the repo actually stores them. Change a config on one machine, push, pull on the other. Done.
+> **Note:** the diagram image above (`images/06-dotfiles-sync.png`) hasn't been regenerated from this updated source yet — it still shows only VS Code, not the full editor lineup. Regenerate when convenient.
+
+Config files live in this repo. `install.sh` creates symlinks from where tools expect them to where the repo actually stores them. Change a config on one machine, push, pull on the other. Done. Every VS Code-family editor's `settings.json` (VS Code, Antigravity IDE, Cursor, Kiro, Windsurf/Devin) is itself generated from `configs/editors/common.json` + a per-editor `overrides.json` — see `AGENTS.md` → "How the symlink system works" for the mechanics, and run `./scripts/dotfiles.sh sync-editors` after editing either.
 
 ---
 
@@ -328,17 +330,31 @@ dotfiles/
 ├── configs/
 │   ├── alacritty/
 │   │   └── alacritty.toml
+│   ├── editors/
+│   │   └── common.json   # shared settings baseline for every VS Code-family editor
 │   ├── antigravity/
-│   │   └── skills/       # global AI agent skills (5 skills, one dir each)
+│   │   ├── skills/       # global AI agent skills (5 skills, one dir each)
+│   │   ├── settings.json # generated — symlinked into "Antigravity IDE"
+│   │   └── overrides.json
+│   ├── cursor/
+│   │   ├── settings.json # generated
+│   │   └── overrides.json
 │   ├── ghostty/
 │   │   └── config
 │   ├── git/
 │   │   ├── .gitconfig
 │   │   └── .gitconfig.local.example
+│   ├── kiro/
+│   │   ├── settings.json # generated
+│   │   └── overrides.json
 │   ├── starship/
 │   │   └── starship.toml
 │   ├── vscode/
-│   │   └── settings.json # shared by VS Code + Antigravity
+│   │   ├── settings.json # generated (see scripts/sync-editor-settings.sh)
+│   │   └── overrides.json
+│   ├── windsurf/
+│   │   ├── settings.json # generated — symlinked into BOTH Windsurf and Devin
+│   │   └── overrides.json
 │   ├── zellij/
 │   │   ├── config.kdl
 │   │   └── layouts/

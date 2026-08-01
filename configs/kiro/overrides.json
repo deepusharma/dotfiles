@@ -1,0 +1,59 @@
+{
+  // =================================================
+  // Kiro — editor-specific overrides layered on top of
+  // configs/editors/common.json by scripts/sync-editor-settings.sh
+  // =================================================
+  "workbench.colorTheme": "Red",
+
+  // Kiro allows a longer shell-env resolution timeout than the common default
+  "application.shellEnvironmentResolutionTimeout": 30,
+
+  // Kiro Agent — used for the Youtuber project (deepusharma/yourtube)
+  "kiroAgent.agentAutonomy": "Autopilot",
+  "kiroAgent.enableTabAutocomplete": true,
+  "kiroAgent.modelSelection": "auto",
+  "kiroAgent.trustedTools": ["webFetch", "remote_web_search"],
+  "kiroAgent.trustedCommands": [
+    "gh repo view --json nameWithOwner 2>&1",
+    "gh repo view --json nameWithOwner --jq '.nameWithOwner' 2>&1",
+    "git -C /Users/shrutirastogi/Documents/GitProjects/public/yourtube remote get-url origin 2>&1",
+    "gh api repos/deepusharma/yourtube/milestones --method POST -f title=\"v0.1\" -f description=\"MVP (Phase 1 WebApp)\" -f state=\"open\" 2>&1 | grep -E '\"title\"|\"number\"|\"html_url\"|error' | head -5",
+    "gh api repos/deepusharma/yourtube/milestones --jq '.[].title' 2>&1 | grep -v \"^q\" | grep -v \"^╶\" | grep -v \"^╭\" | grep -v \"^│\" | grep -v \"^╰\" | grep -v \"yourtube\" | grep -v \"outstanding\" | grep -v \"shrutirastogi\" | grep -v \"^$\" | head -20",
+    "chmod +x setup-github.sh && bash setup-github.sh 2>&1 | grep -E \"^(===|CREATED|SKIP|ERROR|Done)\" ",
+    "chmod +x seed-github-issues.sh",
+    "./seed-github-issues.sh",
+    "gh api repos/:owner/:repo/milestones --jq '.[] | \"\\(.number): \\(.title)\"'",
+    "gh api repos/shrutirastogi/yourtube/milestones --jq '.[] | \"\\(.number): \\(.title)\"'",
+    "gh milestone list",
+    "./seed-github-issues.sh 2>&1",
+    "bash seed-github-issues.sh",
+    "git *",
+    "gh *",
+    "which *",
+    "command -v gh && command -v vercel",
+    "chmod *",
+    "echo \"hello from bash\"",
+    "npx vitest run src/modules/quota/quota.service.test.ts --reporter=verbose 2>&1",
+    "node --version 2>&1",
+    "npx vitest --version 2>&1",
+    "npm run *",
+    "npx tsc *",
+    "node *",
+    "npx *",
+    "nvm *",
+    "rm -rf node_modules package-lock.json && npm install",
+    "bash -c \"source ~/.nvm/nvm.sh && nvm use 22 && node --version && npm run test -- tests/properties/account-deletion.test.ts --run 2>&1 | head -150\"",
+    "bash *",
+    "mkdir *",
+    "npm *",
+    "wc *",
+    "ls *",
+    "cat *",
+    "~/.nvm/versions/node/v22.22.1/bin/node *",
+    "head *",
+    "PATH=~/.nvm/versions/node/v22.22.1/bin:$PATH *",
+    "rm data/yourtube.db *",
+    "sqlite3 *",
+    "rm -f data/yourtube.db data/yourtube.db-shm data/yourtube.db-wal && npm run db:generate 2>&1 && npm run db:migrate 2>&1"
+  ]
+}

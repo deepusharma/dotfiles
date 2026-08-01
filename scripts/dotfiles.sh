@@ -42,6 +42,11 @@ EOF
     cat <<EOF
 $HOME/.config/ghostty/config|$DOTFILES/configs/ghostty/config
 $HOME/Library/Application Support/Code/User/settings.json|$DOTFILES/configs/vscode/settings.json
+$HOME/Library/Application Support/Antigravity IDE/User/settings.json|$DOTFILES/configs/antigravity/settings.json
+$HOME/Library/Application Support/Cursor/User/settings.json|$DOTFILES/configs/cursor/settings.json
+$HOME/Library/Application Support/Kiro/User/settings.json|$DOTFILES/configs/kiro/settings.json
+$HOME/Library/Application Support/Windsurf/User/settings.json|$DOTFILES/configs/windsurf/settings.json
+$HOME/Library/Application Support/Devin/User/settings.json|$DOTFILES/configs/windsurf/settings.json
 EOF
   fi
 }
@@ -149,6 +154,7 @@ audit_ides() {
   audit_ide_extensions antigravity "$DOTFILES/configs/antigravity/extensions.txt"
   audit_ide_extensions cursor      "$DOTFILES/configs/cursor/extensions.txt"
   audit_ide_extensions windsurf    "$DOTFILES/configs/windsurf/extensions.txt"
+  audit_ide_extensions kiro        "$DOTFILES/configs/kiro/extensions.txt"
 }
 
 audit_agents() {
@@ -241,6 +247,10 @@ cmd_sync() {
   "$DOTFILES/scripts/install.sh" run
 }
 
+cmd_sync_editors() {
+  "$DOTFILES/scripts/sync-editor-settings.sh"
+}
+
 cmd_help() {
   cat <<EOF
 dotfiles.sh — manage this dotfiles setup
@@ -248,25 +258,29 @@ dotfiles.sh — manage this dotfiles setup
 Usage: ./scripts/dotfiles.sh <command>
 
 Commands:
-  help      Show this help (default)
-  install   Full bootstrap on a new machine (runs scripts/install.sh)
-  sync      git pull + brew update, then re-apply everything (idempotent)
-  audit     Report drift without changing anything:
-              - symlinks present and pointing into this repo
-              - Brewfile vs installed packages, outdated packages
-              - AI/dev CLIs vs configs/cli-tools.txt
-              - per-IDE extensions vs configs/<ide>/extensions.txt
-              - agent harnesses: ~/.claude instructions + plugins, Codex, Kiro
-              - ~/.secrets and ~/.gitconfig.local present
-              - uncommitted repo changes
+  help          Show this help (default)
+  install       Full bootstrap on a new machine (runs scripts/install.sh)
+  sync          git pull + brew update, then re-apply everything (idempotent)
+  sync-editors  Regenerate every VS Code-family editor's settings.json from
+                configs/editors/common.json + configs/<editor>/overrides.json.
+                Run after editing either file.
+  audit         Report drift without changing anything:
+                  - symlinks present and pointing into this repo
+                  - Brewfile vs installed packages, outdated packages
+                  - AI/dev CLIs vs configs/cli-tools.txt
+                  - per-IDE extensions vs configs/<ide>/extensions.txt
+                  - agent harnesses: ~/.claude instructions + plugins, Codex, Kiro
+                  - ~/.secrets and ~/.gitconfig.local present
+                  - uncommitted repo changes
 
 See also: scripts/check-updates.sh (outdated packages; cron-friendly)
 EOF
 }
 
 case "${1:-help}" in
-  install) cmd_install ;;
-  sync)    cmd_sync ;;
-  audit)   cmd_audit ;;
+  install)      cmd_install ;;
+  sync)         cmd_sync ;;
+  sync-editors) cmd_sync_editors ;;
+  audit)        cmd_audit ;;
   help|-h|--help|*) cmd_help ;;
 esac

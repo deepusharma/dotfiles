@@ -131,7 +131,7 @@
     "~/.agents/hooks": true
   },
   // Agent Compose — token stays blank here; never commit secrets
-"agentCompose.apiToken": "",
+  "agentCompose.apiToken": "",
 
   // =================================================
   // Markdown
@@ -243,12 +243,13 @@
   "liveServer.settings.wait": 10000,
   // Draw.io: keep pasted images at original size
   "hediet.vscode-drawio.resizeImages": null,
+  // Azure Resource Graph tenant (blank = default tenant)
+  "@azure.argTenant": "",
 
   // =================================================
   // Per-language Overrides
   // =================================================
   // Windows batch files require CRLF line endings
-  "@azure.argTenant": "",
   "[bat]": {
     "files.eol": "\r\n"
   },
@@ -264,198 +265,12 @@
   },
 
   // =================================================
-  // VS Code overrides (from configs/vscode/overrides.json)
+  // Cursor overrides (from configs/cursor/overrides.json)
   // =================================================
   // =================================================
-  // VS Code — editor-specific overrides layered on top of
+  // Cursor — editor-specific overrides layered on top of
   // configs/editors/common.json by scripts/sync-editor-settings.sh
   // =================================================
-  "workbench.colorTheme": "Solarized Dark",
-
-  // Gemini Code Assist — VS Code's own GCP project
-  "geminicodeassist.project": "gen-lang-client-0572315771",
-  "geminicodeassist.displayInlineContextHint": false,
-
-  // =================================================
-  // Java / Maven
-  // JDKs, Gradle and Maven are auto-managed by the
-  // Pleiades JDK Extension Pack (paths below) — leave alone,
-  // the extension rewrites these; see dotfiles/AGENTS.md
-  // =================================================
-  "java.compile.nullAnalysis.mode": "automatic",
-  "java.configuration.detectJdksAtStart": false,
-  "java.configuration.updateBuildConfiguration": "automatic",
-  "java.configuration.runtimes": [
-    {
-      "name": "JavaSE-17",
-      "path": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/17"
-    },
-    {
-      "name": "JavaSE-21",
-      "path": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/21"
-    },
-    {
-      "name": "JavaSE-25",
-      "path": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/25"
-    },
-    {
-      "name": "JavaSE-26",
-      "path": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/latest",
-      "default": true
-    }
-  ],
-  "java.debug.settings.hotCodeReplace": "auto",
-  "java.dependency.packagePresentation": "hierarchical",
-  "java.import.gradle.home": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/gradle/latest",
-  "java.import.gradle.java.home": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/25",
-  "java.maxConcurrentBuilds": 8,
-  "java.sources.organizeImports.staticStarThreshold": 1,
-  "java.test.config": {
-    "vmArgs": ["-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8"]
-},
-  "jdk.telemetry.enabled": false,
-  "redhat.telemetry.enabled": false,
-  "maven.executable.path": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/bin/mvn",
-  "maven.terminal.customEnv": [
-    {
-      "environmentVariable": "JAVA_HOME",
-      "value": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/25"
-    },
-    {
-      "environmentVariable": "ZDOTDIR",
-      "value": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk"
-    }
-],
-  "terminal.integrated.defaultProfile.osx": "JavaSE-26",
-  "terminal.integrated.profiles.osx": {
-    "zsh": {
-      "path": "zsh",
-      "env": {
-        "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/25",
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk"
-      }
-    },
-    "JavaSE-17 LTS": {
-      "overrideName": true,
-      "path": "zsh",
-      "env": {
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk",
-        "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/17"
-      }
-    },
-    "JavaSE-21 LTS": {
-      "overrideName": true,
-      "path": "zsh",
-      "env": {
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk",
-        "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/21"
-      }
-    },
-    "JavaSE-25 LTS": {
-      "overrideName": true,
-      "path": "zsh",
-      "env": {
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk",
-        "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/25"
-      }
-    },
-    "JavaSE-26": {
-      "overrideName": true,
-      "path": "zsh",
-      "env": {
-        "ZDOTDIR": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk",
-        "JAVA_HOME": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/latest"
-      }
-    }
-  },
-  "terminal.integrated.automationProfile.windows": {
-    "path": "cmd"
-  },
-  "terminal.integrated.defaultProfile.windows": "JavaSE-25 LTS",
-  "terminal.integrated.env.windows": {
-    "JAVA_HOME": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\25",
-    "PATH": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\25\\bin;${env:PATH}"
-  },
-  "terminal.integrated.profiles.windows": {
-    "JavaSE-17 LTS": {
-      "overrideName": true,
-      "path": "cmd",
-      "env": {
-        "PATH": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17\\bin;${env:PATH}",
-        "JAVA_HOME": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17"
-      }
-    },
-    "JavaSE-21 LTS": {
-      "overrideName": true,
-      "path": "cmd",
-      "args": ["/k", "chcp", "65001"],
-      "env": {
-        "PATH": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21\\bin;${env:PATH}",
-        "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
-        "JAVA_HOME": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21"
-      }
-    },
-    "JavaSE-25 LTS": {
-      "overrideName": true,
-      "path": "cmd",
-      "args": ["/k", "chcp", "65001"],
-      "env": {
-        "PATH": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\25\\bin;${env:PATH}",
-        "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
-        "JAVA_HOME": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\25"
-      }
-    },
-    "JavaSE-26": {
-      "overrideName": true,
-      "path": "cmd",
-      "args": ["/k", "chcp", "65001"],
-      "env": {
-        "PATH": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest\\bin;${env:PATH}",
-        "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
-        "JAVA_HOME": "C:\\Users\\deepak.sharma2\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest"
-      }
-    }
-  },
-  "terminal.integrated.defaultProfile.linux": "JavaSE-25 LTS",
-  "terminal.integrated.profiles.linux": {
-    "bash": {
-      "path": "bash",
-      "args": ["--rcfile", "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/.bashrc"],
-      "env": {
-        "JAVA_HOME": "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/java/25"
-      }
-    },
-    "JavaSE-17 LTS": {
-      "overrideName": true,
-      "path": "bash",
-      "args": ["--rcfile", "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/.bashrc"],
-      "env": {
-        "JAVA_HOME": "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/java/17"
-      }
-    },
-    "JavaSE-21 LTS": {
-      "overrideName": true,
-      "path": "bash",
-      "args": ["--rcfile", "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/.bashrc"],
-      "env": {
-        "JAVA_HOME": "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/java/21"
-      }
-    },
-    "JavaSE-25 LTS": {
-      "overrideName": true,
-      "path": "bash",
-      "args": ["--rcfile", "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/.bashrc"],
-      "env": {
-        "JAVA_HOME": "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/java/25"
-      }
-    },
-    "JavaSE-26": {
-      "overrideName": true,
-      "env": {
-        "JAVA_HOME": "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/java/latest"
-      },
-      "path": "bash",
-      "args": ["--rcfile", "/home/deepak/.vscode-server/data/User/globalStorage/pleiades.java-extension-pack-jdk/.bashrc"]
-    }
-  }
+  "workbench.colorTheme": "Abyss",
+  "window.autoDetectColorScheme": false
 }

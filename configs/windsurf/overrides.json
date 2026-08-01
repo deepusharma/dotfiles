@@ -1,0 +1,11 @@
+{
+  // =================================================
+  // Windsurf/Devin — editor-specific overrides layered on top of
+  // configs/editors/common.json by scripts/sync-editor-settings.sh
+  //
+  // Treated as ONE identity: Windsurf was acquired by Cognition (Devin's
+  // maker) and the two are now the same product — this file is symlinked
+  // into both apps' settings.json paths.
+  // =================================================
+  "workbench.colorTheme": "Monokai"
+}
