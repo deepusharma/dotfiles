@@ -4,5 +4,20 @@
   // configs/editors/common.json by scripts/sync-editor-settings.sh
   // =================================================
   "workbench.colorTheme": "Abyss",
-  "window.autoDetectColorScheme": false
+  "window.autoDetectColorScheme": false,
+
+  // Purple accent — title bar/activity bar tint so this window is
+  // recognizable at a glance even before a theme's syntax colors show
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#6A1B9A",
+    "titleBar.activeForeground": "#FFFFFF",
+    "titleBar.inactiveBackground": "#4A148CAA",
+    "activityBar.background": "#4A148C",
+    "tab.activeBorderTop": "#00FF00",
+    "tab.unfocusedActiveBorderTop": "#00FF0088",
+    "textCodeBlock.background": "#00000055",
+    "editor.wordHighlightStrongBorder": "#FF6347",
+    "editor.wordHighlightBorder": "#FFD700",
+    "editor.selectionHighlightBorder": "#A9A9A9"
+  }
 }

@@ -65,19 +65,12 @@
 
   // =================================================
   // Workbench / UI
-  // (workbench.colorTheme intentionally NOT here — see header note)
+  // (workbench.colorTheme AND workbench.colorCustomizations intentionally
+  // NOT here — both are per-editor, see header note. colorCustomizations
+  // carries each editor's titleBar accent color, which needs a distinct
+  // value per editor, so the whole block lives in each overrides.json
+  // instead, duplicating the shared tab-border/word-highlight bits.)
   // =================================================
-  // Green top border on the active tab; subtle word-highlight borders
-  "workbench.colorCustomizations": {
-    "[Default Dark Modern]": {
-      "tab.activeBorderTop": "#00FF00",
-      "tab.unfocusedActiveBorderTop": "#00FF0088",
-      "textCodeBlock.background": "#00000055"
-    },
-    "editor.wordHighlightStrongBorder": "#FF6347",
-    "editor.wordHighlightBorder": "#FFD700",
-    "editor.selectionHighlightBorder": "#A9A9A9"
-  },
   // Focus the existing tab instead of opening a duplicate
   "workbench.editor.revealIfOpen": true,
   // Auto-run workspace tasks marked "runOn": "folderOpen"
@@ -275,5 +268,20 @@
   // maker) and the two are now the same product — this file is symlinked
   // into both apps' settings.json paths.
   // =================================================
-  "workbench.colorTheme": "Monokai"
+  "workbench.colorTheme": "Monokai",
+
+  // Green accent — title bar/activity bar tint so this window is
+  // recognizable at a glance even before a theme's syntax colors show
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#2E7D32",
+    "titleBar.activeForeground": "#FFFFFF",
+    "titleBar.inactiveBackground": "#1B5E20AA",
+    "activityBar.background": "#1B5E20",
+    "tab.activeBorderTop": "#00FF00",
+    "tab.unfocusedActiveBorderTop": "#00FF0088",
+    "textCodeBlock.background": "#00000055",
+    "editor.wordHighlightStrongBorder": "#FF6347",
+    "editor.wordHighlightBorder": "#FFD700",
+    "editor.selectionHighlightBorder": "#A9A9A9"
+  }
 }

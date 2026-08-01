@@ -5,6 +5,21 @@
   // =================================================
   "workbench.colorTheme": "Solarized Dark",
 
+  // Blue accent — title bar/activity bar tint so this window is
+  // recognizable at a glance even before a theme's syntax colors show
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#1565C0",
+    "titleBar.activeForeground": "#FFFFFF",
+    "titleBar.inactiveBackground": "#0D47A1AA",
+    "activityBar.background": "#0D47A1",
+    "tab.activeBorderTop": "#00FF00",
+    "tab.unfocusedActiveBorderTop": "#00FF0088",
+    "textCodeBlock.background": "#00000055",
+    "editor.wordHighlightStrongBorder": "#FF6347",
+    "editor.wordHighlightBorder": "#FFD700",
+    "editor.selectionHighlightBorder": "#A9A9A9"
+  },
+
   // Gemini Code Assist — VS Code's own GCP project
   "geminicodeassist.project": "gen-lang-client-0572315771",
   "geminicodeassist.displayInlineContextHint": false,

@@ -65,19 +65,12 @@
 
   // =================================================
   // Workbench / UI
-  // (workbench.colorTheme intentionally NOT here — see header note)
+  // (workbench.colorTheme AND workbench.colorCustomizations intentionally
+  // NOT here — both are per-editor, see header note. colorCustomizations
+  // carries each editor's titleBar accent color, which needs a distinct
+  // value per editor, so the whole block lives in each overrides.json
+  // instead, duplicating the shared tab-border/word-highlight bits.)
   // =================================================
-  // Green top border on the active tab; subtle word-highlight borders
-  "workbench.colorCustomizations": {
-    "[Default Dark Modern]": {
-      "tab.activeBorderTop": "#00FF00",
-      "tab.unfocusedActiveBorderTop": "#00FF0088",
-      "textCodeBlock.background": "#00000055"
-    },
-    "editor.wordHighlightStrongBorder": "#FF6347",
-    "editor.wordHighlightBorder": "#FFD700",
-    "editor.selectionHighlightBorder": "#A9A9A9"
-  },
   // Focus the existing tab instead of opening a duplicate
   "workbench.editor.revealIfOpen": true,
   // Auto-run workspace tasks marked "runOn": "folderOpen"
@@ -271,6 +264,21 @@
   // configs/editors/common.json by scripts/sync-editor-settings.sh
   // =================================================
   "workbench.colorTheme": "Solarized Dark",
+
+  // Blue accent — title bar/activity bar tint so this window is
+  // recognizable at a glance even before a theme's syntax colors show
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#1565C0",
+    "titleBar.activeForeground": "#FFFFFF",
+    "titleBar.inactiveBackground": "#0D47A1AA",
+    "activityBar.background": "#0D47A1",
+    "tab.activeBorderTop": "#00FF00",
+    "tab.unfocusedActiveBorderTop": "#00FF0088",
+    "textCodeBlock.background": "#00000055",
+    "editor.wordHighlightStrongBorder": "#FF6347",
+    "editor.wordHighlightBorder": "#FFD700",
+    "editor.selectionHighlightBorder": "#A9A9A9"
+  },
 
   // Gemini Code Assist — VS Code's own GCP project
   "geminicodeassist.project": "gen-lang-client-0572315771",

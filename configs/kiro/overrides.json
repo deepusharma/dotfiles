@@ -5,6 +5,22 @@
   // =================================================
   "workbench.colorTheme": "Red",
 
+  // Red accent — reinforces the Red theme's tint on title bar/activity bar
+  // (Kiro's Red theme already reads as clearly distinct on its own — this
+  // just makes the mechanism consistent across all 5 editors)
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#B71C1C",
+    "titleBar.activeForeground": "#FFFFFF",
+    "titleBar.inactiveBackground": "#7F0000AA",
+    "activityBar.background": "#7F0000",
+    "tab.activeBorderTop": "#00FF00",
+    "tab.unfocusedActiveBorderTop": "#00FF0088",
+    "textCodeBlock.background": "#00000055",
+    "editor.wordHighlightStrongBorder": "#FF6347",
+    "editor.wordHighlightBorder": "#FFD700",
+    "editor.selectionHighlightBorder": "#A9A9A9"
+  },
+
   // Kiro allows a longer shell-env resolution timeout than the common default
   "application.shellEnvironmentResolutionTimeout": 30,
 

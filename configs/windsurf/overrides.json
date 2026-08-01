@@ -7,5 +7,20 @@
   // maker) and the two are now the same product — this file is symlinked
   // into both apps' settings.json paths.
   // =================================================
-  "workbench.colorTheme": "Monokai"
+  "workbench.colorTheme": "Monokai",
+
+  // Green accent — title bar/activity bar tint so this window is
+  // recognizable at a glance even before a theme's syntax colors show
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#2E7D32",
+    "titleBar.activeForeground": "#FFFFFF",
+    "titleBar.inactiveBackground": "#1B5E20AA",
+    "activityBar.background": "#1B5E20",
+    "tab.activeBorderTop": "#00FF00",
+    "tab.unfocusedActiveBorderTop": "#00FF0088",
+    "textCodeBlock.background": "#00000055",
+    "editor.wordHighlightStrongBorder": "#FF6347",
+    "editor.wordHighlightBorder": "#FFD700",
+    "editor.selectionHighlightBorder": "#A9A9A9"
+  }
 }

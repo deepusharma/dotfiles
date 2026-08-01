@@ -1,0 +1,11 @@
+# Cursor extensions manifest — used by ./scripts/dotfiles.sh audit
+# Plain line = required (audit flags if missing)
+# '?' prefix = optional (no flag if missing; not reported as unmanaged if present)
+# Regenerate baseline with: cursor --list-extensions | sort
+#
+# Initial baseline captured 2026-08-01 — Cursor is used infrequently, so this
+# just reflects whatever was installed at the time; split into required vs.
+# optional later once actual usage patterns are clearer.
+
+anysphere.remote-containers
+anysphere.remote-ssh
