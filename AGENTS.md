@@ -134,6 +134,14 @@ repo stores them. For example:
   `.../Devin/User/settings.json` → `<repo>/configs/windsurf/settings.json`
   (same file, symlinked twice — Windsurf and Devin are one product now)
 
+On Windows/WSL2, all five of the above target `/mnt/c/Users/$WIN_USER/AppData/Roaming/<App>/User/settings.json`
+instead — same generated files, same `<App>` folder names, just under
+`AppData\Roaming` rather than `~/Library/Application Support`. Wired into
+`install.sh`'s `linux` branch, but not yet verified against a real Windows
+install of Antigravity IDE/Cursor/Kiro/Windsurf/Devin — if a folder name
+differs there, fix the path in `install.sh` and `dotfiles.sh`'s
+`expected_links()` (kept in sync manually, per the comment above that function).
+
 The repo does not have to live at `~/dotfiles` — `.zshrc` resolves the repo
 location from the `~/.zshrc` symlink at runtime.
 
@@ -267,8 +275,8 @@ blocks (the extension will just rewrite them).
 | `configs/vscode/settings.json` | ✅ | ✅ |
 | `configs/git/.gitconfig` | ✅ | ✅ |
 | `configs/antigravity/skills/` | ✅ | ✅ |
-| `configs/antigravity/settings.json` | ✅ (Antigravity IDE) | ❌ mac-only in `install.sh` |
-| `configs/cursor/settings.json` | ✅ | ❌ mac-only in `install.sh` |
-| `configs/kiro/settings.json` | ✅ | ❌ mac-only in `install.sh` |
-| `configs/windsurf/settings.json` | ✅ (Windsurf + Devin) | ❌ mac-only in `install.sh` |
+| `configs/antigravity/settings.json` | ✅ (Antigravity IDE) | ⚠️ wired in `install.sh`, unverified — app-folder name under `AppData\Roaming` assumed, not confirmed |
+| `configs/cursor/settings.json` | ✅ | ⚠️ wired, unverified (see above) |
+| `configs/kiro/settings.json` | ✅ | ⚠️ wired, unverified (see above) |
+| `configs/windsurf/settings.json` | ✅ (Windsurf + Devin) | ⚠️ wired, unverified (see above) |
 | `Brewfile` | ✅ Homebrew | ✅ Linuxbrew (casks skipped) |

@@ -48,6 +48,18 @@ $HOME/Library/Application Support/Kiro/User/settings.json|$DOTFILES/configs/kiro
 $HOME/Library/Application Support/Windsurf/User/settings.json|$DOTFILES/configs/windsurf/settings.json
 $HOME/Library/Application Support/Devin/User/settings.json|$DOTFILES/configs/windsurf/settings.json
 EOF
+  elif [[ "$OS" == "linux" ]]; then
+    local win_user win_appdata
+    win_user=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
+    win_appdata="/mnt/c/Users/$win_user/AppData/Roaming"
+    cat <<EOF
+$win_appdata/Code/User/settings.json|$DOTFILES/configs/vscode/settings.json
+$win_appdata/Antigravity IDE/User/settings.json|$DOTFILES/configs/antigravity/settings.json
+$win_appdata/Cursor/User/settings.json|$DOTFILES/configs/cursor/settings.json
+$win_appdata/Kiro/User/settings.json|$DOTFILES/configs/kiro/settings.json
+$win_appdata/Windsurf/User/settings.json|$DOTFILES/configs/windsurf/settings.json
+$win_appdata/Devin/User/settings.json|$DOTFILES/configs/windsurf/settings.json
+EOF
   fi
 }
 
