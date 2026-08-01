@@ -444,7 +444,13 @@
   "liveServer.settings.wait": 10000,
   // Draw.io: keep pasted images at original size
   "hediet.vscode-drawio.resizeImages": null,
+  // Azure Resource Graph tenant (blank = default tenant)
   "@azure.argTenant": "",
+
+  // =================================================
+  // Per-language Overrides
+  // =================================================
+  // Windows batch files require CRLF line endings
   "[bat]": {
     "files.eol": "\r\n",
   },
