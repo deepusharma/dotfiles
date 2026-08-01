@@ -124,7 +124,7 @@
     "~/.agents/hooks": true
   },
   // Agent Compose — token stays blank here; never commit secrets
-"agentCompose.apiToken": "",
+  "agentCompose.apiToken": "",
 
   // =================================================
   // Markdown
@@ -236,12 +236,13 @@
   "liveServer.settings.wait": 10000,
   // Draw.io: keep pasted images at original size
   "hediet.vscode-drawio.resizeImages": null,
+  // Azure Resource Graph tenant (blank = default tenant)
+  "@azure.argTenant": "",
 
   // =================================================
   // Per-language Overrides
   // =================================================
   // Windows batch files require CRLF line endings
-  "@azure.argTenant": "",
   "[bat]": {
     "files.eol": "\r\n"
   },
@@ -263,15 +264,12 @@
   // VS Code — editor-specific overrides layered on top of
   // configs/editors/common.json by scripts/sync-editor-settings.sh
   // =================================================
-  "workbench.colorTheme": "Solarized Dark",
-
-  // Blue accent — title bar/activity bar tint so this window is
-  // recognizable at a glance even before a theme's syntax colors show
+  // No workbench.colorTheme override — VS Code stays on its own factory
+  // default theme (Deepak's call 2026-08-02: wants VS Code to be "the
+  // original one," not a themed/accented editor like the other four).
+  // No titleBar/activityBar accent color either — just the original
+  // subtle tab-border/word-highlight touches shared with every editor.
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#1565C0",
-    "titleBar.activeForeground": "#FFFFFF",
-    "titleBar.inactiveBackground": "#0D47A1AA",
-    "activityBar.background": "#0D47A1",
     "tab.activeBorderTop": "#00FF00",
     "tab.unfocusedActiveBorderTop": "#00FF0088",
     "textCodeBlock.background": "#00000055",
@@ -320,7 +318,7 @@
   "java.sources.organizeImports.staticStarThreshold": 1,
   "java.test.config": {
     "vmArgs": ["-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8"]
-},
+  },
   "jdk.telemetry.enabled": false,
   "redhat.telemetry.enabled": false,
   "maven.executable.path": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/bin/mvn",
@@ -333,7 +331,7 @@
       "environmentVariable": "ZDOTDIR",
       "value": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk"
     }
-],
+  ],
   "terminal.integrated.defaultProfile.osx": "JavaSE-26",
   "terminal.integrated.profiles.osx": {
     "zsh": {

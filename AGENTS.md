@@ -210,23 +210,31 @@ Codex, opencode, GitHub Copilot CLI, and others. This plurality of editors is
 intentional — do not "consolidate" to one editor or flag it as a conflict;
 DO keep their settings in sync via the common/overrides split, though.
 
-Each editor deliberately uses a **different color theme** so windows are
-visually distinguishable at a glance: VS Code = Solarized Dark, Antigravity
-IDE = Kimbie Dark, Cursor = Abyss, Kiro = Red, Windsurf/Devin = Monokai.
+Every editor **except VS Code** deliberately uses a distinct color theme so
+windows are visually distinguishable at a glance: Antigravity IDE = Kimbie
+Dark, Cursor = Abyss, Kiro = Red, Windsurf/Devin = Monokai. **VS Code
+intentionally has no `workbench.colorTheme` override at all** (Deepak's call,
+2026-08-02) — it stays on its own factory default, since it's the primary
+daily driver and shouldn't carry a themed/accented look like the other four.
 `workbench.colorTheme` must never move into `common.json` — it's the one
-setting that's supposed to differ per editor.
+setting that's supposed to differ per editor (or be absent, for VS Code).
 
 Named dark themes alone turned out to look too similar at a glance (found
 2026-08-01 comparing screenshots — only Kiro's Red theme read as clearly
-distinct from the other four). Each editor's `overrides.json` therefore also
-carries its own `workbench.colorCustomizations` block with a bold, distinct
-`titleBar.activeBackground`/`activityBar.background` accent — VS Code = blue
-(`#1565C0`), Antigravity IDE = orange (`#E65100`), Cursor = purple
-(`#6A1B9A`), Kiro = red (`#B71C1C`, reinforcing its Red theme), Windsurf/Devin
-= green (`#2E7D32`). Title bar color shows even on a welcome screen with no
-file open, unlike syntax highlighting, so it's the more reliable
-differentiator. `workbench.colorCustomizations` is (like `colorTheme`)
-per-editor only — never move it into `common.json`, since JSON doesn't allow
+distinct from the other three that had one at the time). Antigravity
+IDE/Cursor/Kiro/Windsurf/Devin's `overrides.json` therefore also carry a
+`workbench.colorCustomizations` block with a bold, distinct
+`titleBar.activeBackground`/`activityBar.background` accent — Antigravity
+IDE = orange (`#E65100`), Cursor = purple (`#6A1B9A`), Kiro = red
+(`#B71C1C`, reinforcing its Red theme), Windsurf/Devin = green (`#2E7D32`).
+**VS Code got a blue accent originally too, but it was removed the same day**
+(Deepak didn't want VS Code carrying an accent color either) — VS Code's
+`workbench.colorCustomizations` only keeps the original shared tab-border/
+word-highlight touches, same as every other editor. Title bar color shows
+even on a welcome screen with no file open, unlike syntax highlighting, so
+it's the more reliable differentiator for the four editors that do have one.
+`workbench.colorCustomizations` is (like `colorTheme`) per-editor only —
+never move it into `common.json`, since JSON doesn't allow
 the same top-level key twice and each editor's title bar color must differ.
 
 **Java is NOT part of the stack.** The extensive Java/JDK/Maven blocks live

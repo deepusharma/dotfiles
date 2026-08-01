@@ -3,15 +3,12 @@
   // VS Code — editor-specific overrides layered on top of
   // configs/editors/common.json by scripts/sync-editor-settings.sh
   // =================================================
-  "workbench.colorTheme": "Solarized Dark",
-
-  // Blue accent — title bar/activity bar tint so this window is
-  // recognizable at a glance even before a theme's syntax colors show
+  // No workbench.colorTheme override — VS Code stays on its own factory
+  // default theme (Deepak's call 2026-08-02: wants VS Code to be "the
+  // original one," not a themed/accented editor like the other four).
+  // No titleBar/activityBar accent color either — just the original
+  // subtle tab-border/word-highlight touches shared with every editor.
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#1565C0",
-    "titleBar.activeForeground": "#FFFFFF",
-    "titleBar.inactiveBackground": "#0D47A1AA",
-    "activityBar.background": "#0D47A1",
     "tab.activeBorderTop": "#00FF00",
     "tab.unfocusedActiveBorderTop": "#00FF0088",
     "textCodeBlock.background": "#00000055",
