@@ -232,6 +232,15 @@ log "Symlinking Antigravity skills..."
 mkdir -p "$HOME/.antigravity"
 symlink "$DOTFILES/configs/antigravity/skills" "$HOME/.antigravity/skills"
 
+# ── Kiro CLI ──────────────────────────────────────────────────────────────────
+# Same ~/.kiro path on Mac and WSL2 (a CLI tool, not a native Windows app —
+# no AppData path involved). Currently empty on both sides; wired now so any
+# future custom agent/steering config is shared, not lost per-machine.
+log "Symlinking Kiro CLI config..."
+mkdir -p "$HOME/.kiro"
+symlink "$DOTFILES/configs/kiro-cli/agents" "$HOME/.kiro/agents"
+symlink "$DOTFILES/configs/kiro-cli/steering" "$HOME/.kiro/steering"
+
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""
 echo -e "${GREEN}Setup complete.${NC}"
