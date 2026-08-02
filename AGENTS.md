@@ -1,22 +1,24 @@
 # AGENTS.md — AI Agent Instructions
 
-This file provides context and rules for AI coding agents (Claude Code,
-Antigravity, Gemini, Copilot, etc.) working in this repository.
-`CLAUDE.md` is a small pointer file that imports this one via `@AGENTS.md` —
+This file provides context and rules for AI coding agents (Claude Code,  
+Antigravity, Gemini, Copilot, etc.) working in this repository.  
+`CLAUDE.md` is a small pointer file that imports this one via `@AGENTS.md` —  
 edit AGENTS.md, never CLAUDE.md.
 
 ---
 
 ## What this repo is
 
-A personal dotfiles repo — version-controlled shell configs, tool configs,
-and an install script that bootstraps a new macOS or Windows (WSL2) machine
+A personal dotfiles repo — version-controlled shell configs, tool configs,  
+and an install script that bootstraps a new macOS or Windows (WSL2) machine  
 from zero to fully configured in one command.
 
-**Primary owner:** Deepak Sharma (`deepu.sharma@gmail.com`)\
-**GitHub handle:** `deepusharma`\
-**Platforms:** macOS (primary), Windows WSL2 (secondary)\
+**Primary owner:** Deepak Sharma  
+**GitHub handle:** `deepusharma`  
+**Platforms:** macOS (primary), Windows WSL2 (secondary)  
 **Current focus:** agentic AI development, Python, TypeScript/JavaScript/React
+
+**Related repo:** `ai-config` (`~/Documents/GitProjects/public/ai-config/`) is the sibling repo for the _global_ AI-agent instruction layer (the canonical `AGENTS.md` template, the machine-global symlink wiring in its own `install.sh`, the shared session-protocol/timestamp conventions every other repo's `AGENTS.md` follows). This repo (`dotfiles`) owns editor/shell/tool _configuration_ — settings.json, extensions, symlink targets for IDEs/CLIs. The two repos' `install.sh` scripts are complementary, not overlapping: ai-config wires global agent config slots, dotfiles wires everything else (shell, editors, package managers).
 
 ---
 
@@ -36,7 +38,7 @@ brew bundle check --file=Brewfile
 ./scripts/dotfiles.sh audit
 ```
 
-There is no build step, test suite, or compilation. Changes to `configs/` take
+There is no build step, test suite, or compilation. Changes to `configs/` take  
 effect immediately on next shell reload (`exec zsh`) or tool restart.
 
 ---
@@ -106,21 +108,21 @@ dotfiles/
 
 ## Documentation roles (keep these distinct)
 
-| File | Role | What does NOT belong there |
-| --- | --- | --- |
-| `README.md` | Overview, install steps, machine sync workflow | Per-tool command lists |
-| `CHEATSHEET.md` | Single full command reference for every CLI tool | Setup instructions |
-| `QUICK-REF.md` | One-glance card; links to `docs/*.md` for depth | Long explanations |
-| `docs/*.md` | Per-topic deep dives (git, python, node, …) | Duplicating CHEATSHEET verbatim |
+| File            | Role                                             | What does NOT belong there      |
+| --------------- | ------------------------------------------------ | ------------------------------- |
+| `README.md`     | Overview, install steps, machine sync workflow   | Per-tool command lists          |
+| `CHEATSHEET.md` | Single full command reference for every CLI tool | Setup instructions              |
+| `QUICK-REF.md`  | One-glance card; links to `docs/*.md` for depth  | Long explanations               |
+| `docs/*.md`     | Per-topic deep dives (git, python, node, …)      | Duplicating CHEATSHEET verbatim |
 
-When documenting a tool, put commands in CHEATSHEET.md and only link from
+When documenting a tool, put commands in CHEATSHEET.md and only link from  
 elsewhere. Do not re-document the same tool in multiple files.
 
 ---
 
 ## How the symlink system works
 
-`install.sh` creates symlinks from where tools expect configs to where this
+`install.sh` creates symlinks from where tools expect configs to where this  
 repo stores them. For example:
 
 - `~/.gitconfig` → `<repo>/configs/git/.gitconfig`
@@ -130,135 +132,137 @@ repo stores them. For example:
 - `~/Library/Application Support/Antigravity IDE/User/settings.json` → `<repo>/configs/antigravity/settings.json`
 - `~/Library/Application Support/Cursor/User/settings.json` → `<repo>/configs/cursor/settings.json`
 - `~/Library/Application Support/Kiro/User/settings.json` → `<repo>/configs/kiro/settings.json`
-- `~/Library/Application Support/Windsurf/User/settings.json` and
-  `.../Devin/User/settings.json` → `<repo>/configs/windsurf/settings.json`
+- `~/Library/Application Support/Windsurf/User/settings.json` and  
+  `.../Devin/User/settings.json` → `<repo>/configs/windsurf/settings.json`  
   (same file, symlinked twice — Windsurf and Devin are one product now)
+- `~/.kiro/agents` → `<repo>/configs/kiro-cli/agents`, `~/.kiro/steering` → `<repo>/configs/kiro-cli/steering`  
+  (Kiro **CLI**, not the IDE — same path on Mac and WSL2, no AppData involved. Added 2026-08-02, both currently near-empty; wired now so future custom config is shared, not lost per-machine.)
 
-On Windows/WSL2, all five of the above target `/mnt/c/Users/$WIN_USER/AppData/Roaming/<App>/User/settings.json`
-instead — same generated files, same `<App>` folder names, just under
-`AppData\Roaming` rather than `~/Library/Application Support`. Wired into
-`install.sh`'s `linux` branch, but not yet verified against a real Windows
-install of Antigravity IDE/Cursor/Kiro/Windsurf/Devin — if a folder name
-differs there, fix the path in `install.sh` and `dotfiles.sh`'s
+On Windows/WSL2, all five of the above target `/mnt/c/Users/$WIN_USER/AppData/Roaming/<App>/User/settings.json`  
+instead — same generated files, same `<App>` folder names, just under  
+`AppData\Roaming` rather than `~/Library/Application Support`. Wired into  
+`install.sh`'s `linux` branch, but not yet verified against a real Windows  
+install of Antigravity IDE/Cursor/Kiro/Windsurf/Devin — if a folder name  
+differs there, fix the path in `install.sh` and `dotfiles.sh`'s  
 `expected_links()` (kept in sync manually, per the comment above that function).
 
-The repo does not have to live at `~/dotfiles` — `.zshrc` resolves the repo
+The repo does not have to live at `~/dotfiles` — `.zshrc` resolves the repo  
 location from the `~/.zshrc` symlink at runtime.
 
-**How the VS Code-family settings.json files are generated:** each editor's
-`configs/<editor>/settings.json` is NOT hand-edited directly — it's generated
-by `scripts/sync-editor-settings.sh` (or `./scripts/dotfiles.sh sync-editors`),
-which splices `configs/editors/common.json` (settings shared across every
-editor) with that editor's own `configs/<editor>/overrides.json` (settings
-unique to it — always including `workbench.colorTheme`, since each editor
-intentionally has a different theme for visual distinction between windows).
-To change a shared setting, edit `common.json`; to change one editor's theme
-or app-specific setting, edit its `overrides.json`. Either way, **re-run the
-sync script afterward** — editing `configs/<editor>/settings.json` directly
+**How the VS Code-family settings.json files are generated:** each editor's  
+`configs/<editor>/settings.json` is NOT hand-edited directly — it's generated  
+by `scripts/sync-editor-settings.sh` (or `./scripts/dotfiles.sh sync-editors`),  
+which splices `configs/editors/common.json` (settings shared across every  
+editor) with that editor's own `configs/<editor>/overrides.json` (settings  
+unique to it — always including `workbench.colorTheme`, since each editor  
+intentionally has a different theme for visual distinction between windows).  
+To change a shared setting, edit `common.json`; to change one editor's theme  
+or app-specific setting, edit its `overrides.json`. Either way, **re-run the**  
+**sync script afterward** — editing `configs/<editor>/settings.json` directly  
 will just get overwritten next sync.
 
 **Consequences for agents:**
 
-- Editing `common.json` or an `overrides.json` requires re-running the sync
-  script to take effect. Editing a non-generated `configs/` file (`.zshrc`,
+- Editing `common.json` or an `overrides.json` requires re-running the sync  
+  script to take effect. Editing a non-generated `configs/` file (`.zshrc`,  
   `.gitconfig`, etc.) edits the live config immediately — no build step there.
-- The reverse is also true for the generated files: **running tools write
-  directly into this repo.** VS Code, Antigravity, and extensions (notably
-  the Pleiades Java pack) write into `configs/<editor>/settings.json` while
-  they run. Unstaged changes the user didn't make are expected — do not treat
-  them as corruption, and re-read the file before rewriting it wholesale. If
-  you want a tool-written change to survive the next sync, pull it back into
+- The reverse is also true for the generated files: **running tools write**  
+  **directly into this repo.** VS Code, Antigravity, and extensions (notably  
+  the Pleiades Java pack) write into `configs/<editor>/settings.json` while  
+  they run. Unstaged changes the user didn't make are expected — do not treat  
+  them as corruption, and re-read the file before rewriting it wholesale. If  
+  you want a tool-written change to survive the next sync, pull it back into  
   the relevant `overrides.json` (or `common.json` if it applies everywhere).
-- `~/.secrets` is a **copy** of `configs/zsh/.secrets.example`, never a
+- `~/.secrets` is a **copy** of `configs/zsh/.secrets.example`, never a  
   symlink — real keys must never live inside the repo working tree.
 
 ---
 
 ## Tech stack
 
-| Layer | Tool |
-| --- | --- |
-| Terminal | Ghostty (macOS) / Alacritty (Windows) |
-| Shell | Zsh + Oh My Zsh |
-| Multiplexer | Zellij (auto-starts only in Ghostty, never in IDE terminals) |
-| Prompt | Starship |
-| File listing | eza |
-| Dir jump | zoxide (`z` / `cdz` — plain `cd` is intentionally NOT aliased) |
-| Fuzzy find | fzf |
-| File pager | bat |
-| Search | ripgrep |
-| Git UI | lazygit + gh CLI |
-| Git diff | delta |
-| Python | uv + ipython |
-| Node | nvm |
-| Secrets | Bitwarden + rbw (unofficial CLI); runtime keys in `~/.secrets` |
-| Cloud CLIs | aws / gcloud / az (installed per-machine as needed) |
-| JSON / HTTP | jq + httpie |
+| Layer        | Tool                                                           |
+| ------------ | -------------------------------------------------------------- |
+| Terminal     | Ghostty (macOS) / Alacritty (Windows)                          |
+| Shell        | Zsh + Oh My Zsh                                                |
+| Multiplexer  | Zellij (auto-starts only in Ghostty, never in IDE terminals)   |
+| Prompt       | Starship                                                       |
+| File listing | eza                                                            |
+| Dir jump     | zoxide (`z` / `cdz` — plain `cd` is intentionally NOT aliased) |
+| Fuzzy find   | fzf                                                            |
+| File pager   | bat                                                            |
+| Search       | ripgrep                                                        |
+| Git UI       | lazygit + gh CLI                                               |
+| Git diff     | delta                                                          |
+| Python       | uv + ipython                                                   |
+| Node         | nvm                                                            |
+| Secrets      | Bitwarden + rbw (unofficial CLI); runtime keys in `~/.secrets` |
+| Cloud CLIs   | aws / gcloud / az (installed per-machine as needed)            |
+| JSON / HTTP  | jq + httpie                                                    |
 
 ### Editors and AI tooling (multi-IDE by design)
 
-VS Code and **Antigravity IDE** are the primary editors on this Mac (the
-older standalone "Antigravity" app is superseded/deprecated — Antigravity IDE
-is the one to keep configuring going forward). Cursor, Kiro, and
-Windsurf/Devin are used less often but are **still fully config-synced** —
-as of 2026-08-01, every VS Code-family editor gets its settings from
-`configs/editors/common.json` + its own `overrides.json` (see "How the
-symlink system works" above), not just VS Code. Zed is the one exception —
-different config format entirely (`~/.config/zed/settings.json`), not part
-of this shared-settings system. CLI agents in rotation include Claude Code,
-Codex, opencode, GitHub Copilot CLI, and others. This plurality of editors is
-intentional — do not "consolidate" to one editor or flag it as a conflict;
+VS Code and **Antigravity IDE** are the primary editors on this Mac (the  
+older standalone "Antigravity" app is superseded/deprecated — Antigravity IDE  
+is the one to keep configuring going forward). Cursor, Kiro, and  
+Windsurf/Devin are used less often but are **still fully config-synced** —  
+as of 2026-08-01, every VS Code-family editor gets its settings from  
+`configs/editors/common.json` + its own `overrides.json` (see "How the  
+symlink system works" above), not just VS Code. Zed is the one exception —  
+different config format entirely (`~/.config/zed/settings.json`), not part  
+of this shared-settings system. CLI agents in rotation include Claude Code,  
+Codex, opencode, GitHub Copilot CLI, and others. This plurality of editors is  
+intentional — do not "consolidate" to one editor or flag it as a conflict;  
 DO keep their settings in sync via the common/overrides split, though.
 
-Every editor **except VS Code** deliberately uses a distinct color theme so
-windows are visually distinguishable at a glance: Antigravity IDE = Kimbie
-Dark, Cursor = Abyss, Kiro = Red, Windsurf/Devin = Monokai. **VS Code
-intentionally has no `workbench.colorTheme` override at all** (Deepak's call,
-2026-08-02) — it stays on its own factory default, since it's the primary
-daily driver and shouldn't carry a themed/accented look like the other four.
-`workbench.colorTheme` must never move into `common.json` — it's the one
+Every editor **except VS Code** deliberately uses a distinct color theme so  
+windows are visually distinguishable at a glance: Antigravity IDE = Kimbie  
+Dark, Cursor = Abyss, Kiro = Red, Windsurf/Devin = Monokai. **VS Code**  
+**intentionally has no `workbench.colorTheme` override at all** (Deepak's call,  
+2026-08-02) — it stays on its own factory default, since it's the primary  
+daily driver and shouldn't carry a themed/accented look like the other four.  
+`workbench.colorTheme` must never move into `common.json` — it's the one  
 setting that's supposed to differ per editor (or be absent, for VS Code).
 
-Named dark themes alone turned out to look too similar at a glance (found
-2026-08-01 comparing screenshots — only Kiro's Red theme read as clearly
-distinct from the other three that had one at the time). Antigravity
-IDE/Cursor/Kiro/Windsurf/Devin's `overrides.json` therefore also carry a
-`workbench.colorCustomizations` block with a bold, distinct
-`titleBar.activeBackground`/`activityBar.background` accent — Antigravity
-IDE = orange (`#E65100`), Cursor = purple (`#6A1B9A`), Kiro = red
-(`#B71C1C`, reinforcing its Red theme), Windsurf/Devin = green (`#2E7D32`).
-**VS Code got a blue accent originally too, but it was removed the same day**
-(Deepak didn't want VS Code carrying an accent color either) — VS Code's
-`workbench.colorCustomizations` only keeps the original shared tab-border/
-word-highlight touches, same as every other editor. Title bar color shows
-even on a welcome screen with no file open, unlike syntax highlighting, so
-it's the more reliable differentiator for the four editors that do have one.
-`workbench.colorCustomizations` is (like `colorTheme`) per-editor only —
-never move it into `common.json`, since JSON doesn't allow
+Named dark themes alone turned out to look too similar at a glance (found  
+2026-08-01 comparing screenshots — only Kiro's Red theme read as clearly  
+distinct from the other three that had one at the time). Antigravity  
+IDE/Cursor/Kiro/Windsurf/Devin's `overrides.json` therefore also carry a  
+`workbench.colorCustomizations` block with a bold, distinct  
+`titleBar.activeBackground`/`activityBar.background` accent — Antigravity  
+IDE = orange (`#E65100`), Cursor = purple (`#6A1B9A`), Kiro = red  
+(`#B71C1C`, reinforcing its Red theme), Windsurf/Devin = green (`#2E7D32`).  
+**VS Code got a blue accent originally too, but it was removed the same day**  
+(Deepak didn't want VS Code carrying an accent color either) — VS Code's  
+`workbench.colorCustomizations` only keeps the original shared tab-border/  
+word-highlight touches, same as every other editor. Title bar color shows  
+even on a welcome screen with no file open, unlike syntax highlighting, so  
+it's the more reliable differentiator for the four editors that do have one.  
+`workbench.colorCustomizations` is (like `colorTheme`) per-editor only —  
+never move it into `common.json`, since JSON doesn't allow  
 the same top-level key twice and each editor's title bar color must differ.
 
-**Java is NOT part of the stack.** The extensive Java/JDK/Maven blocks live
-in each editor's `overrides.json` (not `common.json`) because they're
-machine-generated by the Pleiades JDK extension wherever it's installed —
-leave them alone, don't document Java as a stack tool, and don't remove the
+**Java is NOT part of the stack.** The extensive Java/JDK/Maven blocks live  
+in each editor's `overrides.json` (not `common.json`) because they're  
+machine-generated by the Pleiades JDK extension wherever it's installed —  
+leave them alone, don't document Java as a stack tool, and don't remove the  
 blocks (the extension will just rewrite them).
 
 ---
 
 ## Key conventions
 
-- **Commit messages** follow Conventional Commits:
+- **Commit messages** follow Conventional Commits:  
   `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`
 - **Config changes** go in `configs/<tool>/` — never edit home-dir dotfiles
-- **New tools:** add to `Brewfile`, add config to `configs/`, add symlink to
+- **New tools:** add to `Brewfile`, add config to `configs/`, add symlink to  
   `install.sh`, document in CHEATSHEET.md
 - **Markdown** is linted — run `markdownlint '**/*.md'` before committing
-- **No secrets** — no API keys, tokens, or passwords in this repo. Runtime
-  keys go in `~/.secrets` (template: `configs/zsh/.secrets.example`);
+- **No secrets** — no API keys, tokens, or passwords in this repo. Runtime  
+  keys go in `~/.secrets` (template: `configs/zsh/.secrets.example`);  
   long-term storage is Bitwarden (`rbw` on the CLI)
-- **`cd` stays `cd`** — zoxide is reached via `z`/`cdz`, never alias `cd='z'`
-- **Zellij auto-start** is guarded by `$GHOSTTY_RESOURCES_DIR` so it only
-  launches in Ghostty — never remove that guard or IDE-embedded terminals
+- `**cd` stays `cd**` — zoxide is reached via `z`/`cdz`, never alias `cd='z'`
+- **Zellij auto-start** is guarded by `$GHOSTTY_RESOURCES_DIR` so it only  
+  launches in Ghostty — never remove that guard or IDE-embedded terminals  
   (VS Code, Antigravity, …) will nest into Zellij layouts
 
 ---
@@ -278,26 +282,27 @@ blocks (the extension will just rewrite them).
 - Add secrets, credentials, or personal tokens to any file
 - Modify `install.sh` unless explicitly asked — regressions are hard to test
 - Create new top-level directories without discussing first
-- Remove or "fix" machine-generated blocks in `configs/vscode/settings.json`
+- Remove or "fix" machine-generated blocks in `configs/vscode/settings.json`  
   (Java runtimes, terminal profiles, ZDOTDIR entries)
-- Break cross-platform compatibility — configs should work on both macOS and
+- Break cross-platform compatibility — configs should work on both macOS and  
   WSL2 unless clearly platform-specific (e.g., `ghostty/`, `alacritty/`)
 
 ---
 
 ## Platform notes
 
-| File | macOS | Windows WSL2 |
-| --- | --- | --- |
-| `configs/ghostty/` | ✅ used | ❌ not used |
-| `configs/alacritty/` | ❌ not used | ✅ manual copy |
-| `configs/zsh/.zshrc` | ✅ | ✅ |
-| `configs/starship/starship.toml` | ✅ | ✅ |
-| `configs/vscode/settings.json` | ✅ | ✅ |
-| `configs/git/.gitconfig` | ✅ | ✅ |
-| `configs/antigravity/skills/` | ✅ | ✅ |
-| `configs/antigravity/settings.json` | ✅ (Antigravity IDE) | ⚠️ wired in `install.sh`, unverified — app-folder name under `AppData\Roaming` assumed, not confirmed |
-| `configs/cursor/settings.json` | ✅ | ⚠️ wired, unverified (see above) |
-| `configs/kiro/settings.json` | ✅ | ⚠️ wired, unverified (see above) |
-| `configs/windsurf/settings.json` | ✅ (Windsurf + Devin) | ⚠️ wired, unverified (see above) |
-| `Brewfile` | ✅ Homebrew | ✅ Linuxbrew (casks skipped) |
+| File                                | macOS                 | Windows WSL2                                                                                          |
+| ----------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------- |
+| `configs/ghostty/`                  | ✅ used               | ❌ not used                                                                                           |
+| `configs/alacritty/`                | ❌ not used           | ✅ manual copy                                                                                        |
+| `configs/zsh/.zshrc`                | ✅                    | ✅                                                                                                    |
+| `configs/starship/starship.toml`    | ✅                    | ✅                                                                                                    |
+| `configs/vscode/settings.json`      | ✅                    | ✅                                                                                                    |
+| `configs/git/.gitconfig`            | ✅                    | ✅                                                                                                    |
+| `configs/antigravity/skills/`       | ✅                    | ✅                                                                                                    |
+| `configs/antigravity/settings.json` | ✅ (Antigravity IDE)  | ⚠️ wired in `install.sh`, unverified — app-folder name under `AppData\Roaming` assumed, not confirmed |
+| `configs/cursor/settings.json`      | ✅                    | ⚠️ wired, unverified (see above)                                                                      |
+| `configs/kiro/settings.json`        | ✅                    | ⚠️ wired, unverified (see above)                                                                      |
+| `configs/kiro-cli/agents`, `/steering` | ✅ (Kiro CLI, not IDE) | ✅ (same `~/.kiro` path on WSL2, no AppData) |
+| `configs/windsurf/settings.json`    | ✅ (Windsurf + Devin) | ⚠️ wired, unverified (see above)                                                                      |
+| `Brewfile`                          | ✅ Homebrew           | ✅ Linuxbrew (casks skipped)                                                                          |
