@@ -124,7 +124,7 @@
     "~/.agents/hooks": true
   },
   // Agent Compose — token stays blank here; never commit secrets
-  "agentCompose.apiToken": "",
+"agentCompose.apiToken": "",
 
   // =================================================
   // Markdown
@@ -236,13 +236,12 @@
   "liveServer.settings.wait": 10000,
   // Draw.io: keep pasted images at original size
   "hediet.vscode-drawio.resizeImages": null,
-  // Azure Resource Graph tenant (blank = default tenant)
-  "@azure.argTenant": "",
 
   // =================================================
   // Per-language Overrides
   // =================================================
   // Windows batch files require CRLF line endings
+  "@azure.argTenant": "",
   "[bat]": {
     "files.eol": "\r\n"
   },
@@ -318,7 +317,7 @@
   "java.sources.organizeImports.staticStarThreshold": 1,
   "java.test.config": {
     "vmArgs": ["-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8"]
-  },
+},
   "jdk.telemetry.enabled": false,
   "redhat.telemetry.enabled": false,
   "maven.executable.path": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/bin/mvn",
@@ -331,7 +330,7 @@
       "environmentVariable": "ZDOTDIR",
       "value": "/Users/shrutirastogi/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk"
     }
-  ],
+],
   "terminal.integrated.defaultProfile.osx": "JavaSE-26",
   "terminal.integrated.profiles.osx": {
     "zsh": {
