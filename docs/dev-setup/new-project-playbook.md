@@ -268,7 +268,7 @@ nano ~/.gitpulse.toml
 
 ```toml
 [repos]
-myproject = "/mnt/d/GitProjects/public/myproject"
+myproject = "~/Documents/GitProjects/public/myproject"
 ```
 
 ---
