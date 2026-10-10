@@ -97,6 +97,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# ── pnpm ──────────────────────────────────────────────────────────────────────
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME/bin:$PNPM_HOME:$PATH"
+
 # ── Zellij auto-start ─────────────────────────────────────────────────────────
 # Opens Zellij automatically when you open a new terminal.
 # Allowlists actual terminal emulators (Ghostty, Alacritty, Windows Terminal)
@@ -121,6 +125,8 @@ fi
 export UV_LINK_MODE=copy
 export CLAUDE_CODE_SKIP_BROWSER_AUTH=1
 source ~/.secrets 2>/dev/null
+# Per-machine, untracked, non-secret overrides (installer-added PATH entries). Secrets go in ~/.secrets
+[[ -f ~/.zshrc.machine ]] && source ~/.zshrc.machine
 export PATH="$HOME/.local/bin:$PATH"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
