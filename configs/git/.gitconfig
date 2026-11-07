@@ -6,7 +6,7 @@
     path = ~/.gitconfig.local
 [core]
     symlinks = true
-	excludesfile = /home/deepak/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [pull]
 	rebase = false
 

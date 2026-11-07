@@ -40,7 +40,7 @@ sst-dev.opencode
 streetsidesoftware.code-spell-checker
 tomoki1207.pdf
 yzhang.markdown-all-in-one
-astral-sh.ruff
+charliermarsh.ruff
 
 # --- optional: Java toolchain (not in stack focus — safe to uninstall to slim VS Code) ---
 ?dotdevru.prettier-java
