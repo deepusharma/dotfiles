@@ -8,7 +8,9 @@
     symlinks = true
 	excludesfile = ~/.gitignore_global
 [pull]
-	rebase = false
+	rebase = true
+[rebase]
+	autoStash = true
 
 [diff]
     tool = vscode
